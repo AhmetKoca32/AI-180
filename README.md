@@ -48,13 +48,13 @@ Yüksek risk taşıyan cilt durumlarında kullanıcıya dermatoloğa başvurma �
 - **Sprint içinde tamamlanması tahmin edilen puan:** 100 Puan
 - **Daily Scrum:** Daily Scrum toplantıları Google Meet üzerinden sözlü, WhatsApp üzerinden yazılı şekilde yapılmıştır. Toplantı görselleri paylaşılmıştır.
 
-![image.png](attachment:dc33c13a-e595-4e6d-ac4d-a6fc80081b2d:image.png)
+![image](https://github.com/user-attachments/assets/3aea18a1-adfb-4e25-9512-e5a2556890bd)
 
-![image.png](attachment:bf485c42-50aa-4e92-8101-63c1d2dfa5a0:image.png)
+![image (1)](https://github.com/user-attachments/assets/7239d3eb-632c-4590-8fea-076879c31fe2)
 
-![image.png](attachment:24536a8b-512e-4381-aca7-1fb3b702e21b:image.png)
+![image (2)](https://github.com/user-attachments/assets/2fd42b86-d867-42c8-9c70-49bf973120fa)
 
-![image.png](attachment:4bbd5fb2-ea57-46d2-9918-431c9a52c089:image.png)
+![image (3)](https://github.com/user-attachments/assets/9d26d8c1-6e47-49f2-8f6d-8e3ea83ba843)
 
 
 
