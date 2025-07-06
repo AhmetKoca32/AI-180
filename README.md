@@ -1,2 +1,4 @@
-# AI-180
-shkkhgff
+# Takım İsmi
+Grup AI-180
+# Ürün İle İlgili Bilgiler
+## Takım Elemanları
