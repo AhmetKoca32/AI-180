@@ -56,19 +56,24 @@ Yüksek risk taşıyan cilt durumlarında kullanıcıya dermatoloğa başvurma �
 
 ![image (3)](https://github.com/user-attachments/assets/9d26d8c1-6e47-49f2-8f6d-8e3ea83ba843)
 
-- **Ekip Toplantı Zaman ve Süreleri**
-Toplantılarımızın haftada en az üç gün (Salı, Perşembe ve Cumartesi); iki gün Proje Toplantısı ve 1 gün Proje Değerlendirme toplantısı olmak üzere belirlenmnesine karar verilmiştir. Ekip üyelerinin özel durumlarına bağlı olarak günlerin aynı hafta içerisinde değiştirilebileceği ve aktif toplantı yapılmadığı günlerde bireysel olarak çalışbileceği konusunda ortak karara varılmıştır. Ekip toplantı takvimi ve süreci aşağıdaki görselde yer almaktadır.
+### Sprint Review:
+Farklı konuda birçok veri seti incelendi ve ekip üyelerince tartışıldı. Veri miktarı ve kullanılabilirlik göz önüne alınarak proje seçenekleri ikiden bire düşürüldü. Projeye karar verilmesiyle beraber toplantılarımızın haftada en az üç gün (Salı, Perşembe ve Cumartesi); iki gün Proje Toplantısı ve 1 gün Proje Değerlendirme toplantısı olmak üzere belirlenmnesine karar verildi. Ekip üyelerinin özel durumlarına bağlı olarak günlerin aynı hafta içerisinde değiştirilebileceği ve aktif toplantı yapılmadığı günlerde bireysel ya da küçük gruplar halinde çalışabileceği konusunda ortak karara varıldı. Ekip toplantı takvimi ve süreci aşağıdaki görselde yer almaktadır.
 
 ![image (4)](https://github.com/user-attachments/assets/e586d433-a368-4d20-aa99-03cc0afe1f4a)
 
 ![image (5)](https://github.com/user-attachments/assets/e90e3a3f-34f6-4f29-8025-7afe5bbe8d4d)
 
 
-## Sprint Notları:
+![image](https://github.com/user-attachments/assets/4a6fdf08-0d89-4bbb-b31f-37e9e39b6adf)
+
+![image (1)](https://github.com/user-attachments/assets/deb598bf-67c1-4c99-85f5-b0499b590792)
+
+
+#### Sprint Notları:
 * Proje Yönetimi alanında notion.so kullanılmıştır.
 * DataSet araştırmaları için www.kaggle.com kullanılmıştır.
 * Ekip toplantıları için Google Meet kullanılmıştır.
-## DataSet Araştırmaları Kaynakça:
+#### DataSet Araştırmaları Kaynakça:
 https://www.kaggle.com/datasets/ascanipek/skin-diseases
 https://www.kaggle.com/datasets/shubhamgoel27/dermnet/code
 https://www.kaggle.com/datasets/fanconic/skin-cancer-malignant-vs-benign/data
