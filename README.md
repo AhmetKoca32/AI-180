@@ -64,9 +64,14 @@ Toplantılarımızın haftada en az üç gün (Salı, Perşembe ve Cumartesi); i
 ![image (5)](https://github.com/user-attachments/assets/e90e3a3f-34f6-4f29-8025-7afe5bbe8d4d)
 
 
-
-
-  
-
-
-
+## Sprint Notları:
+* Proje Yönetimi alanında notion.so kullanılmıştır.
+* DataSet araştırmaları için www.kaggle.com kullanılmıştır.
+* Ekip toplantıları için Google Meet kullanılmıştır.
+## DataSet Araştırmaları Kaynakça:
+https://www.kaggle.com/datasets/ascanipek/skin-diseases
+https://www.kaggle.com/datasets/shubhamgoel27/dermnet/code
+https://www.kaggle.com/datasets/fanconic/skin-cancer-malignant-vs-benign/data
+https://www.kaggle.com/datasets/kmader/skin-cancer-mnist-ham10000
+https://www.kaggle.com/datasets/olcaybolat1/dermatology-dataset-classification/code
+https://www.kaggle.com/datasets/utsavdey1410/food-nutrition-dataset
