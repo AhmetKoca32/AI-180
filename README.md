@@ -57,7 +57,8 @@ Yüksek risk taşıyan cilt durumlarında kullanıcıya dermatoloğa başvurma �
 
 ![image (3)](https://github.com/user-attachments/assets/9d26d8c1-6e47-49f2-8f6d-8e3ea83ba843)
 
-*Screenshots  (1p)
+*Screenshots  (1p)*
+
 ### Sprint Review:  (1p)
 Farklı konuda birçok veri seti incelendi ve ekip üyelerince tartışıldı. Veri miktarı ve kullanılabilirlik göz önüne alınarak proje seçenekleri ikiden bire düşürüldü. Projeye karar verilmesiyle beraber toplantılarımızın haftada en az üç gün (Salı, Perşembe ve Cumartesi); iki gün Proje Toplantısı ve 1 gün Proje Değerlendirme toplantısı olmak üzere belirlenmnesine karar verildi. Ekip üyelerinin özel durumlarına bağlı olarak günlerin aynı hafta içerisinde değiştirilebileceği ve aktif toplantı yapılmadığı günlerde bireysel ya da küçük gruplar halinde çalışabileceği konusunda ortak karara varıldı. Ekip toplantı takvimi ve süreci aşağıdaki görselde yer almaktadır.
 
@@ -70,6 +71,7 @@ Farklı konuda birçok veri seti incelendi ve ekip üyelerince tartışıldı. V
 
 ![image (1)](https://github.com/user-attachments/assets/deb598bf-67c1-4c99-85f5-b0499b590792)
 
+*Sprint Board Updates  (1p)*
 
 ### Sprint Retrospective:  (1p)
 Roller ile ilgili düzenlemeler yapıldı. Scrum Mater İrem Fındık olarak belirlendi. Ekip içinde rollerden farklı olarak herkesin projede mümkün olan her alanda aktif olarak yer alması planlandı. Proje ile ilgili haftalık görüşme ve toplantıların tam zamanı belirlendi. Notion kullanılarak ekibin proje hakkında yaptıkları ve planladıkları hakkında görüşmeler sağlandı. Görüşmelerin bir kısmı Google Meet ile online olarak, bir kısmı ise WhatsApp ile yazılı gerçeklerştirildi.
