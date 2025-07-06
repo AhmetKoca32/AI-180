@@ -76,7 +76,7 @@ Farklı konuda birçok veri seti incelendi ve ekip üyelerince tartışıldı. V
 *Sprint Board Updates  (1p)*
 
 ### Sprint Retrospective:  (1p)
-Roller ile ilgili düzenlemeler yapıldı. Scrum Mater İrem Fındık olarak belirlendi. Ekip içinde rollerden farklı olarak herkesin projede mümkün olan her alanda aktif olarak yer alması planlandı. Proje ile ilgili haftalık görüşme ve toplantıların tam zamanı belirlendi. Notion kullanılarak ekibin proje hakkında yaptıkları ve planladıkları hakkında görüşmeler sağlandı. Görüşmelerin bir kısmı Google Meet ile online olarak, bir kısmı ise WhatsApp ile yazılı gerçeklerştirildi.
+Roller ile ilgili düzenlemeler yapıldı. Scrum Master İrem Fındık olarak belirlendi. Ekip içinde rollerden farklı olarak herkesin projede mümkün olan her alanda aktif olarak yer alması planlandı. Proje ile ilgili haftalık görüşme ve toplantıların tam zamanı belirlendi. Notion kullanılarak ekibin proje hakkında yaptıkları ve planladıkları hakkında görüşmeler sağlandı. Görüşmelerin bir kısmı Google Meet ile online olarak, bir kısmı ise WhatsApp ile yazılı gerçeklerştirildi.
 
 #### Sprint Notları:  (1p)
 * Proje Yönetimi alanında notion.com kullanılmıştır.
