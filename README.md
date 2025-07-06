@@ -77,7 +77,7 @@ Farklı konuda birçok veri seti incelendi ve ekip üyelerince tartışıldı. V
 Roller ile ilgili düzenlemeler yapıldı. Scrum Mater İrem Fındık olarak belirlendi. Ekip içinde rollerden farklı olarak herkesin projede mümkün olan her alanda aktif olarak yer alması planlandı. Proje ile ilgili haftalık görüşme ve toplantıların tam zamanı belirlendi. Notion kullanılarak ekibin proje hakkında yaptıkları ve planladıkları hakkında görüşmeler sağlandı. Görüşmelerin bir kısmı Google Meet ile online olarak, bir kısmı ise WhatsApp ile yazılı gerçeklerştirildi.
 
 #### Sprint Notları:  (1p)
-* Proje Yönetimi alanında notion.so kullanılmıştır.
+* Proje Yönetimi alanında notion.com kullanılmıştır.
 * DataSet araştırmaları için www.kaggle.com kullanılmıştır.
 * Ekip toplantıları için Google Meet kullanılmıştır.
 * Haftanın en az üç günü toplantı belirlenmiştir.
