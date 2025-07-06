@@ -56,7 +56,8 @@ Yüksek risk taşıyan cilt durumlarında kullanıcıya dermatoloğa başvurma �
 
 ![image (3)](https://github.com/user-attachments/assets/9d26d8c1-6e47-49f2-8f6d-8e3ea83ba843)
 
-
+- **Ekip Toplantı Zaman ve Süreleri**
+  
 
 
   
