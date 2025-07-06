@@ -45,9 +45,9 @@ Yüksek risk taşıyan cilt durumlarında kullanıcıya dermatoloğa başvurma �
 ## Juriye Not
   Cilt ve saç problemleri olarak başladığımız projemizde, proje süresi ve edinilen veri miktar ve durumuna göre diğer dermatolojik problemleri ekleme gibi bir ihmimal bulunmaktadır. Ancak henüz belli bir durum söz konusu olmadığından ürün açıklamasına eklenmemiştir.
 
-# Sprint 1
-- **Sprint içinde tamamlanması tahmin edilen puan:** 100 Puan
-- **Daily Scrum:** Daily Scrum toplantıları Google Meet üzerinden sözlü, WhatsApp üzerinden yazılı şekilde yapılmıştır. Toplantı görselleri paylaşılmıştır.
+# Sprint 1   (8p)
+- **Sprint içinde tamamlanması tahmin edilen puan:** 8 Puan  (1p)
+- **Daily Scrum:** Daily Scrum toplantıları Google Meet üzerinden sözlü, WhatsApp üzerinden yazılı şekilde yapılmıştır. Toplantı görselleri paylaşılmıştır.  (1p)
 
 ![image](https://github.com/user-attachments/assets/3aea18a1-adfb-4e25-9512-e5a2556890bd)
 
@@ -57,7 +57,8 @@ Yüksek risk taşıyan cilt durumlarında kullanıcıya dermatoloğa başvurma �
 
 ![image (3)](https://github.com/user-attachments/assets/9d26d8c1-6e47-49f2-8f6d-8e3ea83ba843)
 
-### Sprint Review:
+*Screenshots  (1p)
+### Sprint Review:  (1p)
 Farklı konuda birçok veri seti incelendi ve ekip üyelerince tartışıldı. Veri miktarı ve kullanılabilirlik göz önüne alınarak proje seçenekleri ikiden bire düşürüldü. Projeye karar verilmesiyle beraber toplantılarımızın haftada en az üç gün (Salı, Perşembe ve Cumartesi); iki gün Proje Toplantısı ve 1 gün Proje Değerlendirme toplantısı olmak üzere belirlenmnesine karar verildi. Ekip üyelerinin özel durumlarına bağlı olarak günlerin aynı hafta içerisinde değiştirilebileceği ve aktif toplantı yapılmadığı günlerde bireysel ya da küçük gruplar halinde çalışabileceği konusunda ortak karara varıldı. Ekip toplantı takvimi ve süreci aşağıdaki görselde yer almaktadır.
 
 ![image (4)](https://github.com/user-attachments/assets/e586d433-a368-4d20-aa99-03cc0afe1f4a)
@@ -70,10 +71,10 @@ Farklı konuda birçok veri seti incelendi ve ekip üyelerince tartışıldı. V
 ![image (1)](https://github.com/user-attachments/assets/deb598bf-67c1-4c99-85f5-b0499b590792)
 
 
-### Sprint Retrospective:
+### Sprint Retrospective:  (1p)
 Roller ile ilgili düzenlemeler yapıldı. Scrum Mater İrem Fındık olarak belirlendi. Ekip içinde rollerden farklı olarak herkesin projede mümkün olan her alanda aktif olarak yer alması planlandı. Proje ile ilgili haftalık görüşme ve toplantıların tam zamanı belirlendi. Notion kullanılarak ekibin proje hakkında yaptıkları ve planladıkları hakkında görüşmeler sağlandı. Görüşmelerin bir kısmı Google Meet ile online olarak, bir kısmı ise WhatsApp ile yazılı gerçeklerştirildi.
 
-#### Sprint Notları:
+#### Sprint Notları:  (1p)
 * Proje Yönetimi alanında notion.so kullanılmıştır.
 * DataSet araştırmaları için www.kaggle.com kullanılmıştır.
 * Ekip toplantıları için Google Meet kullanılmıştır.
@@ -86,3 +87,15 @@ https://www.kaggle.com/datasets/fanconic/skin-cancer-malignant-vs-benign/data
 https://www.kaggle.com/datasets/kmader/skin-cancer-mnist-ham10000
 https://www.kaggle.com/datasets/olcaybolat1/dermatology-dataset-classification/code
 https://www.kaggle.com/datasets/utsavdey1410/food-nutrition-dataset
+
+## Puan Tahmin Mantığı:  (1p)
+**Proje Repo'muzda Yer Alanlar**
+* Sprint Notları - 1P
+* Tahmin edilen Tamamlanacak Puan - 1P
+* Tahmin Mantığı - 1P
+* Daily Scrum - 1P
+* Sprint Board Updates - 1P
+* Screenshots - 1P
+* Sprint Review - 1P
+* Sprint Retrospective - 1P
+olmak üzere 8 puan alınacağı ön görülmüştür.
