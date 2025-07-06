@@ -10,6 +10,7 @@ Murat Köktopçu: Back-End Developer / Data Scientist
 ## Ürün İsmi
 DermaScope
 ## Product Backlog URL
+https://www.notion.so/228abfb93c01809ab738cc1950596ba4?v=228abfb93c018143bfaf000c7bb2560c
 
 ## Ürün Açıklaması
   DermaScope, kullanıcıların cilt, saç ve deri görsellerini analiz ederek erken teşhis ve sağlık farkındalığı oluşturmayı amaçlayan yapay zekâ destekli mobil bir sağlık teknolojisi çözümüdür.
@@ -69,10 +70,15 @@ Farklı konuda birçok veri seti incelendi ve ekip üyelerince tartışıldı. V
 ![image (1)](https://github.com/user-attachments/assets/deb598bf-67c1-4c99-85f5-b0499b590792)
 
 
+### Sprint Retrospective:
+Roller ile ilgili düzenlemeler yapıldı. Scrum Mater İrem Fındık olarak belirlendi. Ekip içinde rollerden farklı olarak herkesin projede mümkün olan her alanda aktif olarak yer alması planlandı. Proje ile ilgili haftalık görüşme ve toplantıların tam zamanı belirlendi. Notion kullanılarak ekibin proje hakkında yaptıkları ve planladıkları hakkında görüşmeler sağlandı. Görüşmelerin bir kısmı Google Meet ile online olarak, bir kısmı ise WhatsApp ile yazılı gerçeklerştirildi.
+
 #### Sprint Notları:
 * Proje Yönetimi alanında notion.so kullanılmıştır.
 * DataSet araştırmaları için www.kaggle.com kullanılmıştır.
 * Ekip toplantıları için Google Meet kullanılmıştır.
+* Haftanın en az üç günü toplantı belirlenmiştir.
+
 #### DataSet Araştırmaları Kaynakça:
 https://www.kaggle.com/datasets/ascanipek/skin-diseases
 https://www.kaggle.com/datasets/shubhamgoel27/dermnet/code
