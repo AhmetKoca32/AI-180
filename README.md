@@ -59,9 +59,11 @@ Yüksek risk taşıyan cilt durumlarında kullanıcıya dermatoloğa başvurma �
 - **Ekip Toplantı Zaman ve Süreleri**
 Toplantılarımızın haftada en az üç gün (Salı, Perşembe ve Cumartesi); iki gün Proje Toplantısı ve 1 gün Proje Değerlendirme toplantısı olmak üzere belirlenmnesine karar verilmiştir. Ekip üyelerinin özel durumlarına bağlı olarak günlerin aynı hafta içerisinde değiştirilebileceği ve aktif toplantı yapılmadığı günlerde bireysel olarak çalışbileceği konusunda ortak karara varılmıştır. Ekip toplantı takvimi ve süreci aşağıdaki görselde yer almaktadır.
 
-![image (2)](https://github.com/user-attachments/assets/df2c5265-1cc5-40eb-b9e4-9ff284a8be39)
+![image (4)](https://github.com/user-attachments/assets/e586d433-a368-4d20-aa99-03cc0afe1f4a)
 
-![image (3)](https://github.com/user-attachments/assets/f540fbe0-bd95-4db4-8897-066a44391dac)
+![image (5)](https://github.com/user-attachments/assets/e90e3a3f-34f6-4f29-8025-7afe5bbe8d4d)
+
+
 
 
   
