@@ -109,6 +109,11 @@ https://www.kaggle.com/datasets/utsavdey1410/food-nutrition-dataset
 ## Puanlama Mantığı:  
 Proje boyunca tamamlanması gereken görevlerin toplma puanı 100 olarak belirlenmiştir.
 ***Sprint 1 için hedeflenen 30 puana ulaşılmıştır:***
-
+* Ekip Toplantıları ve Ürün Belirleme - 5p
+* Daily Scrum Toplantıları - 5p
+* Uygulama Geliştirme Başlangıcı - 5p
+* DataSet Araştırmaları - 5p
+* Sprint Retrospective ve ve Review - 5p
+* Sprint Board Tasarımı ve Güncellemeleri - 5p
                                                   
                                                 
