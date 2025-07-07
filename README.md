@@ -87,10 +87,6 @@ Farklı konuda birçok veri seti incelendi ve ekip üyelerince tartışıldı. V
 
 ![image (1)](https://github.com/user-attachments/assets/deb598bf-67c1-4c99-85f5-b0499b590792)
 
-![image](https://github.com/user-attachments/assets/4a00b2be-6fc7-4118-9cc4-45d81a573450)
-
-![image](https://github.com/user-attachments/assets/f109c6e2-86fb-4285-903c-6768d61fdeb5)
-
 *Sprint Board Updates  (1p)*
 
 ### Sprint Retrospective:  (1p)
