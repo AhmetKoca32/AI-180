@@ -59,14 +59,19 @@ Yüksek risk taşıyan cilt durumlarında kullanıcıya dermatoloğa başvurma �
 
 ![image (3)](https://github.com/user-attachments/assets/9d26d8c1-6e47-49f2-8f6d-8e3ea83ba843)
 
----*---*---*---*---*
+
 
 https://github.com/user-attachments/assets/d2ed573f-90fe-46b9-b8d4-e7a1953bccc7
-*Uygulama Splash Screen*
+
+* *Uygulama Splash Screen*
+
 ![image](https://github.com/user-attachments/assets/59ee69a3-fbc3-4b26-a9a4-ae730a43e1d2)
-*Mobil Ekran Tasarımı Türkçe-İngilizce*
+
+* *Mobil Ekran Tasarımı Türkçe-İngilizce*
+
 ![image](https://github.com/user-attachments/assets/699e23e7-51b1-41eb-ac3f-d3c02668a859)
-*Tablet Ekran Tasarımı Türkçe-İngilizce*
+
+* *Tablet Ekran Tasarımı Türkçe-İngilizce*
 
 *Screenshots  (1p)*
 
