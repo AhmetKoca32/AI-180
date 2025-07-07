@@ -106,7 +106,7 @@ https://www.kaggle.com/datasets/kmader/skin-cancer-mnist-ham10000
 https://www.kaggle.com/datasets/olcaybolat1/dermatology-dataset-classification/code
 https://www.kaggle.com/datasets/utsavdey1410/food-nutrition-dataset
 
-## Puan Tahmin Mantığı:  
+## Puanlama Mantığı:  
 Proje boyunca tamamlanması gereken görevlerin toplma puanı 100 olarak belirlenmiştir.
 ***Sprint 1 için hedeflenen 30 puana ulaşılmıştır:***
 
