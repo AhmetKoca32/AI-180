@@ -47,9 +47,9 @@ Yüksek risk taşıyan cilt durumlarında kullanıcıya dermatoloğa başvurma �
 ## Juriye Not
   Cilt ve saç problemleri olarak başladığımız projemizde, proje süresi ve edinilen veri miktar ve durumuna göre diğer dermatolojik problemleri ekleme gibi bir ihmimal bulunmaktadır. Ancak henüz belli bir durum söz konusu olmadığından ürün açıklamasına eklenmemiştir.
 
-# Sprint 1   (8p)
-- **Sprint içinde tamamlanması tahmin edilen puan:** 8 Puan  (1p)
-- **Daily Scrum:** Daily Scrum toplantıları Google Meet üzerinden sözlü, WhatsApp üzerinden yazılı şekilde yapılmıştır. Toplantı görselleri paylaşılmıştır.  (1p)
+# Sprint 1   
+- **Sprint içinde tamamlanması tahmin edilen puan:** 30 Puan  
+- **Daily Scrum:** Daily Scrum toplantıları Google Meet üzerinden sözlü, WhatsApp üzerinden yazılı şekilde yapılmıştır. Toplantı görselleri paylaşılmıştır.  
 
 ![image](https://github.com/user-attachments/assets/3aea18a1-adfb-4e25-9512-e5a2556890bd)
 
@@ -73,9 +73,9 @@ https://github.com/user-attachments/assets/d2ed573f-90fe-46b9-b8d4-e7a1953bccc7
 
 * *Tablet Ekran Tasarımı Türkçe-İngilizce*
 
-*Screenshots  (1p)*
+*Screenshots  *
 
-### Sprint Review:  (1p)
+### Sprint Review:  
 Farklı konuda birçok veri seti incelendi ve ekip üyelerince tartışıldı. Veri miktarı ve kullanılabilirlik göz önüne alınarak proje seçenekleri ikiden bire düşürüldü. Projeye karar verilmesiyle beraber toplantılarımızın haftada en az üç gün (Salı, Perşembe ve Cumartesi); iki gün Proje Toplantısı ve bir gün Proje Değerlendirme toplantısı olmak üzere belirlenmnesine karar verildi. Ekip üyelerinin özel durumlarına bağlı olarak günlerin aynı hafta içerisinde değiştirilebileceği ve aktif toplantı yapılmadığı günlerde bireysel ya da küçük gruplar halinde çalışabileceği konusunda ortak karara varıldı. Ekip toplantı takvimi ve süreci aşağıdaki görselde yer almaktadır.
 
 ![image (4)](https://github.com/user-attachments/assets/e586d433-a368-4d20-aa99-03cc0afe1f4a)
@@ -87,12 +87,12 @@ Farklı konuda birçok veri seti incelendi ve ekip üyelerince tartışıldı. V
 
 ![image (1)](https://github.com/user-attachments/assets/deb598bf-67c1-4c99-85f5-b0499b590792)
 
-*Sprint Board Updates  (1p)*
+*Sprint Board Updates  *
 
-### Sprint Retrospective:  (1p)
+### Sprint Retrospective:  
 Roller ile ilgili düzenlemeler yapıldı. Scrum Master İrem Fındık olarak belirlendi. Ekip içinde rollerden farklı olarak herkesin projede mümkün olan her alanda aktif olarak yer alması planlandı. Proje ile ilgili haftalık görüşme ve toplantıların tam zamanı belirlendi. Notion kullanılarak ekibin proje hakkında yaptıkları ve planladıkları hakkında görüşmeler sağlandı. Görüşmelerin bir kısmı Google Meet ile online olarak, bir kısmı ise WhatsApp ile yazılı gerçeklerştirildi.
 
-#### Sprint Notları:  (1p)
+#### Sprint Notları:  
 * Proje Yönetimi alanında www.notion.com kullanılmıştır.
 * DataSet araştırmaları için www.kaggle.com kullanılmıştır.
 * Ekip toplantıları için Google Meet kullanılmıştır.
@@ -106,14 +106,13 @@ https://www.kaggle.com/datasets/kmader/skin-cancer-mnist-ham10000
 https://www.kaggle.com/datasets/olcaybolat1/dermatology-dataset-classification/code
 https://www.kaggle.com/datasets/utsavdey1410/food-nutrition-dataset
 
-## Puan Tahmin Mantığı:  (1p)
-**Proje Repo'muzda Yer Alanlar**
-* Sprint Notları - 1P
-* Tahmin edilen Tamamlanacak Puan - 1P
-* Tahmin Mantığı - 1P
-* Daily Scrum - 1P
-* Sprint Board Updates - 1P
-* Screenshots - 1P
-* Sprint Review - 1P
-* Sprint Retrospective - 1P
-olmak üzere 8 puan alınacağı ön görülmüştür.
+## Puan Tahmin Mantığı:  
+Proje boyunca tamamlanması gereken görevlerin toplma puanı 100 olarak belirlenmiştir. Sprint 1 için 30, Sprint 2 için 30 ve Sprint 3 için 40 puan olması hedefi grup üyelerince onaylanmıştır.
+*Sprint 1 için hedeflenen 30 puana ulaşılmıştır:* Daily Scrum ve ekran görüntüleri - 5p
+                                                  Uygulama Tasarımı ve ekran görüntüleri - 5p
+                                                  Sprint Review - 5p
+                                                  Sprint Retrospective - 5p
+                                                  Sprint Notları - 5p
+                                                  DataSet Araştırmaları ve kaynakçası - 5p
+                                                  
+                                                
