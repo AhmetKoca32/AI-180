@@ -59,6 +59,14 @@ Yüksek risk taşıyan cilt durumlarında kullanıcıya dermatoloğa başvurma �
 
 ![image (3)](https://github.com/user-attachments/assets/9d26d8c1-6e47-49f2-8f6d-8e3ea83ba843)
 
+![WhatsApp Image 2025-07-07 at 5 10 47 PM](https://github.com/user-attachments/assets/712ebc1e-547a-4b5a-bbf9-c2c10283a6ab)
+
+![WhatsApp Image 2025-07-07 at 5 10 48 PM](https://github.com/user-attachments/assets/4d9c5a33-5ead-43fb-90ab-82b7781a2413)
+
+![WhatsApp Image 2025-07-07 at 5 10 47 PM (1)](https://github.com/user-attachments/assets/8fcf568a-ff50-410b-9864-6de7250d41f7)
+
+![WhatsApp Image 2025-07-07 at 5 10 48 PM (1)](https://github.com/user-attachments/assets/f3f599da-5ed5-4afd-9526-927eeacc7c2a)
+
 *Screenshots  (1p)*
 
 ### Sprint Review:  (1p)
