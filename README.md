@@ -59,7 +59,8 @@ Yüksek risk taşıyan cilt durumlarında kullanıcıya dermatoloğa başvurma �
 
 ![image (3)](https://github.com/user-attachments/assets/9d26d8c1-6e47-49f2-8f6d-8e3ea83ba843)
 
-![image](https://github.com/user-attachments/assets/4af7d7a8-9fc7-4b49-98a7-90b7bb3f0546)
+
+![image](https://github.com/user-attachments/assets/682ada51-ee28-475f-b963-e6d1f14a1b44)
 
 
 *Screenshots  (1p)*
