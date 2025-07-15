@@ -1,16 +1,49 @@
-# dermoscope_ui
+# DermaScope UI
 
-A new Flutter project.
+Bu proje, DermaScope mobil uygulamasının Flutter ile geliştirilen kullanıcı arayüzü (UI) kısmını içerir. Proje, modüler ve ölçeklenebilir bir mimariyle tasarlanmıştır. Aşağıda, dosya ve klasör yapısının açıklaması ile birlikte bu şablonun amacı detaylandırılmıştır.
 
-## Getting Started
+## Proje Mimarisi ve Klasör Yapısı
 
-This project is a starting point for a Flutter application.
+```
+lib/
+  core/
+    constants/         # Sabitler ve genel tanımlar
+    utils/             # Yardımcı fonksiyonlar
+    theme/             # Tema ve stil dosyaları
+    widgets/           # Ortak, tekrar kullanılabilir widgetlar
+  models/              # Veri modelleri (ör. kullanıcı, analiz sonucu)
+  services/            # Servisler (ör. yapay zekâ, kullanıcı işlemleri)
+  screens/
+    splash/            # Splash ekranı
+    auth/              # Giriş/kayıt ekranları
+    home/              # Ana ekran
+    chat/              # Cilt, saç ve genel chat ekranları
+    profile/           # Kişisel bilgiler ekranı
+    analysis/          # Analiz ve grafik ekranları
+    widgets/           # Ekranlara özel widgetlar (ör. bugünün bilgisi)
+  providers/           # State management dosyaları
+  routes/              # Sayfa yönlendirme ve route yönetimi
+  l10n/                # Çoklu dil desteği dosyaları (opsiyonel)
+  main.dart            # Uygulamanın başlangıç noktası
+```
 
-A few resources to get you started if this is your first Flutter project:
+## Şablonun Amacı
+- **Modülerlik:** Her ekran ve ana fonksiyon için ayrı klasörler ile kodun okunabilirliği ve yönetimi kolaylaştırılır.
+- **Genişletilebilirlik:** Yeni ekranlar, servisler veya modeller eklemek kolaydır.
+- **Yeniden Kullanılabilirlik:** Ortak widgetlar ve yardımcı fonksiyonlar merkezi olarak tutulur.
+- **State Management:** Uygulamanın veri yönetimi için ayrı bir alan ayrılmıştır.
+- **Backend Entegrasyonu:** İleride API bağlantısı veya veri tabanı eklemek için uygun altyapı hazırdır.
+- **Çoklu Dil Desteği:** Uygulamanın farklı dillerde kullanılabilmesi için altyapı düşünülmüştür.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Ekranlar ve Bileşenler
+- **Splash Screen:** Açılış ekranı
+- **Login Screen:** Giriş ekranı
+- **Home Screen:** Ana ekran
+- **Chat Ekranları:** Cilt, saç ve genel chat için üç ayrı ekran
+- **Profil Ekranı:** Kullanıcıya ait kişisel bilgiler
+- **Cilt Durumu Grafik Ekranı:** Analiz sonuçlarının grafiksel gösterimi
+- **Bugünün Bilgisi Widget'ı:** Günlük bilgilendirici içerik
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+
+Bu yapı, projenin sürdürülebilirliğini ve büyümesini kolaylaştırmak için önerilmiştir. Yeni özellikler eklemek veya mevcutları geliştirmek için klasörler arası net bir ayrım ve esneklik sağlar.
