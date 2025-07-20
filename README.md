@@ -159,13 +159,19 @@ Proje boyunca tamamlanması gereken görevlerin toplma puanı 100 olarak belirle
 
 <img width="1913" height="687" alt="image (4)" src="https://github.com/user-attachments/assets/914d0311-f325-41de-9d82-0c054c275a01" />
 
+*Tasarım Görselleri*
+
 <img width="1477" height="753" alt="image" src="https://github.com/user-attachments/assets/91ae1454-f771-445c-a8f1-7dca1fd4ab95" />
 
 <img width="1471" height="716" alt="image (1)" src="https://github.com/user-attachments/assets/aa3cef71-9024-4471-834a-4dfc29c6b9c6" />
 
+*Dosya Yapısı Görselleri*
+
 <img width="1897" height="788" alt="image" src="https://github.com/user-attachments/assets/4187295c-6245-4ca6-8d17-01ad35e5b60a" />
 
 <img width="1883" height="905" alt="image (1)" src="https://github.com/user-attachments/assets/3da4a3ff-b18e-4d75-a615-c700d253ce56" />
+
+*Kod Görselleri*
 
 ### Sprint 2 Review:
 Sprint boyunca mümkün olduğunca haftada en az üç günlük toplantılar gerçekleştirilmiştir. Proje eksikleri konuşulmuş ve gelecekte eklenecek özellikler planlanmıştır. Proje ekibi tasarım ve veri şeklinde ayrıca gruplanmış; ara günlerde ayrıca toplantılar yapılmıştır. Haftada üç gün yapılan toplantılarda tüm ekip toplanmış; ayrı ayrı yapılan tüm değişiklikler tartışılmış ve fikir alışverişi yapılmıştır. Bazı toplantıların tarihleri ekip üyelerinin müsaitlik durumu sebebiyle değiştirilmiş ancak buna rağmen planlanan şekilde gerçekleştirilmiştir. Tüm ekibin katıldığı toplantılarda tasarım ekibi veri ekibine, veri ekibi tasarım ekibine birbirlerinin alanları hakkında fikirler sunmuştur. Sprint 2 raporu için tüm ekip yaptıklarını paylaşmış ve Proje Yöneticisi'ne sunmuştur. Proje Yöneticisi bu verileri toplamış, düzenlemiş ve Sprint 2 Raporu'na eklemiştir.
