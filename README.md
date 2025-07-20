@@ -143,7 +143,7 @@ Proje boyunca tamamlanması gereken görevlerin toplma puanı 100 olarak belirle
 ### Sprint Retrospective:
 
 
-### Veri Analizi ve Makine Öğrenmesi Görselleri:
+### Veri Analizi ve Makine Öğrenmesi Görselleri ve Notu:
 <img width="1086" height="841" alt="image (6)" src="https://github.com/user-attachments/assets/350242b3-3c8a-4c2a-8aaa-b181ef709f12" />
 
 <img width="1053" height="845" alt="image (5)" src="https://github.com/user-attachments/assets/7e7c44e0-9522-4105-870e-6f2c93b25d05" />
@@ -151,6 +151,10 @@ Proje boyunca tamamlanması gereken görevlerin toplma puanı 100 olarak belirle
 <img width="996" height="851" alt="image (4)" src="https://github.com/user-attachments/assets/fbc4b79a-eb7d-467c-89df-b21eb58b45c0" />
 
 <img width="868" height="844" alt="image (3)" src="https://github.com/user-attachments/assets/7c86b248-d11b-477f-b5a5-a57798ea1e45" />
+
+<img width="1231" height="911" alt="image" src="https://github.com/user-attachments/assets/20126400-7419-4292-8a9f-200f1da0d53d" />
+
+<img width="1282" height="909" alt="image (1)" src="https://github.com/user-attachments/assets/3963f54c-55e7-4815-a614-cc3f65e20b57" />
 
 ### Tasarım ve Dosya Yapısı Görselleri:
 <img width="1304" height="603" alt="image" src="https://github.com/user-attachments/assets/7c094abf-6bd7-4511-9c57-e6a83a0221cb" />
@@ -162,6 +166,10 @@ Proje boyunca tamamlanması gereken görevlerin toplma puanı 100 olarak belirle
 <img width="1907" height="720" alt="image (3)" src="https://github.com/user-attachments/assets/5196fcd3-e2b5-4370-89ca-feffeb266436" />
 
 <img width="1913" height="687" alt="image (4)" src="https://github.com/user-attachments/assets/914d0311-f325-41de-9d82-0c054c275a01" />
+
+<img width="1477" height="753" alt="image" src="https://github.com/user-attachments/assets/91ae1454-f771-445c-a8f1-7dca1fd4ab95" />
+
+<img width="1471" height="716" alt="image (1)" src="https://github.com/user-attachments/assets/aa3cef71-9024-4471-834a-4dfc29c6b9c6" />
 
 ## Puanlama Mantığı:  
 Proje boyunca tamamlanması gereken görevlerin toplma puanı 100 olarak belirlenmiştir.
