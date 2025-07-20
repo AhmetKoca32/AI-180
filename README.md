@@ -73,7 +73,7 @@ https://github.com/user-attachments/assets/d2ed573f-90fe-46b9-b8d4-e7a1953bccc7
 
 * *Tablet Ekran Tasarımı Türkçe-İngilizce*
 
-*Screenshots  *
+*Screenshots*
 
 ### Sprint Review:  
 Farklı konuda birçok veri seti incelendi ve ekip üyelerince tartışıldı. Veri miktarı ve kullanılabilirlik göz önüne alınarak proje seçenekleri ikiden bire düşürüldü. Projeye karar verilmesiyle beraber toplantılarımızın haftada en az üç gün (Salı, Perşembe ve Cumartesi); iki gün Proje Toplantısı ve bir gün Proje Değerlendirme toplantısı olmak üzere belirlenmnesine karar verildi. Ekip üyelerinin özel durumlarına bağlı olarak günlerin aynı hafta içerisinde değiştirilebileceği ve aktif toplantı yapılmadığı günlerde bireysel ya da küçük gruplar halinde çalışabileceği konusunda ortak karara varıldı. Ekip toplantı takvimi ve süreci aşağıdaki görselde yer almaktadır.
@@ -136,7 +136,7 @@ Proje boyunca tamamlanması gereken görevlerin toplma puanı 100 olarak belirle
 <img width="1920" height="1080" alt="Screenshot 2025-07-15 184101" src="https://github.com/user-attachments/assets/dbf8ae63-d35c-4111-b911-2cbc85d31790" />
 
 
-### Veri Analizi ve Makine Öğrenmesi Görselleri ve Notu:
+### Veri Analizi ve Makine Öğrenmesi Görselleri ve Planlama Notu:
 <img width="1086" height="841" alt="image (6)" src="https://github.com/user-attachments/assets/350242b3-3c8a-4c2a-8aaa-b181ef709f12" />
 
 <img width="1053" height="845" alt="image (5)" src="https://github.com/user-attachments/assets/7e7c44e0-9522-4105-870e-6f2c93b25d05" />
@@ -145,9 +145,13 @@ Proje boyunca tamamlanması gereken görevlerin toplma puanı 100 olarak belirle
 
 <img width="868" height="844" alt="image (3)" src="https://github.com/user-attachments/assets/7c86b248-d11b-477f-b5a5-a57798ea1e45" />
 
+* *Veri analizi ve Makine Öğrenmesi Görselleri*
+
 <img width="1231" height="911" alt="image" src="https://github.com/user-attachments/assets/20126400-7419-4292-8a9f-200f1da0d53d" />
 
 <img width="1282" height="909" alt="image (1)" src="https://github.com/user-attachments/assets/3963f54c-55e7-4815-a614-cc3f65e20b57" />
+
+* *Planlama Notu Görselleri*
 
 ### Tasarım, Dosya Yapısı ve Kod Görselleri:
 
@@ -159,26 +163,26 @@ Proje boyunca tamamlanması gereken görevlerin toplma puanı 100 olarak belirle
 
 <img width="1913" height="687" alt="image (4)" src="https://github.com/user-attachments/assets/914d0311-f325-41de-9d82-0c054c275a01" />
 
-*Tasarım Görselleri*
+* *Tasarım Görselleri*
 
 <img width="1477" height="753" alt="image" src="https://github.com/user-attachments/assets/91ae1454-f771-445c-a8f1-7dca1fd4ab95" />
 
 <img width="1471" height="716" alt="image (1)" src="https://github.com/user-attachments/assets/aa3cef71-9024-4471-834a-4dfc29c6b9c6" />
 
-*Dosya Yapısı Görselleri*
+* *Dosya Yapısı Görselleri*
 
 <img width="1897" height="788" alt="image" src="https://github.com/user-attachments/assets/4187295c-6245-4ca6-8d17-01ad35e5b60a" />
 
 <img width="1883" height="905" alt="image (1)" src="https://github.com/user-attachments/assets/3da4a3ff-b18e-4d75-a615-c700d253ce56" />
 
-*Kod Görselleri*
+* *Kod Görselleri*
 
 ### Sprint 2 Review:
 Sprint boyunca mümkün olduğunca haftada en az üç günlük toplantılar gerçekleştirilmiştir. Proje eksikleri konuşulmuş ve gelecekte eklenecek özellikler planlanmıştır. Proje ekibi tasarım ve veri şeklinde ayrıca gruplanmış; ara günlerde ayrıca toplantılar yapılmıştır. Haftada üç gün yapılan toplantılarda tüm ekip toplanmış; ayrı ayrı yapılan tüm değişiklikler tartışılmış ve fikir alışverişi yapılmıştır. Bazı toplantıların tarihleri ekip üyelerinin müsaitlik durumu sebebiyle değiştirilmiş ancak buna rağmen planlanan şekilde gerçekleştirilmiştir. Tüm ekibin katıldığı toplantılarda tasarım ekibi veri ekibine, veri ekibi tasarım ekibine birbirlerinin alanları hakkında fikirler sunmuştur. Sprint 2 raporu için tüm ekip yaptıklarını paylaşmış ve Proje Yöneticisi'ne sunmuştur. Proje Yöneticisi bu verileri toplamış, düzenlemiş ve Sprint 2 Raporu'na eklemiştir.
 
 <img width="1315" height="868" alt="image" src="https://github.com/user-attachments/assets/076a738c-6078-42af-b870-61fce6d616c4" />
 
-*Sprint 2 Board Updates  *
+*Sprint 2 Board Updates*
 
 ### Sprint Retrospective:
 * Sprint 2 için belirlenen 40 puan hedefine başarıyla ulaşılmıştır.
