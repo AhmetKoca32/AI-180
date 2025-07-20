@@ -145,7 +145,7 @@ Proje boyunca tamamlanması gereken görevlerin toplma puanı 100 olarak belirle
 
 <img width="868" height="844" alt="image (3)" src="https://github.com/user-attachments/assets/7c86b248-d11b-477f-b5a5-a57798ea1e45" />
 
-* *Veri analizi ve Makine Öğrenmesi Görselleri*
+* *Veri Analizi ve Makine Öğrenmesi Görselleri*
 
 <img width="1231" height="911" alt="image" src="https://github.com/user-attachments/assets/20126400-7419-4292-8a9f-200f1da0d53d" />
 
