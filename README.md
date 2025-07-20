@@ -152,7 +152,7 @@ Proje boyunca tamamlanması gereken görevlerin toplma puanı 100 olarak belirle
 
 <img width="868" height="844" alt="image (3)" src="https://github.com/user-attachments/assets/7c86b248-d11b-477f-b5a5-a57798ea1e45" />
 
-### Tasarım Görselleri:
+### Tasarım ve Dosya Yapısı Görselleri:
 <img width="1304" height="603" alt="image" src="https://github.com/user-attachments/assets/7c094abf-6bd7-4511-9c57-e6a83a0221cb" />
 
 <img width="1919" height="903" alt="image (1)" src="https://github.com/user-attachments/assets/cbcee2fb-fad8-467a-8728-6fc272cc0002" />
