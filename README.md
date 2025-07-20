@@ -133,6 +133,7 @@ Proje boyunca tamamlanması gereken görevlerin toplma puanı 100 olarak belirle
 
 <img width="721" height="902" alt="image" src="https://github.com/user-attachments/assets/8e5f15d2-24ec-40c2-ab4c-5ce884268abe" />
 
+<img width="1920" height="1080" alt="Screenshot 2025-07-15 184101" src="https://github.com/user-attachments/assets/dbf8ae63-d35c-4111-b911-2cbc85d31790" />
 
 ### Sprint Review:
 
@@ -142,7 +143,16 @@ Proje boyunca tamamlanması gereken görevlerin toplma puanı 100 olarak belirle
 ### Sprint Retrospective:
 
 
-#### Sprint Notları:
+### Veri Analizi ve Makine Öğrenmesi Görselleri:
+<img width="1086" height="841" alt="image (6)" src="https://github.com/user-attachments/assets/350242b3-3c8a-4c2a-8aaa-b181ef709f12" />
+
+<img width="1053" height="845" alt="image (5)" src="https://github.com/user-attachments/assets/7e7c44e0-9522-4105-870e-6f2c93b25d05" />
+
+<img width="996" height="851" alt="image (4)" src="https://github.com/user-attachments/assets/fbc4b79a-eb7d-467c-89df-b21eb58b45c0" />
+
+<img width="868" height="844" alt="image (3)" src="https://github.com/user-attachments/assets/7c86b248-d11b-477f-b5a5-a57798ea1e45" />
+
+### Tasarım Görselleri:
 
 
 
