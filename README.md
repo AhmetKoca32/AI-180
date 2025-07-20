@@ -153,8 +153,15 @@ Proje boyunca tamamlanması gereken görevlerin toplma puanı 100 olarak belirle
 <img width="868" height="844" alt="image (3)" src="https://github.com/user-attachments/assets/7c86b248-d11b-477f-b5a5-a57798ea1e45" />
 
 ### Tasarım Görselleri:
+<img width="1304" height="603" alt="image" src="https://github.com/user-attachments/assets/7c094abf-6bd7-4511-9c57-e6a83a0221cb" />
 
+<img width="1919" height="903" alt="image (1)" src="https://github.com/user-attachments/assets/cbcee2fb-fad8-467a-8728-6fc272cc0002" />
 
+<img width="1910" height="651" alt="image (2)" src="https://github.com/user-attachments/assets/89520e22-dcca-44ed-873a-8ff5097a429b" />
+
+<img width="1907" height="720" alt="image (3)" src="https://github.com/user-attachments/assets/5196fcd3-e2b5-4370-89ca-feffeb266436" />
+
+<img width="1913" height="687" alt="image (4)" src="https://github.com/user-attachments/assets/914d0311-f325-41de-9d82-0c054c275a01" />
 
 ## Puanlama Mantığı:  
 Proje boyunca tamamlanması gereken görevlerin toplma puanı 100 olarak belirlenmiştir.
