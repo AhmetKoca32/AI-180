@@ -127,3 +127,21 @@ Proje boyunca tamamlanması gereken görevlerin toplma puanı 100 olarak belirle
 
 <img width="1919" height="1077" alt="image (1)" src="https://github.com/user-attachments/assets/ac40093d-72aa-4dd6-9421-d1cde02dc7f4" />
 
+<img width="1360" height="907" alt="image (2)" src="https://github.com/user-attachments/assets/eba54f6e-968b-4614-8c54-ad6a42e8cf63" />
+
+<img width="909" height="913" alt="image (1)" src="https://github.com/user-attachments/assets/3671baf8-6f27-40d2-937b-0e9e3896fff3" />
+
+<img width="721" height="902" alt="image" src="https://github.com/user-attachments/assets/8e5f15d2-24ec-40c2-ab4c-5ce884268abe" />
+
+
+### Sprint Review:
+
+
+
+### Sprint Retrospective:
+
+
+#### Sprint Notları:
+
+
+#### DataSet Araştırmaları Kaynakça:
