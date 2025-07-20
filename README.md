@@ -117,3 +117,13 @@ Proje boyunca tamamlanması gereken görevlerin toplma puanı 100 olarak belirle
 * Sprint Board Tasarımı ve Güncellemeleri - 5p
                                                   
                                                 
+
+
+# Sprint 2   
+- **Sprint içinde tamamlanması tahmin edilen puan:** 40 Puan  
+- **Daily Scrum:** Daily Scrum toplantıları Google Meet üzerinden sözlü, WhatsApp üzerinden yazılı şekilde yapılmıştır. Toplantı görselleri paylaşılmıştır.
+
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/fa8c213d-bf21-4480-9b83-b5429ec1181c" />
+
+<img width="1919" height="1077" alt="image (1)" src="https://github.com/user-attachments/assets/ac40093d-72aa-4dd6-9421-d1cde02dc7f4" />
+
