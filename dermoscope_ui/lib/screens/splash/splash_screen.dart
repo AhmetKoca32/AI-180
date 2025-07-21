@@ -36,6 +36,12 @@ class _SplashScreenState extends State<SplashScreen>
             _logoOpacity = 1.0;
             _logoScale = 1.0;
           });
+          // 2 saniye sonra login ekranına geç
+          Timer(const Duration(seconds: 2), () {
+            if (mounted) {
+              Navigator.of(context).pushReplacementNamed('/login');
+            }
+          });
         });
       });
     });
