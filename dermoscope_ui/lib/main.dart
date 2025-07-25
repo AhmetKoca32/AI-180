@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
-import 'screens/auth/login_screen.dart';
-import 'screens/splash/splash_screen.dart';
+import 'routes/app_routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,20 +12,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-      debugShowCheckedModeBanner: false,
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const SplashScreen(),
-        '/login': (context) => const LoginScreen(),
+    return Sizer(
+      builder: (context, orientation, deviceType) {
+        return MaterialApp(
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          ),
+          debugShowCheckedModeBanner: false,
+          initialRoute: '/',
+          routes: AppRoutes.routes,
+        );
       },
     );
   }
 }
+
 
 // MyHomePage ve _MyHomePageState kodları burada dursun, ileride yönlendirme için kullanılabilir.
 class MyHomePage extends StatefulWidget {
