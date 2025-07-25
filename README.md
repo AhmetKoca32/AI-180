@@ -73,7 +73,7 @@ https://github.com/user-attachments/assets/d2ed573f-90fe-46b9-b8d4-e7a1953bccc7
 
 * *Tablet Ekran Tasarımı Türkçe-İngilizce*
 
-*Screenshots  *
+*Screenshots*
 
 ### Sprint Review:  
 Farklı konuda birçok veri seti incelendi ve ekip üyelerince tartışıldı. Veri miktarı ve kullanılabilirlik göz önüne alınarak proje seçenekleri ikiden bire düşürüldü. Projeye karar verilmesiyle beraber toplantılarımızın haftada en az üç gün (Salı, Perşembe ve Cumartesi); iki gün Proje Toplantısı ve bir gün Proje Değerlendirme toplantısı olmak üzere belirlenmnesine karar verildi. Ekip üyelerinin özel durumlarına bağlı olarak günlerin aynı hafta içerisinde değiştirilebileceği ve aktif toplantı yapılmadığı günlerde bireysel ya da küçük gruplar halinde çalışabileceği konusunda ortak karara varıldı. Ekip toplantı takvimi ve süreci aşağıdaki görselde yer almaktadır.
@@ -117,3 +117,92 @@ Proje boyunca tamamlanması gereken görevlerin toplma puanı 100 olarak belirle
 * Sprint Board Tasarımı ve Güncellemeleri - 5p
                                                   
                                                 
+
+
+# Sprint 2   
+- **Sprint içinde tamamlanması tahmin edilen puan:** 40 Puan  
+- **Daily Scrum:** Daily Scrum toplantıları Google Meet üzerinden sözlü, WhatsApp üzerinden yazılı şekilde yapılmıştır. Toplantı görselleri paylaşılmıştır. 
+
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/fa8c213d-bf21-4480-9b83-b5429ec1181c" />
+
+<img width="1919" height="1077" alt="image (1)" src="https://github.com/user-attachments/assets/ac40093d-72aa-4dd6-9421-d1cde02dc7f4" />
+
+<img width="1360" height="907" alt="image (2)" src="https://github.com/user-attachments/assets/eba54f6e-968b-4614-8c54-ad6a42e8cf63" />
+
+<img width="909" height="913" alt="image (1)" src="https://github.com/user-attachments/assets/3671baf8-6f27-40d2-937b-0e9e3896fff3" />
+
+<img width="721" height="902" alt="image" src="https://github.com/user-attachments/assets/8e5f15d2-24ec-40c2-ab4c-5ce884268abe" />
+
+<img width="1920" height="1080" alt="Screenshot 2025-07-15 184101" src="https://github.com/user-attachments/assets/dbf8ae63-d35c-4111-b911-2cbc85d31790" />
+
+
+### Veri Analizi ve Makine Öğrenmesi Görselleri ve Planlama Notu:
+<img width="1086" height="841" alt="image (6)" src="https://github.com/user-attachments/assets/350242b3-3c8a-4c2a-8aaa-b181ef709f12" />
+
+<img width="1053" height="845" alt="image (5)" src="https://github.com/user-attachments/assets/7e7c44e0-9522-4105-870e-6f2c93b25d05" />
+
+<img width="996" height="851" alt="image (4)" src="https://github.com/user-attachments/assets/fbc4b79a-eb7d-467c-89df-b21eb58b45c0" />
+
+<img width="868" height="844" alt="image (3)" src="https://github.com/user-attachments/assets/7c86b248-d11b-477f-b5a5-a57798ea1e45" />
+
+* *Veri Analizi ve Makine Öğrenmesi Görselleri*
+
+<img width="1231" height="911" alt="image" src="https://github.com/user-attachments/assets/20126400-7419-4292-8a9f-200f1da0d53d" />
+
+<img width="1282" height="909" alt="image (1)" src="https://github.com/user-attachments/assets/3963f54c-55e7-4815-a614-cc3f65e20b57" />
+
+* *Planlama Notu Görselleri*
+
+### Tasarım, Dosya Yapısı ve Kod Görselleri:
+
+<img width="1919" height="903" alt="image (1)" src="https://github.com/user-attachments/assets/cbcee2fb-fad8-467a-8728-6fc272cc0002" />
+
+<img width="1910" height="651" alt="image (2)" src="https://github.com/user-attachments/assets/89520e22-dcca-44ed-873a-8ff5097a429b" />
+
+<img width="1907" height="720" alt="image (3)" src="https://github.com/user-attachments/assets/5196fcd3-e2b5-4370-89ca-feffeb266436" />
+
+<img width="1913" height="687" alt="image (4)" src="https://github.com/user-attachments/assets/914d0311-f325-41de-9d82-0c054c275a01" />
+
+* *Tasarım Görselleri*
+
+<img width="1477" height="753" alt="image" src="https://github.com/user-attachments/assets/91ae1454-f771-445c-a8f1-7dca1fd4ab95" />
+
+<img width="1471" height="716" alt="image (1)" src="https://github.com/user-attachments/assets/aa3cef71-9024-4471-834a-4dfc29c6b9c6" />
+
+* *Dosya Yapısı Görselleri*
+
+<img width="1897" height="788" alt="image" src="https://github.com/user-attachments/assets/4187295c-6245-4ca6-8d17-01ad35e5b60a" />
+
+<img width="1883" height="905" alt="image (1)" src="https://github.com/user-attachments/assets/3da4a3ff-b18e-4d75-a615-c700d253ce56" />
+
+* *Kod Görselleri*
+
+### Sprint 2 Review:
+Sprint boyunca mümkün olduğunca haftada en az üç günlük toplantılar gerçekleştirilmiştir. Proje eksikleri konuşulmuş ve gelecekte eklenecek özellikler planlanmıştır. Proje ekibi tasarım ve veri şeklinde ayrıca gruplanmış; ara günlerde ayrıca toplantılar yapılmıştır. Haftada üç gün yapılan toplantılarda tüm ekip toplanmış; ayrı ayrı yapılan tüm değişiklikler tartışılmış ve fikir alışverişi yapılmıştır. Bazı toplantıların tarihleri ekip üyelerinin müsaitlik durumu sebebiyle değiştirilmiş ancak buna rağmen planlanan şekilde gerçekleştirilmiştir. Tüm ekibin katıldığı toplantılarda tasarım ekibi veri ekibine, veri ekibi tasarım ekibine birbirlerinin alanları hakkında fikirler sunmuştur. Sprint 2 raporu için tüm ekip yaptıklarını paylaşmış ve Proje Yöneticisi'ne sunmuştur. Proje Yöneticisi bu verileri toplamış, düzenlemiş ve Sprint 2 Raporu'na eklemiştir.
+
+<img width="1315" height="868" alt="image" src="https://github.com/user-attachments/assets/076a738c-6078-42af-b870-61fce6d616c4" />
+
+*Sprint 2 Board Updates*
+
+### Sprint Retrospective:
+* Sprint 2 için belirlenen 40 puan hedefine başarıyla ulaşılmıştır.
+* Ana toplantıların zamanlarının daha az değiştirilmesi gerektiğine vurgu yapılmıştır.
+* Gelecek Sprint süreci için uygulama ve veri tasarım  ve analizi için yapılacaklar tartışılmıştır.
+* Zaman değerlendirmesi yapılmış, projenin belirlenen sürede tamamlanması için yapılacaklar planlanmıştır.
+
+## Puanlama Mantığı:  
+Proje boyunca tamamlanması gereken görevlerin toplam puanı 100 olarak belirlenmiştir.
+***Sprint 2 için hedeflenen 40 puana ulaşılmıştır:***
+* Ekip Toplantılarına katılım - 3p
+* Daily Scrum Toplantılarına katılım - 3p
+* Sprin Board'da gerçekleştirilmiş hedeflerin gerçekleştirilecek hedeflerden fazla olması - 3p
+* Uygulama Tasarım ilerlemesi - 3p
+* DataSet Araştırmaları devam - 1p
+* Sprint Retrospective ve Review düzenlemeleri - 4p
+* Sprint Board planları ve ilerlemeleri - 5p
+* Makine Öğrenmesi araştırmaları - 3p
+* Makine Öğrenmesi sürecinin başlaması - 3p
+* Uygulama Tasarımı BackEnd süreci - 5p
+* Gelecek hedeflerin konuşulması - 2p
+* Veri görsellerinin makine öğrenmesine uyarlanması - 5p
+
