@@ -10,17 +10,19 @@ lib/
     constants/         # Sabitler ve genel tanımlar
     utils/             # Yardımcı fonksiyonlar
     theme/             # Tema ve stil dosyaları
-    widgets/           # Ortak, tekrar kullanılabilir widgetlar
+    app_export.dart    # Her sayfada kullanılması gereken importların birleştirildiği dosya
   models/              # Veri modelleri (ör. kullanıcı, analiz sonucu)
   services/            # Servisler (ör. yapay zekâ, kullanıcı işlemleri)
   screens/
     splash/            # Splash ekranı
     auth/              # Giriş/kayıt ekranları
     home/              # Ana ekran
-    chat/              # Cilt, saç ve genel chat ekranları
+    chat_consultation/ # Cilt, saç ve genel chat ekranları
     profile/           # Kişisel bilgiler ekranı
-    analysis/          # Analiz ve grafik ekranları
-    widgets/           # Ekranlara özel widgetlar (ör. bugünün bilgisi)
+    analysis_result/   # Analiz ve grafik ekranları
+    camera_capture/    # Geliştirilmiş kamera ekranı
+    skin_analysis_history/ # Yapılan sorgulama geçmişleri
+    widgets/           # Ortak, tekrar kullanılabilir widgetlar
   providers/           # State management dosyaları
   routes/              # Sayfa yönlendirme ve route yönetimi
   l10n/                # Çoklu dil desteği dosyaları (opsiyonel)
