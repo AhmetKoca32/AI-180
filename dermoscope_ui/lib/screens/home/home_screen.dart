@@ -22,7 +22,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
   final ScrollController _scrollController = ScrollController();
-  bool _isLoading = false;
   int _currentBottomNavIndex = 0;
   late AnimationController _fabAnimationController;
   late Animation<double> _fabAnimation;
@@ -634,27 +633,6 @@ class _HomeScreenState extends State<HomeScreen>
                   },
                 ),
                 SizedBox(height: height * 0.04),
-                // 7. ve 8. widgetlar için placeholder
-                Container(
-                  height: 80,
-                  width: double.infinity,
-                  margin: const EdgeInsets.only(bottom: 16),
-                  decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: const Center(child: Text('Ekstra Widget 1')),
-                ),
-                Container(
-                  height: 80,
-                  width: double.infinity,
-                  margin: const EdgeInsets.only(bottom: 16),
-                  decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: const Center(child: Text('Ekstra Widget 2')),
-                ),
               ],
             ),
           ),

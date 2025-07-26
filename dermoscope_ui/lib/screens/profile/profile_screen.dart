@@ -19,7 +19,6 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     final width = mediaQuery.size.width;
-    final height = mediaQuery.size.height;
     
     return Scaffold(
       backgroundColor: Colors.white,
