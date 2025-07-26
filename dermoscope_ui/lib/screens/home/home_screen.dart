@@ -156,7 +156,9 @@ class _HomeScreenState extends State<HomeScreen>
     setState(() {
       _currentBottomNavIndex = index;
     });
-    if (index == 3) {
+    if (index == 1) {
+      Navigator.pushNamed(context, '/skin-analysis-history');
+    } else if (index == 3) {
       Navigator.pushNamed(context, '/chat-consultation');
     } else if (index == 4) {
       Navigator.pushNamed(context, '/profile-settings');

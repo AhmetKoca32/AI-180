@@ -1,23 +1,15 @@
 import 'package:flutter/material.dart';
 
+import '../screens/analysis_result/analysis_result.dart';
 import '../screens/auth/login_screen.dart';
-import '../screens/chat/chat_consultation.dart';
+import '../screens/chat_consultation/chat_consultation.dart';
 import '../screens/home/home_screen.dart';
 import '../screens/profile/profile_screen.dart';
+import '../screens/skin_analysis_history/skin_analysis_history.dart';
 import '../screens/splash/splash_screen.dart';
 
 // Geçici placeholder widgetlar
 class CameraCapture extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) => Container();
-}
-
-class SkinAnalysisHistory extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) => Container();
-}
-
-class AnalysisResults extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Container();
 }
@@ -44,8 +36,9 @@ class AppRoutes {
     chatConsultation: (context) => ChatConsultation(),
     skinAnalysisHistory: (context) => SkinAnalysisHistory(),
     dashboard: (context) => HomeScreen(),
-    analysisResults: (context) => AnalysisResults(),
+    analysisResults: (context) => const AnalysisResults(),
     profileSettings: (context) => ProfileScreen(),
     '/home': (context) => HomeScreen(),
+    '/skin-analysis-history': (context) => SkinAnalysisHistory(),
   };
 }
