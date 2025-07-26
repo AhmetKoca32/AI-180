@@ -3,11 +3,11 @@ import 'package:flutter/services.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../core/app_export.dart';
-import './widgets/chat_message_widget.dart';
-import './widgets/consultation_type_selector.dart';
-import './widgets/message_input_widget.dart';
-import './widgets/quick_reply_chips.dart';
-import './widgets/typing_indicator_widget.dart';
+import 'widgets/chat_message_widget.dart';
+import 'widgets/consultation_type_selector.dart';
+import 'widgets/message_input_widget.dart';
+import 'widgets/quick_reply_chips.dart';
+import 'widgets/typing_indicator_widget.dart';
 
 class ChatConsultation extends StatefulWidget {
   const ChatConsultation({super.key});
