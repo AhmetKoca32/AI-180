@@ -253,7 +253,11 @@ class _LoginScreenState extends State<LoginScreen>
                                                   BorderRadius.circular(8),
                                             ),
                                           ),
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            Navigator.of(
+                                              context,
+                                            ).pushReplacementNamed('/home');
+                                          },
                                           child: const Text(
                                             'Giriş Yap',
                                             style: TextStyle(
