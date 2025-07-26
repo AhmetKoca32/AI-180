@@ -159,6 +159,8 @@ class _HomeScreenState extends State<HomeScreen>
     });
     if (index == 3) {
       Navigator.pushNamed(context, '/chat-consultation');
+    } else if (index == 4) {
+      Navigator.pushNamed(context, '/profile-settings');
     }
     // Diğer sekmeler için navigation eklenebilir
   }

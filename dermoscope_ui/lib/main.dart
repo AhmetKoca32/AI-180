@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:sizer/sizer.dart';
 
-import 'screens/auth/login_screen.dart';
-import 'screens/splash/splash_screen.dart';
-// import 'screens/profile/profile_screen.dart'; // İstenirse kullanılabilir
 import 'routes/app_routes.dart';
 
 void main() async {
@@ -18,18 +15,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const SplashScreen(),
-        '/login': (context) => const LoginScreen(),
-        // '/profile': (context) => const ProfileScreen(), // İhtiyaç varsa açılabilir
     return Sizer(
       builder: (context, orientation, deviceType) {
         return MaterialApp(

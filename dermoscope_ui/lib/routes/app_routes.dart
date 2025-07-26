@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../screens/auth/login_screen.dart';
 import '../screens/chat/chat_consultation.dart';
 import '../screens/home/home_screen.dart';
+import '../screens/profile/profile_screen.dart';
 import '../screens/splash/splash_screen.dart';
 
 // Geçici placeholder widgetlar
@@ -44,7 +45,7 @@ class AppRoutes {
     skinAnalysisHistory: (context) => SkinAnalysisHistory(),
     dashboard: (context) => HomeScreen(),
     analysisResults: (context) => AnalysisResults(),
-    profileSettings: (context) => ProfileSettings(),
+    profileSettings: (context) => ProfileScreen(),
     '/home': (context) => HomeScreen(),
   };
 }
