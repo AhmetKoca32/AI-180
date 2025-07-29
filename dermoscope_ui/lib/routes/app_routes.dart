@@ -7,12 +7,9 @@ import '../screens/home/home_screen.dart';
 import '../screens/profile/profile_screen.dart';
 import '../screens/skin_analysis_history/skin_analysis_history.dart';
 import '../screens/splash/splash_screen.dart';
+import '../screens/camera_capture/camera_capture_screen.dart';
 
 // Geçici placeholder widgetlar
-class CameraCapture extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) => Container();
-}
 
 class ProfileSettings extends StatelessWidget {
   @override
@@ -32,7 +29,7 @@ class AppRoutes {
   static Map<String, WidgetBuilder> routes = {
     initial: (context) => SplashScreen(),
     login: (context) => LoginScreen(),
-    cameraCapture: (context) => CameraCapture(),
+    '/camera-capture': (context) => CameraCapture(),
     chatConsultation: (context) => ChatConsultation(),
     skinAnalysisHistory: (context) => SkinAnalysisHistory(),
     dashboard: (context) => HomeScreen(),

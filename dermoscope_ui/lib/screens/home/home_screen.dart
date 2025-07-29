@@ -158,6 +158,8 @@ class _HomeScreenState extends State<HomeScreen>
     });
     if (index == 1) {
       Navigator.pushNamed(context, '/skin-analysis-history');
+    } else if (index == 2) {
+      Navigator.pushNamed(context, '/camera-capture');
     } else if (index == 3) {
       Navigator.pushNamed(context, '/chat-consultation');
     } else if (index == 4) {
@@ -682,4 +684,4 @@ class _HomeScreenState extends State<HomeScreen>
       ),
     );
   }
-} 
+}
