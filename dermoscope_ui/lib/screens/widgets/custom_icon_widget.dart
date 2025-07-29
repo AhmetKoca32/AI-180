@@ -227,7 +227,7 @@ class CustomIconWidget extends StatelessWidget {
       'healing': Icons.healing,
       'wb_sunny': Icons.wb_sunny,
       'help_outline': Icons.help_outline,
-      
+
       // Analysis Result ve Skin Analysis History sayfaları için eklenen iconlar
       'recommend': Icons.lightbulb_outline,
       'compare': Icons.compare,
@@ -287,6 +287,11 @@ class CustomIconWidget extends StatelessWidget {
       'history': Icons.history,
       'spa': Icons.spa,
       'calendar_today': Icons.calendar_today,
+
+      'flash_on': Icons.flash_on,
+      'flash_off': Icons.flash_off,
+      'flip_camera': Icons.flip_camera_ios_outlined,
+      'photo_library': Icons.photo_library_outlined,
     };
 
     // Check if the icon exists

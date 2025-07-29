@@ -180,6 +180,8 @@ class _AnalysisResultsState extends State<AnalysisResults> {
 
   @override
   Widget build(BuildContext context) {
+    final String? imagePath =
+        ModalRoute.of(context)?.settings.arguments as String?;
     print('AnalysisResults build method called');
     return Scaffold(
       backgroundColor: AppTheme.lightTheme.scaffoldBackgroundColor,
@@ -233,7 +235,7 @@ class _AnalysisResultsState extends State<AnalysisResults> {
                 children: [
                   // Analysis Image with AI Overlays
                   AnalysisImageWidget(
-                    imageUrl: analysisData["analyzedImage"] as String,
+                    imageUrl: imagePath ?? analysisData["analyzedImage"],
                     detectedConditions:
                         analysisData["detectedConditions"]
                             as List<Map<String, dynamic>>,
