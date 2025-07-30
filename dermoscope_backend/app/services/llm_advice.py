@@ -2,5 +2,5 @@
 # OpenAI ile öneri üretimi
 
 def get_llm_advice(question: str):
-    # TODO: OpenAI API ile öneri üretimi
+    # TODO: GEMINI API ile öneri üretimi
     return "Bol su için, güneşten korunun."

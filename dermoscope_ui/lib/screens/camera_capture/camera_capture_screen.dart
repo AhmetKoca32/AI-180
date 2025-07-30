@@ -130,7 +130,7 @@ class _CameraCaptureState extends State<CameraCapture> {
     final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
     if (image != null) {
       print("Gallery image path: ${image.path}");
-      // Navigator.push(...); // İstersen galeri resmi ile başka sayfaya yönlendir
+      Navigator.pushNamed(context, '/analysis-results', arguments: image.path);
     }
   }
 

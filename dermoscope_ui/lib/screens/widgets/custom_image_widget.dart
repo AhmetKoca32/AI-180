@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 
 class CustomImageWidget extends StatelessWidget {
@@ -9,6 +10,29 @@ class CustomImageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.network(imageUrl, width: width, height: height, fit: fit);
+    print('CustomImageWidget imageUrl: ' + imageUrl);
+    if (imageUrl.startsWith('http') || imageUrl.startsWith('https')) {
+      return Image.network(
+        imageUrl,
+        width: width,
+        height: height,
+        fit: fit,
+        errorBuilder: (context, error, stackTrace) {
+          return Center(child: Text('Görsel yüklenemedi (network)'));
+        },
+      );
+    } else {
+      final file = File(imageUrl);
+      print('File exists: ' + file.existsSync().toString());
+      return Image.file(
+        file,
+        width: width,
+        height: height,
+        fit: fit,
+        errorBuilder: (context, error, stackTrace) {
+          return Center(child: Text('Görsel yüklenemedi (dosya)'));
+        },
+      );
+    }
   }
 } 
