@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../core/app_export.dart';
+import '../../services/api_service.dart';
 import './widgets/action_buttons_widget.dart';
 import './widgets/analysis_image_widget.dart';
 import './widgets/condition_card_widget.dart';
@@ -41,29 +42,6 @@ class _AnalysisResultsState extends State<AnalysisResults> {
         "description":
             "Yüz bölgesinde orta şiddetli akne lezyonları tespit edildi.",
         "medicalTerms": ["Komedonal akne", "İnflamatuar papüller"],
-        "isExpanded": false,
-      },
-      {
-        "id": "pigmentation_001",
-        "name": "Hiperpigmentasyon",
-        "type": "pigmentation",
-        "confidence": 78.9,
-        "severity": "Hafif",
-        "affectedArea": 8.7,
-        "description":
-            "Post-inflamatuar hiperpigmentasyon alanları gözlemlendi.",
-        "medicalTerms": ["Melanin birikimi", "Post-akne lekeleri"],
-        "isExpanded": false,
-      },
-      {
-        "id": "texture_001",
-        "name": "Cilt Dokusu Değişikliği",
-        "type": "texture",
-        "confidence": 65.4,
-        "severity": "Hafif",
-        "affectedArea": 12.1,
-        "description": "Cilt yüzeyinde pürüzlülük ve doku düzensizliği.",
-        "medicalTerms": ["Hiperkeratoz", "Doku asimetrisi"],
         "isExpanded": false,
       },
     ],
@@ -114,6 +92,35 @@ class _AnalysisResultsState extends State<AnalysisResults> {
   void initState() {
     super.initState();
     _triggerHapticFeedback();
+    WidgetsBinding.instance.addPostFrameCallback((_) => _fetchDiagnosisIfNeeded());
+  }
+
+  Future<void> _fetchDiagnosisIfNeeded() async {
+    final String? imagePath = ModalRoute.of(context)?.settings.arguments as String?;
+    if (imagePath != null && imagePath.isNotEmpty) {
+      setState(() => _isLoading = true);
+      final result = await ApiService.sendImageForDiagnosis(imagePath);
+      setState(() {
+        _isLoading = false;
+        if (result != null) {
+          // Sadece hastalık bilgisini güncelle
+          analysisData['detectedConditions'] = [
+            {
+              'id': result['class_code'] ?? '',
+              'name': result['class_name_tr'] ?? '',
+              'type': result['class_code'] ?? '',
+              "confidence": 92.3,
+              "severity": "Orta Şiddetli",
+              "affectedArea": 15.2,
+              "description":
+                  "Yüz bölgesinde orta şiddetli akne lezyonları tespit edildi.",
+              "medicalTerms": ["Komedonal akne", "İnflamatuar papüller"],
+              "isExpanded": false,
+            }
+          ];
+        }
+      });
+    }
   }
 
   void _triggerHapticFeedback() {
