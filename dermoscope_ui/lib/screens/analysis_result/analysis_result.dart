@@ -20,6 +20,44 @@ class AnalysisResults extends StatefulWidget {
 }
 
 class _AnalysisResultsState extends State<AnalysisResults> {
+  bool _isDescriptionLoading = false;
+  String? _descriptionError;
+
+  String _cleanDescription(String? description) {
+    if (description == null) return '';
+    return description
+        .replaceAll(RegExp(r'\*\*'), '') // çift yıldızları kaldır
+        .replaceAll(RegExp(r'\*'), '') // tek yıldızları kaldır
+        .replaceAll(RegExp(r'•|_|\-|\n'), ' ') // diğer karakterleri kaldır
+        .replaceAll(RegExp(r'Elbette', caseSensitive: false), '')
+        .replaceAll(RegExp(r'\s+'), ' ')
+        .trim();
+  }
+
+  Future<void> _fetchLLMDescription(String conditionName) async {
+    setState(() {
+      _isDescriptionLoading = true;
+      _descriptionError = null;
+    });
+    try {
+      final desc = await ApiService.getAdvice(
+        '$conditionName nedir? kısa 1 cümle ile açıkla, sadece açıklama ver. Ayrıca mesela iki ayrı terim varsa onları tek paragrafda açıkla.',
+      );
+      setState(() {
+        (analysisData['detectedConditions'] as List)[0]['description'] =
+            _cleanDescription(desc);
+        _isDescriptionLoading = false;
+      });
+    } catch (e) {
+      setState(() {
+        _descriptionError =
+            'Açıklama alınamadı: ' +
+            (e is Exception ? e.toString() : 'Bilinmeyen hata');
+        _isDescriptionLoading = false;
+      });
+    }
+  }
+
   final ScrollController _scrollController = ScrollController();
   bool _isLoading = false;
 
@@ -113,11 +151,12 @@ class _AnalysisResultsState extends State<AnalysisResults> {
               "severity": "Orta Şiddetli",
               "affectedArea": 15.2,
               "description":
-                  "Yüz bölgesinde orta şiddetli akne lezyonları tespit edildi.",
+                  null, // LLM'den gelecek açıklama için başlangıçta null bırakıyoruz.
               "medicalTerms": ["Komedonal akne", "İnflamatuar papüller"],
               "isExpanded": false,
             }
           ];
+          _fetchLLMDescription(result['class_name_tr'] ?? '');
         }
       });
     }
@@ -290,6 +329,8 @@ class _AnalysisResultsState extends State<AnalysisResults> {
                               ),
                         ),
                         SizedBox(height: 2.h),
+                        // LLM'den açıklama alanı
+                      
                         ...(analysisData["detectedConditions"]
                                 as List<Map<String, dynamic>>)
                             .map(
@@ -319,6 +360,7 @@ class _AnalysisResultsState extends State<AnalysisResults> {
                       recommendations:
                           analysisData["recommendations"]
                               as Map<String, dynamic>,
+                      conditionName: analysisData["conditionName"] ?? '',
                     ),
                   ),
 

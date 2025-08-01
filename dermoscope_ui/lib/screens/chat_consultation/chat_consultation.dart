@@ -3,11 +3,12 @@ import 'package:flutter/services.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../core/app_export.dart';
+import '../../services/api_service.dart';
 import 'widgets/chat_message_widget.dart';
-import 'widgets/consultation_type_selector.dart';
+// import 'widgets/consultation_type_selector.dart';
 import 'widgets/message_input_widget.dart';
 import 'widgets/quick_reply_chips.dart';
-import 'widgets/typing_indicator_widget.dart';
+import 'widgets/typing_indicator_widget.dart'; 
 
 class ChatConsultation extends StatefulWidget {
   const ChatConsultation({super.key});
@@ -89,6 +90,7 @@ class _ChatConsultationState extends State<ChatConsultation>
 
     // Simulate AI response
     Future.delayed(const Duration(seconds: 2), () {
+      if (!mounted) return;
       _generateAiResponse(text.trim());
     });
 
@@ -96,26 +98,18 @@ class _ChatConsultationState extends State<ChatConsultation>
     HapticFeedback.lightImpact();
   }
 
-  void _generateAiResponse(String userMessage) {
-    String aiResponse = "";
+  Future<void> _generateAiResponse(String userMessage) async {
+    if (!mounted) return;
+    setState(() {
+      _isAiTyping = true;
+    });
 
-    if (userMessage.toLowerCase().contains('akne') ||
-        userMessage.toLowerCase().contains('sivilce')) {
-      aiResponse =
-          "Akne tedavisi için öncelikle cildinizi günde 2 kez nazik bir temizleyici ile temizleyin. Salisilik asit içeren ürünler yardımcı olabilir. Ancak kesin tanı için bir dermatolog konsültasyonu öneriyorum. Size uygun tedavi planı oluşturabilirim.";
-    } else if (userMessage.toLowerCase().contains('güneş') ||
-        userMessage.toLowerCase().contains('koruma')) {
-      aiResponse =
-          "Güneş koruması cilt sağlığının temelidir. En az SPF 30 olan geniş spektrumlu güneş kremi kullanın. Günde 2-3 kez yenileyin. UVA ve UVB koruması olan ürünleri tercih edin. Özellikle 10:00-16:00 saatleri arasında güneşten kaçının.";
-    } else if (userMessage.toLowerCase().contains('saç') ||
-        userMessage.toLowerCase().contains('dökülme')) {
-      aiResponse =
-          "Saç dökülmesi birçok faktörden kaynaklanabilir. Stres, beslenme, hormonal değişiklikler etkili olabilir. Günlük 50-100 tel saç dökülmesi normaldir. Eğer bu miktarı aşıyorsa, bir dermatolog muayenesi öneriyorum. Beslenme ve yaşam tarzı önerileri verebilirim.";
-    } else {
-      aiResponse =
-          "Sorununuz hakkında daha detaylı bilgi verebilir misiniz? Hangi bölgeyle ilgili sorunuz var? Fotoğraf paylaşabilirseniz daha iyi yardımcı olabilirim. Ayrıca analiz geçmişinizi de inceleyebilirim.";
-    }
-
+    try {
+      final aiResponse = await ApiService.getAdvice(
+        userMessage +
+            "\n\nCevabını SADECE HTML olarak, kod bloğu (```) ve <html>, <head>, <body>, <title> etiketleri olmadan, sadece <ol> veya <ul> ile sarılmış <li> listesi olarak döndür. Eğer ana başlıklar varsa <h3>Başlık</h3> şeklinde kullan. Cevabın detaylı, açıklayıcı, kişiye özel ve örneklerle desteklenmiş olsun. Her adımı kısa açıklamalarla açıkla. Kod bloğu veya başka açıklama ekleme.",
+      );
+    if (!mounted) return;
     final aiMessage = {
       "id": DateTime.now().millisecondsSinceEpoch.toString(),
       "text": aiResponse,
@@ -124,15 +118,20 @@ class _ChatConsultationState extends State<ChatConsultation>
       "messageType": "text",
       "consultationType": _selectedConsultationType,
       "hasQuickActions": true,
-    };
-
+      };
     setState(() {
       _messages.add(aiMessage);
       _isAiTyping = false;
-    });
-
+      });
     _scrollToBottom();
-  }
+    } catch (e) {
+      if (!mounted) return;
+      setState(() {
+        _isAiTyping = false;
+      });
+      // Hata mesajı gösterebilirsin
+    }
+}
 
   void _scrollToBottom() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -298,16 +297,6 @@ class _ChatConsultationState extends State<ChatConsultation>
       body: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Padding(
-            padding: EdgeInsets.only(top: 8.0),
-            child: Container(
-              width: double.infinity,
-              child: ConsultationTypeSelector(
-                selectedType: _selectedConsultationType,
-                onTypeChanged: _onConsultationTypeChanged,
-              ),
-            ),
-          ),
           Expanded(
             child: ListView.builder(
               controller: _scrollController,
