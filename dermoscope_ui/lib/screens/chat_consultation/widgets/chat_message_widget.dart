@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../core/app_export.dart';
@@ -17,6 +18,14 @@ class ChatMessageWidget extends StatelessWidget {
     final DateTime timestamp = message['timestamp'] ?? DateTime.now();
     final String messageType = message['messageType'] ?? 'text';
     final bool hasQuickActions = message['hasQuickActions'] ?? false;
+
+    if (!isUser) {
+      debugPrint('AI MAIN HTML: ' + ensureListWrapped(fixLiParagraphs(text)));
+      debugPrint('AI RAW: $text');
+      debugPrint(
+        'AI CLEAN: ' + ensureListWrapped(fixLiParagraphs(cleanHtml(text))),
+      );
+    }
 
     return Container(
       margin: EdgeInsets.symmetric(vertical: 0.5.h),
@@ -85,37 +94,93 @@ class ChatMessageWidget extends StatelessWidget {
                           ),
                           if (text.isNotEmpty) ...[
                             SizedBox(height: 1.h),
-                            Text(
-                              text,
-                              style: AppTheme.lightTheme.textTheme.bodyMedium
-                                  ?.copyWith(
-                                    color: isUser
-                                        ? AppTheme
-                                              .lightTheme
-                                              .colorScheme
-                                              .onPrimary
-                                        : AppTheme
-                                              .lightTheme
-                                              .colorScheme
-                                              .onSurface,
-                                  ),
-                            ),
-                          ],
-                        ] else ...[
-                          Text(
-                            text,
-                            style: AppTheme.lightTheme.textTheme.bodyMedium
-                                ?.copyWith(
-                                  color: isUser
-                                      ? AppTheme
-                                            .lightTheme
-                                            .colorScheme
-                                            .onPrimary
-                                      : AppTheme
+                            !isUser && messageType == 'text'
+                                ? Html(
+                                    data: ensureListWrapped(
+                                      fixLiParagraphs(cleanHtml(text)),
+                                    ),
+                                    style: {
+                                      "body": Style(
+                                        fontSize: FontSize(14.0),
+                                        color: AppTheme
                                             .lightTheme
                                             .colorScheme
                                             .onSurface,
-                                ),
+                                        fontFamily: AppTheme
+                                            .lightTheme
+                                            .textTheme
+                                            .bodyMedium
+                                            ?.fontFamily,
+                                      ),
+                                      "h3": Style(
+                                        fontSize: FontSize(18.0),
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      "li": Style(),
+                                    },
+                                  )
+                                : Text(
+                                    text,
+                                    style: AppTheme
+                                        .lightTheme
+                                        .textTheme
+                                        .bodyMedium
+                                        ?.copyWith(
+                                          color: isUser
+                                              ? AppTheme
+                                                    .lightTheme
+                                                    .colorScheme
+                                                    .onPrimary
+                                              : AppTheme
+                                                    .lightTheme
+                                                    .colorScheme
+                                                    .onSurface,
+                                        ),
+                                  ),
+                          ],
+                        ] else ...[
+                          !isUser && messageType == 'text'
+                              ? Html(
+                                  data: ensureListWrapped(
+                                    fixLiParagraphs(cleanHtml(text)),
+                                  ),
+                                  style: {
+                                    "body": Style(
+                                      fontSize: FontSize(14.0),
+                                      color: AppTheme
+                                          .lightTheme
+                                          .colorScheme
+                                          .onSurface,
+                                      fontFamily: AppTheme
+                                          .lightTheme
+                                          .textTheme
+                                          .bodyMedium
+                                          ?.fontFamily,
+                                    ),
+                                    "h3": Style(
+                                      fontSize: FontSize(18.0),
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                    "li": Style(),
+                                  },
+                                )
+                              : Text(
+                                  text,
+                                  style: AppTheme
+                                      .lightTheme
+                                      .textTheme
+                                      .bodyMedium
+                                      ?.copyWith(
+                                        color: isUser
+                                            ? AppTheme
+                                                  .lightTheme
+                                                  .colorScheme
+                                                  .onPrimary
+                                            : AppTheme
+                                                  .lightTheme
+                                                  .colorScheme
+                                                  .onSurface,
+                                      ),
                           ),
                         ],
                         SizedBox(height: 0.5.h),
@@ -182,16 +247,19 @@ class ChatMessageWidget extends StatelessWidget {
                     context,
                     'Daha Fazla Bilgi',
                     Icons.info_outline,
+                    isUser,
                   ),
                   _buildQuickActionChip(
                     context,
                     'Uzman Önerisi',
                     Icons.medical_services_outlined,
+                    isUser,
                   ),
                   _buildQuickActionChip(
                     context,
                     'Analiz Geçmişi',
                     Icons.history,
+                    isUser,
                   ),
                 ],
               ),
@@ -206,6 +274,7 @@ class ChatMessageWidget extends StatelessWidget {
     BuildContext context,
     String label,
     IconData icon,
+    bool isUser,
   ) {
     return InkWell(
       onTap: () {
@@ -234,13 +303,59 @@ class ChatMessageWidget extends StatelessWidget {
               color: AppTheme.lightTheme.colorScheme.primary,
             ),
             SizedBox(width: 1.w),
-            Text(
-              label,
-              style: AppTheme.lightTheme.textTheme.bodySmall?.copyWith(
-                color: AppTheme.lightTheme.colorScheme.primary,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
+            isUser
+                ? Text(
+                    label,
+                    style: AppTheme.lightTheme.textTheme.bodySmall?.copyWith(
+                      color: AppTheme.lightTheme.colorScheme.primary,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  )
+                : Html(
+                    data: ensureListWrapped(fixLiParagraphs(cleanHtml(label))),
+                    style: {
+                      "body": Style(
+                        fontSize: FontSize(16),
+                        color: Colors.black87,
+                        lineHeight: LineHeight(2.0),
+                        padding: HtmlPaddings.zero,
+                        margin: Margins.zero,
+                      ),
+                      "ol": Style(
+                        margin: Margins.only(left: 12, top: 12, bottom: 12),
+                        padding: HtmlPaddings.only(left: 12),
+                      ),
+                      "ul": Style(
+                        margin: Margins.only(left: 24, top: 8, bottom: 8),
+                        padding: HtmlPaddings.only(left: 16),
+                      ),
+                      "li": Style(
+                        fontSize: FontSize(16),
+                        color: Colors.black87,
+                        padding: HtmlPaddings.symmetric(
+                          vertical: 8,
+                          horizontal: 8,
+                        ),
+                        margin: Margins.only(bottom: 10),
+                        backgroundColor: Color(0xFFF6F6FA),
+                        // borderRadius yerine:
+                        border: Border.all(color: Colors.transparent),
+                        lineHeight: LineHeight(1.7),
+                      ),
+                      "b": Style(
+                        fontWeight: FontWeight.bold,
+                        fontSize: FontSize(18),
+                        color: Colors.deepPurple,
+                        letterSpacing: 0.5,
+                      ),
+                      "strong": Style(
+                        fontWeight: FontWeight.bold,
+                        fontSize: FontSize(18),
+                        color: Colors.deepPurple,
+                        letterSpacing: 0.5,
+                      ),
+                    },
+                  )
           ],
         ),
       ),
@@ -337,4 +452,36 @@ class ChatMessageWidget extends StatelessWidget {
       return '${dateTime.day}/${dateTime.month}';
     }
   }
+}
+
+String cleanHtml(String html) {
+  return html
+      .replaceAll(RegExp(r'```html|```', caseSensitive: false), '')
+      .replaceAll(RegExp(r'<html.*?>|</html>', caseSensitive: false), '')
+      .replaceAll(
+        RegExp(r'<head.*?>.*?</head>', caseSensitive: false, dotAll: true),
+        '',
+      )
+      .replaceAll(RegExp(r'<body.*?>|</body>', caseSensitive: false), '')
+      .replaceAll(
+        RegExp(r'<title.*?>.*?</title>', caseSensitive: false, dotAll: true),
+        '',
+      )
+      .replaceAll('\n', '')
+      .trim();
+}
+
+String fixLiParagraphs(String html) {
+  return html.replaceAllMapped(
+    RegExp(r'<li>(.*?)<p>(.*?)</p>(.*?)</li>', dotAll: true),
+    (m) => '<li>${m[1]}${m[2]}${m[3]}</li>',
+  );
+}
+
+String ensureListWrapped(String html) {
+  final trimmed = html.trim();
+  if (trimmed.startsWith('<li') && trimmed.endsWith('</li>')) {
+    return '<ol>$trimmed</ol>';
+  }
+  return trimmed;
 }

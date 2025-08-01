@@ -248,19 +248,23 @@ class RiskAssessmentWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(
-                                condition["name"] as String,
-                                style: AppTheme.lightTheme.textTheme.titleSmall
-                                    ?.copyWith(
-                                      fontWeight: FontWeight.w600,
-                                      color: AppTheme
-                                          .lightTheme
-                                          .colorScheme
-                                          .onSurface,
-                                    ),
+                              Expanded(
+                                child: Text(
+                                  condition["name"] as String,
+                                  style: AppTheme.lightTheme.textTheme.titleSmall
+                                      ?.copyWith(
+                                        fontWeight: FontWeight.w600,
+                                        color: AppTheme
+                                            .lightTheme
+                                            .colorScheme
+                                            .onSurface,
+                                      ),
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 1,
+                                ),
                               ),
+                              SizedBox(width: 2.w),
                               Container(
                                 padding: EdgeInsets.symmetric(
                                   horizontal: 2.w,

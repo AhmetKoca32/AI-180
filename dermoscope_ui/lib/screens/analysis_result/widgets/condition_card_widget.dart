@@ -4,6 +4,18 @@ import 'package:sizer/sizer.dart';
 import '../../../core/app_export.dart';
 
 class ConditionCardWidget extends StatelessWidget {
+  // Description temizleme fonksiyonu (markdown, yıldız, Elbette vs.)
+  String _cleanDescription(String? description) {
+    if (description == null) return '';
+    return description
+        .replaceAll(RegExp(r'\*\*'), '')
+        .replaceAll(RegExp(r'\*'), '')
+        .replaceAll(RegExp(r'•|_|\-|\n'), ' ')
+        .replaceAll(RegExp(r'Elbette', caseSensitive: false), '')
+        .replaceAll(RegExp(r'\s+'), ' ')
+        .trim();
+  }
+
   final Map<String, dynamic> condition;
   final Function(bool) onExpansionChanged;
 
@@ -160,10 +172,9 @@ class ConditionCardWidget extends StatelessWidget {
               children: [
                 // Description
                 Text(
-                  condition["description"] as String,
+                  _cleanDescription(condition["description"] as String?),
                   style: AppTheme.lightTheme.textTheme.bodyMedium?.copyWith(
-                    color: AppTheme.lightTheme.colorScheme.onSurfaceVariant,
-                    height: 1.4,
+                    color: AppTheme.lightTheme.colorScheme.onSurface,
                   ),
                 ),
 
@@ -285,4 +296,14 @@ class ConditionCardWidget extends StatelessWidget {
       ),
     );
   }
+}
+String _cleanDescription(String? description) {
+  if (description == null) return '';
+  return description
+      .replaceAll(RegExp(r'\*\*'), '') // çift yıldızları kaldır
+      .replaceAll(RegExp(r'\*'), '') // tek yıldızları kaldır
+      .replaceAll(RegExp(r'•|_|\-|\n'), ' ') // diğer karakterleri kaldır
+      .replaceAll(RegExp(r'Elbette', caseSensitive: false), '')
+      .replaceAll(RegExp(r'\s+'), ' ')
+      .trim();
 }

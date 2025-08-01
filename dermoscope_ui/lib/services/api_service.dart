@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'dart:io';
+
 import 'package:http/http.dart' as http;
 
 class ApiService {
@@ -67,4 +67,40 @@ class ApiService {
       return null;
     }
   }
+
+  static Future<String> getAdvice(String question) async {
+  final url = Uri.parse('$baseUrl/advice');
+  final response = await http.post(
+    url,
+    headers: {'Content-Type': 'application/json'},
+    body: jsonEncode({'question': question}),
+  );
+  print('Backend yanıtı: ${response.body}');
+  if (response.statusCode == 200) {
+    try {
+      final decoded = jsonDecode(response.body);
+      if (decoded is String) {
+        return decoded;
+      } else if (decoded is Map) {
+        // 'answer' veya 'advice' anahtarını kontrol et
+        if (decoded.containsKey('answer')) {
+          return decoded['answer'];
+        } else if (decoded.containsKey('advice')) {
+          return decoded['advice'];
+        } else if (decoded.containsKey('error')) {
+          return 'Hata: ${decoded['error']}';
+        } else {
+          return decoded.toString();
+        }
+      } else {
+        return response.body.toString();
+      }
+    } catch (e) {
+      // JSON parse hatası olursa düz string döndür
+      return response.body.toString();
+    }
+  } else {
+    throw Exception('AI cevabı alınamadı: ${response.statusCode}');
+  }
+}
 }
