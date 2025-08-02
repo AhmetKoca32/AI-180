@@ -194,7 +194,7 @@ Proje boyunca tamamlanması gereken görevlerin toplam puanı 100 olarak belirle
 ***Sprint 2 için hedeflenen 40 puana ulaşılmıştır:***
 * Ekip Toplantılarına katılım - 3p
 * Daily Scrum Toplantılarına katılım - 3p
-* Sprin Board'da gerçekleştirilmiş hedeflerin gerçekleştirilecek hedeflerden fazla olması - 3p
+* Sprint Board'da gerçekleştirilmiş hedeflerin gerçekleştirilecek hedeflerden fazla olması - 3p
 * Uygulama Tasarım ilerlemesi - 3p
 * DataSet Araştırmaları devam - 1p
 * Sprint Retrospective ve Review düzenlemeleri - 4p
@@ -255,27 +255,30 @@ https://github.com/user-attachments/assets/51d99742-a09e-49f5-8c14-fd77ffba3174
 
 https://github.com/user-attachments/assets/c4b93454-b443-4161-9e69-ea10db5fa27c
 
-### Sprint 2 Review:
-Sprint boyunca mümkün olduğunca haftada en az üç günlük toplantılar gerçekleştirilmiştir. Proje eksikleri konuşulmuş ve gelecekte eklenecek özellikler planlanmıştır. Proje ekibi tasarım ve veri şeklinde ayrıca gruplanmış; ara günlerde ayrıca toplantılar yapılmıştır. Haftada üç gün yapılan toplantılarda tüm ekip toplanmış; ayrı ayrı yapılan tüm değişiklikler tartışılmış ve fikir alışverişi yapılmıştır. Bazı toplantıların tarihleri ekip üyelerinin müsaitlik durumu sebebiyle değiştirilmiş ancak buna rağmen planlanan şekilde gerçekleştirilmiştir. Tüm ekibin katıldığı toplantılarda tasarım ekibi veri ekibine, veri ekibi tasarım ekibine birbirlerinin alanları hakkında fikirler sunmuştur. Sprint 2 raporu için tüm ekip yaptıklarını paylaşmış ve Proje Yöneticisi'ne sunmuştur. Proje Yöneticisi bu verileri toplamış, düzenlemiş ve Sprint 2 Raporu'na eklemiştir.
+### Sprint 3 Review:
+Sprint sonuna doğru her gün olmak üzere, Sprint boyunca planlanan haftada en az üç günlük toplantılar gerçekleştirilmiştir. Proje eksikleri belirlenmiş ve çözüme ulaştırılmıştır. Sprint 2 sürecinde eklenmesi planlanan özellikler uygulamaya eklenmiştir. Gruplanan ekibimiz kendi zamanlarında ayrıca görüşmüş, projedeki görevlerini yerine getirmiştir. Proje ilerlemesinin raporlanması adına belirlenen üç gün toplantılar başarıyla gerçekleştirilmiştir. Uygulama tasarımının değiştirilmesi üzerine konuşulmuş ve olumlu olarak karara varılmıştır. Veri seti ve uygulama entegrasyonun yapılacağı tarşh konuşulmuş, o zamana kadar her iki tarafın da kendi görevlerini yerine getirmesi gerektiği kafrarı verilmiştir. Veri ekibi data setiyle ilgili çalışmalarını; tasarım ekibi ise uygulamanın frontend ve backend çalışmalarını tamamlamıştır. Veri süreci ve tasarım süreci ile ilgili ortaya çıkan tüm hatalar belirlenmiş ve giderilmiştir. Ekipler üstlerine düşen görevlerle ilgili her türlü günceelleme ve gelişmeleri WhatsApp ve Meet platformlarında paylaşmış, tüm ekibi haberdar etmiştir. Bu süreçte tüm ekip Sprint 3 raporu için yaptıklarını paylaşmış ve Proje Yöneticisi'ne sunmuştur. Proje Yöneticisi bu verileri toplamış, düzenlemiş ve Sprint 3 Raporu'na eklemiştir.
 
 ### Sprint Retrospective:
-* Sprint 2 için belirlenen 40 puan hedefine başarıyla ulaşılmıştır.
-* Ana toplantıların zamanlarının daha az değiştirilmesi gerektiğine vurgu yapılmıştır.
-* Gelecek Sprint süreci için uygulama ve veri tasarım  ve analizi için yapılacaklar tartışılmıştır.
-* Zaman değerlendirmesi yapılmış, projenin belirlenen sürede tamamlanması için yapılacaklar planlanmıştır.
+* Sprint 3 için belirlenen 30 puan hedefine başarıyla ulaşılmıştır.
+* Proje istenen şekilde başarıyla tamamlanmıştır.
+* Meet üzerinden projenin son hali gözden geçirilmiştir.
+* Meet üzerinde yapılan son toplantıda tüm ekip birbirini tebrik etmiştir.
 
 ## Puanlama Mantığı:  
 Proje boyunca tamamlanması gereken görevlerin toplam puanı 100 olarak belirlenmiştir.
-***Sprint 2 için hedeflenen 40 puana ulaşılmıştır:***
-* Ekip Toplantılarına katılım - 3p
-* Daily Scrum Toplantılarına katılım - 3p
-* Sprin Board'da gerçekleştirilmiş hedeflerin gerçekleştirilecek hedeflerden fazla olması - 3p
-* Uygulama Tasarım ilerlemesi - 3p
-* DataSet Araştırmaları devam - 1p
-* Sprint Retrospective ve Review düzenlemeleri - 4p
-* Sprint Board planları ve ilerlemeleri - 5p
-* Makine Öğrenmesi araştırmaları - 3p
-* Makine Öğrenmesi sürecinin başlaması - 3p
-* Uygulama Tasarımı BackEnd süreci - 5p
-* Gelecek hedeflerin konuşulması - 2p
-* Veri görsellerinin makine öğrenmesine uyarlanması - 5p
+***Sprint 3 için hedeflenen 30 puana ulaşılmıştır:***
+* Ekip toplantılarına düzenli katılım olması - 0,5p
+* Daily Scrum toplantılarına düzenli katılım olması - 0,5p
+* Sprint Board'da gerçekleştirilmiş hedeflerin gerçekleştirilecek hedeflerden fazla olması - 1p
+* Uygulama arayüzünün değiştirilmesi - 2p
+* DataSet geliştirilmesi - 2p
+* Sprint Retrospective ve Review düzenlemeleri - 1p
+* Sprint Board planları ve ilerlemeleri - 1p
+* Makine öğrenmesi gelişimi - 2p
+* Geliştirilen Dataset ile uygulamanın entegrasyonu - 2,5p
+* Uygulama Tasarımı BackEnd sürecinin tamamlanması - 3p
+* Uygulama problemlerinin çözüme ulaştırılması - 3p
+* Datasetinde elde edilen sonuçların geliştirilmesi - 2p
+* Uygulama ile yapay zeka entegrasyonu - 2,5p
+* Yeni arayüzün geliştirilmesi ve bitirilmesi - 3p
+* Uygulama ve Dataset ile ilgili planların gerçekleştirilmesi - 4p
