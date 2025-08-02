@@ -1,10 +1,13 @@
-# advice.py
-# Yaşam tarzı önerileri (LLM) endpointleri
-
 from fastapi import APIRouter
+from pydantic import BaseModel
+from app.services.llm_advice import get_llm_advice
 
 router = APIRouter()
 
+class AdviceRequest(BaseModel):
+    question: str
+
 @router.post("/advice")
-def get_advice():
-    return {"msg": "LLM önerisi"}
+async def get_advice(body: AdviceRequest):
+    response = get_llm_advice(body.question)
+    return {"answer": response}

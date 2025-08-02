@@ -5,8 +5,13 @@ import '../../../core/app_export.dart';
 
 class RecommendationsWidget extends StatefulWidget {
   final Map<String, dynamic> recommendations;
+  final String conditionName;
 
-  const RecommendationsWidget({Key? key, required this.recommendations})
+  const RecommendationsWidget({
+    Key? key,
+    required this.recommendations,
+    required this.conditionName,
+  })
     : super(key: key);
 
   @override
@@ -17,6 +22,7 @@ class _RecommendationsWidgetState extends State<RecommendationsWidget>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
+  // Her kategori için LLM öneri state'i
   @override
   void initState() {
     super.initState();
