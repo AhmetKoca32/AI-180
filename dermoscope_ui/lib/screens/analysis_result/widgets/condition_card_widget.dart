@@ -2,18 +2,38 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../core/app_export.dart';
+import '../../../core/utils/text_utils.dart';
 
 class ConditionCardWidget extends StatelessWidget {
-  // Description temizleme fonksiyonu (markdown, yıldız, Elbette vs.)
+  // Description temizleme fonksiyonu (JSON, markdown, özel karakterler)
   String _cleanDescription(String? description) {
     if (description == null) return '';
-    return description
-        .replaceAll(RegExp(r'\*\*'), '')
-        .replaceAll(RegExp(r'\*'), '')
-        .replaceAll(RegExp(r'•|_|\-|\n'), ' ')
-        .replaceAll(RegExp(r'Elbette', caseSensitive: false), '')
+    
+    // Önce JSON benzeri yapıları temizle
+    String cleaned = description
+        // JSON anahtarlarını kaldır ("diagnosis":, "description": gibi)
+        .replaceAll(RegExp(r'"?(diagnosis|description|severity)"?\s*:?\s*"?', caseSensitive: false), '')
+        // Kalan tırnak işaretlerini kaldır
+        .replaceAll(RegExp(r'["{}]'), '')
+        // Markdown formatlamalarını kaldır
+        .replaceAll(RegExp(r'\*\*|\*|•|_|\-|\n'), ' ')
+        // Tekrarlanan boşlukları temizle
         .replaceAll(RegExp(r'\s+'), ' ')
+        // Başta ve sondaki boşlukları kaldır
         .trim();
+
+    // Eğer temizlenmiş metin sadece noktalama işaretleriyse veya çok kısaysa
+    if (cleaned.isEmpty || cleaned.length < 3) {
+      return 'Açıklama bulunamadı';
+    }
+
+    // İlk harfi büyük yap ve nokta ekle
+    cleaned = cleaned[0].toUpperCase() + cleaned.substring(1);
+    if (!cleaned.endsWith('.') && !cleaned.endsWith('!') && !cleaned.endsWith('?')) {
+      cleaned += '.';
+    }
+
+    return cleaned;
   }
 
   final Map<String, dynamic> condition;
@@ -80,13 +100,57 @@ class ConditionCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color conditionColor = _getConditionColor(
-      condition["type"] as String,
-    );
-    final Color severityColor = _getSeverityColor(
-      condition["severity"] as String,
-    );
-    final bool isExpanded = condition["isExpanded"] as bool? ?? false;
+    // Debug log condition data
+    print('ConditionCardWidget - Building with condition: $condition');
+    
+    // Safely get values with null checks and better type handling
+    final String conditionType = (condition["type"] is String ? condition["type"] : 'other').toString();
+    final String severity = (condition["severity"] is String ? condition["severity"] : 'Orta').toString();
+    
+    // Handle condition name which might be a String or a Map
+    String conditionName = 'Analiz ediliyor...';
+    
+    if (condition["name"] is String) {
+      // Eğer name bir string ise
+      conditionName = TextUtils.cleanText(
+        condition["name"] as String?, 
+        fallback: 'Tanımlanamayan Durum'
+      );
+    } else if (condition["name"] is Map) {
+      // Eğer name bir obje ise
+      final nameData = condition["name"] as Map;
+      conditionName = TextUtils.cleanText(
+        (nameData["diagnosis"] ?? nameData["name"]) as String?,
+        fallback: 'Tanımlanamayan Durum'
+      );
+    }
+    
+    // Handle confidence score
+    double confidence = 0.0;
+    if (condition["confidence"] is num) {
+      confidence = (condition["confidence"] as num).toDouble();
+    } else if (condition["confidence"] is String) {
+      confidence = double.tryParse(condition["confidence"]) ?? 0.0;
+    }
+    
+    // Handle description which might be a String or come from a Map
+    String descriptionText = '';
+    if (condition["description"] is String) {
+      descriptionText = condition["description"] as String;
+    } else if (condition["description"] is Map) {
+      descriptionText = (condition["description"]["description"] as String?) ?? 
+                       (condition["description"]["text"] as String?) ?? 
+                       'Açıklama bulunamadı';
+    } else if (condition["description"] == null) {
+      descriptionText = 'Açıklama bulunamadı';
+    }
+    
+    final bool isExpanded = (condition["isExpanded"] as bool?) ?? false;
+    final Color conditionColor = _getConditionColor(conditionType);
+    final Color severityColor = _getSeverityColor(severity);
+    
+    // Log the condition data for debugging
+    print('Condition data - Name: $conditionName, Type: $conditionType, Confidence: $confidence%');
 
     return Container(
       decoration: BoxDecoration(
@@ -124,7 +188,7 @@ class ConditionCardWidget extends StatelessWidget {
             ),
           ),
           title: Text(
-            condition["name"] as String,
+            conditionName,
             style: AppTheme.lightTheme.textTheme.titleMedium?.copyWith(
               fontWeight: FontWeight.w600,
               color: AppTheme.lightTheme.colorScheme.onSurface,
@@ -144,7 +208,7 @@ class ConditionCardWidget extends StatelessWidget {
                     borderRadius: BorderRadius.circular(6),
                   ),
                   child: Text(
-                    condition["severity"] as String,
+                    severity,
                     style: AppTheme.lightTheme.textTheme.labelSmall?.copyWith(
                       color: severityColor,
                       fontWeight: FontWeight.w600,
@@ -153,7 +217,7 @@ class ConditionCardWidget extends StatelessWidget {
                 ),
                 SizedBox(width: 2.w),
                 Text(
-                  '${(condition["confidence"] as double).toStringAsFixed(1)}% güvenilirlik',
+                  '${confidence.toStringAsFixed(1)}% güvenilirlik',
                   style: AppTheme.lightTheme.textTheme.bodySmall?.copyWith(
                     color: AppTheme.lightTheme.colorScheme.onSurfaceVariant,
                   ),
@@ -170,14 +234,37 @@ class ConditionCardWidget extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Description
-                Text(
-                  _cleanDescription(condition["description"] as String?),
-                  style: AppTheme.lightTheme.textTheme.bodyMedium?.copyWith(
-                    color: AppTheme.lightTheme.colorScheme.onSurface,
+                // Description with loading/error state
+                if (descriptionText.isEmpty)
+                  const CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
+                    strokeWidth: 2.0,
+                  )
+                else if (descriptionText == 'Analiz ediliyor...')
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: 20,
+                        height: 20,
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2.0,
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                            AppTheme.lightTheme.colorScheme.primary,
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: 8),
+                      Text('Analiz ediliyor...'),
+                    ],
+                  )
+                else
+                  Text(
+                    _cleanDescription(descriptionText) ?? 'Açıklama bulunamadı',
+                    style: AppTheme.lightTheme.textTheme.bodyMedium?.copyWith(
+                      color: AppTheme.lightTheme.colorScheme.onSurface.withOpacity(0.8),
+                      height: 1.5,
+                    ),
                   ),
-                ),
-
                 SizedBox(height: 2.h),
 
                 // Statistics Row
@@ -298,12 +385,5 @@ class ConditionCardWidget extends StatelessWidget {
   }
 }
 String _cleanDescription(String? description) {
-  if (description == null) return '';
-  return description
-      .replaceAll(RegExp(r'\*\*'), '') // çift yıldızları kaldır
-      .replaceAll(RegExp(r'\*'), '') // tek yıldızları kaldır
-      .replaceAll(RegExp(r'•|_|\-|\n'), ' ') // diğer karakterleri kaldır
-      .replaceAll(RegExp(r'Elbette', caseSensitive: false), '')
-      .replaceAll(RegExp(r'\s+'), ' ')
-      .trim();
+  return TextUtils.cleanText(description, fallback: 'Açıklama bulunamadı');
 }

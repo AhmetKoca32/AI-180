@@ -29,10 +29,10 @@ class CaptureTypeSelectorWidget extends StatelessWidget {
         'description': 'Saç analizi',
       },
       {
-        'id': 'scalp',
-        'label': 'Saç Derisi',
+        'id': 'other',
+        'label': 'Diğer',
         'icon': 'psychology',
-        'description': 'Saç derisi analizi',
+        'description': 'Diğer analizi',
       },
     ];
 
