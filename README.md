@@ -264,3 +264,18 @@ Sprint boyunca mümkün olduğunca haftada en az üç günlük toplantılar ger�
 * Gelecek Sprint süreci için uygulama ve veri tasarım  ve analizi için yapılacaklar tartışılmıştır.
 * Zaman değerlendirmesi yapılmış, projenin belirlenen sürede tamamlanması için yapılacaklar planlanmıştır.
 
+## Puanlama Mantığı:  
+Proje boyunca tamamlanması gereken görevlerin toplam puanı 100 olarak belirlenmiştir.
+***Sprint 2 için hedeflenen 40 puana ulaşılmıştır:***
+* Ekip Toplantılarına katılım - 3p
+* Daily Scrum Toplantılarına katılım - 3p
+* Sprin Board'da gerçekleştirilmiş hedeflerin gerçekleştirilecek hedeflerden fazla olması - 3p
+* Uygulama Tasarım ilerlemesi - 3p
+* DataSet Araştırmaları devam - 1p
+* Sprint Retrospective ve Review düzenlemeleri - 4p
+* Sprint Board planları ve ilerlemeleri - 5p
+* Makine Öğrenmesi araştırmaları - 3p
+* Makine Öğrenmesi sürecinin başlaması - 3p
+* Uygulama Tasarımı BackEnd süreci - 5p
+* Gelecek hedeflerin konuşulması - 2p
+* Veri görsellerinin makine öğrenmesine uyarlanması - 5p
