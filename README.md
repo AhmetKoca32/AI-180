@@ -206,3 +206,61 @@ Proje boyunca tamamlanması gereken görevlerin toplam puanı 100 olarak belirle
 * Veri görsellerinin makine öğrenmesine uyarlanması - 5p
 
 
+# Sprint 3   
+- **Sprint içinde tamamlanması tahmin edilen puan:** 30 Puan  
+- **Daily Scrum:** Daily Scrum toplantıları Google Meet üzerinden sözlü, WhatsApp üzerinden yazılı şekilde yapılmıştır. Toplantı görselleri paylaşılmıştır.
+
+<img width="1328" height="908" alt="image (4)" src="https://github.com/user-attachments/assets/a9d73789-8ed7-4aa1-94f5-80472e338eee" />
+
+<img width="1919" height="964" alt="image (2)" src="https://github.com/user-attachments/assets/c111a4eb-639b-47b6-9220-0f8de9bcb5c1" />
+
+<img width="1330" height="908" alt="image (2)" src="https://github.com/user-attachments/assets/e67c0f2d-7b7f-4497-8530-14d7ecceefb8" />
+
+<img width="1919" height="966" alt="image (3)" src="https://github.com/user-attachments/assets/ee30df92-8913-43ab-8c96-b042e6dce177" />
+
+<img width="1919" height="966" alt="image (3)" src="https://github.com/user-attachments/assets/4ce95b3f-5c05-4525-8432-92bd602dca12" />
+
+<img width="1274" height="908" alt="image (4)" src="https://github.com/user-attachments/assets/7b8bf4b0-cd11-49b6-9702-b50f917d98e5" />
+
+
+## Uygulama Backend - Frontend Görselleri:
+
+<img width="1919" height="1079" alt="image (2)" src="https://github.com/user-attachments/assets/0f68f90f-56e4-4a38-a20a-9f814f4ab740" />
+
+<img width="1919" height="1079" alt="image (3)" src="https://github.com/user-attachments/assets/61dd01d2-752b-456c-aeaf-d0fc2fa87223" />
+
+<img width="1919" height="1079" alt="image (4)" src="https://github.com/user-attachments/assets/a43a0f5e-5c58-4b4c-8011-d272bf58ef0b" />
+
+### API Üzerinden İlk Model Uyandırması;
+
+<img width="1917" height="985" alt="image (2)" src="https://github.com/user-attachments/assets/bf9f3d41-8246-4cd0-a47b-5b0095a06745" />
+
+<img width="1270" height="920" alt="image (3)" src="https://github.com/user-attachments/assets/5657ae61-5178-4a96-9365-e678e40416ef" />
+
+<img width="1880" height="924" alt="image (4)" src="https://github.com/user-attachments/assets/cb23ee08-7ce5-4dbc-ba80-f569e79449ab" />
+
+### Backend - Frontend Entegrasyonu;
+
+<img width="1919" height="1032" alt="image (2)" src="https://github.com/user-attachments/assets/0b3326d0-1126-49ef-a845-db5ff4c89462" />
+
+<img width="1919" height="1079" alt="image (3)" src="https://github.com/user-attachments/assets/d5b5d057-9885-4131-b583-9bc0e5e1012a" />
+
+### Model Çıktısının UI'ya Yansıtılması;
+
+https://github.com/user-attachments/assets/07b407b6-221d-4885-805b-16338cf75481
+
+### Uygulama Gelişim Videosu;
+
+https://github.com/user-attachments/assets/51d99742-a09e-49f5-8c14-fd77ffba3174
+
+https://github.com/user-attachments/assets/c4b93454-b443-4161-9e69-ea10db5fa27c
+
+### Sprint 2 Review:
+Sprint boyunca mümkün olduğunca haftada en az üç günlük toplantılar gerçekleştirilmiştir. Proje eksikleri konuşulmuş ve gelecekte eklenecek özellikler planlanmıştır. Proje ekibi tasarım ve veri şeklinde ayrıca gruplanmış; ara günlerde ayrıca toplantılar yapılmıştır. Haftada üç gün yapılan toplantılarda tüm ekip toplanmış; ayrı ayrı yapılan tüm değişiklikler tartışılmış ve fikir alışverişi yapılmıştır. Bazı toplantıların tarihleri ekip üyelerinin müsaitlik durumu sebebiyle değiştirilmiş ancak buna rağmen planlanan şekilde gerçekleştirilmiştir. Tüm ekibin katıldığı toplantılarda tasarım ekibi veri ekibine, veri ekibi tasarım ekibine birbirlerinin alanları hakkında fikirler sunmuştur. Sprint 2 raporu için tüm ekip yaptıklarını paylaşmış ve Proje Yöneticisi'ne sunmuştur. Proje Yöneticisi bu verileri toplamış, düzenlemiş ve Sprint 2 Raporu'na eklemiştir.
+
+### Sprint Retrospective:
+* Sprint 2 için belirlenen 40 puan hedefine başarıyla ulaşılmıştır.
+* Ana toplantıların zamanlarının daha az değiştirilmesi gerektiğine vurgu yapılmıştır.
+* Gelecek Sprint süreci için uygulama ve veri tasarım  ve analizi için yapılacaklar tartışılmıştır.
+* Zaman değerlendirmesi yapılmış, projenin belirlenen sürede tamamlanması için yapılacaklar planlanmıştır.
+
