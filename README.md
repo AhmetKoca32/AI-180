@@ -47,7 +47,8 @@ Yüksek risk taşıyan cilt durumlarında kullanıcıya dermatoloğa başvurma �
 ## Juriye Not
   Cilt ve saç problemleri olarak başladığımız projemizde, proje süresi ve edinilen veri miktar ve durumuna göre diğer dermatolojik problemleri ekleme gibi bir ihmimal bulunmaktadır. Ancak henüz belli bir durum söz konusu olmadığından ürün açıklamasına eklenmemiştir.
 
-# Sprint 1
+<details>
+  <summary>### Sprint 1</summary>
 - **Sprint içinde tamamlanması tahmin edilen puan:** 30 Puan  
 - **Daily Scrum:** Daily Scrum toplantıları Google Meet üzerinden sözlü, WhatsApp üzerinden yazılı şekilde yapılmıştır. Toplantı görselleri paylaşılmıştır.  
 
@@ -116,7 +117,7 @@ Proje boyunca tamamlanması gereken görevlerin toplma puanı 100 olarak belirle
 * Sprint Retrospective ve ve Review - 5p
 * Sprint Board Tasarımı ve Güncellemeleri - 5p
                                                   
-                                             
+</details>                                             
 
 # Sprint 2   
 - **Sprint içinde tamamlanması tahmin edilen puan:** 40 Puan  
