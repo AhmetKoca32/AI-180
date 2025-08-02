@@ -47,7 +47,7 @@ Yüksek risk taşıyan cilt durumlarında kullanıcıya dermatoloğa başvurma �
 ## Juriye Not
   Cilt ve saç problemleri olarak başladığımız projemizde, proje süresi ve edinilen veri miktar ve durumuna göre diğer dermatolojik problemleri ekleme gibi bir ihmimal bulunmaktadır. Ancak henüz belli bir durum söz konusu olmadığından ürün açıklamasına eklenmemiştir.
 
-<details>
+# <details>
   <summary><strong>Sprint 2</strong></summary>   
 - **Sprint içinde tamamlanması tahmin edilen puan:** 30 Puan  
 - **Daily Scrum:** Daily Scrum toplantıları Google Meet üzerinden sözlü, WhatsApp üzerinden yazılı şekilde yapılmıştır. Toplantı görselleri paylaşılmıştır.  
