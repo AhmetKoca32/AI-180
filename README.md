@@ -119,7 +119,8 @@ Proje boyunca tamamlanması gereken görevlerin toplma puanı 100 olarak belirle
                                                 
 
 
-<details> # Sprint 2   
+<details> 
+  # Sprint 2   
 - **Sprint içinde tamamlanması tahmin edilen puan:** 40 Puan  
 - **Daily Scrum:** Daily Scrum toplantıları Google Meet üzerinden sözlü, WhatsApp üzerinden yazılı şekilde yapılmıştır. Toplantı görselleri paylaşılmıştır. 
 
