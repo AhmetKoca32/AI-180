@@ -10,7 +10,6 @@ class CustomImageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('CustomImageWidget imageUrl: ' + imageUrl);
     if (imageUrl.startsWith('http') || imageUrl.startsWith('https')) {
       return Image.network(
         imageUrl,
@@ -23,7 +22,6 @@ class CustomImageWidget extends StatelessWidget {
       );
     } else {
       final file = File(imageUrl);
-      print('File exists: ' + file.existsSync().toString());
       return Image.file(
         file,
         width: width,

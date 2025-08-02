@@ -31,6 +31,8 @@ class _CameraCaptureState extends State<CameraCapture> {
   late CameraController _cameraController;
   late List<CameraDescription> _cameras;
   final ImagePicker _picker = ImagePicker();
+  bool _isCameraInitialized = false;
+  bool _isDisposed = false;
 
   @override
   void initState() {
@@ -41,46 +43,108 @@ class _CameraCaptureState extends State<CameraCapture> {
 
   @override
   void dispose() {
-    _cameraController.dispose();
+    _isDisposed = true;
+    _disposeCamera();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
     super.dispose();
   }
 
-  Future<void> _initializeCamera() async {
-    _cameras = await availableCameras();
-    _cameraController = CameraController(
-      _cameras[selectedCameraIndex],
-      ResolutionPreset.veryHigh,
-    );
+  Future<void> _disposeCamera() async {
+    if (_isCameraInitialized) {
+      try {
+        await _cameraController.dispose();
+      } catch (e) {
+        debugPrint('Error disposing camera: $e');
+      }
+      _isCameraInitialized = false;
+    }
+  }
 
-    await _cameraController.initialize();
-    if (mounted) {
-      setState(() {
-        isCameraReady = true;
-        qualityStatus = 'good';
-        guidanceMessage = 'Perfect! Ready to capture';
-        borderColor = Colors.green;
-      });
+  Future<void> _initializeCamera() async {
+    try {
+      _cameras = await availableCameras();
+      if (_cameras.isEmpty) {
+        throw Exception('No cameras found');
+      }
+
+      _cameraController = CameraController(
+        _cameras[selectedCameraIndex],
+        ResolutionPreset.veryHigh,
+        enableAudio: false,
+      );
+
+      // Initialize the controller
+      await _cameraController.initialize();
+      
+      if (_isDisposed) {
+        await _disposeCamera();
+        return;
+      }
+
+      if (mounted) {
+        setState(() {
+          _isCameraInitialized = true;
+          isCameraReady = true;
+          qualityStatus = 'good';
+          guidanceMessage = 'Perfect! Ready to capture';
+          borderColor = Colors.green;
+        });
+      }
+    } catch (e) {
+      debugPrint('Error initializing camera: $e');
+      if (mounted) {
+        setState(() {
+          isCameraReady = false;
+          qualityStatus = 'error';
+          guidanceMessage = 'Camera error: ${e.toString()}';
+          borderColor = Colors.red;
+        });
+      }
     }
   }
 
   Future<void> _switchCamera() async {
-    if (_cameras.length < 2) return; // Eğer sadece 1 kamera varsa, geçme
+    if (_cameras.length < 2) return;
 
-    selectedCameraIndex = (selectedCameraIndex + 1) % _cameras.length;
+    setState(() {
+      isCameraReady = false;
+      _isCameraInitialized = false;
+    });
 
-    _cameraController.dispose();
-    _cameraController = CameraController(
-      _cameras[selectedCameraIndex],
-      ResolutionPreset.veryHigh,
-    );
+    try {
+      await _disposeCamera();
+      
+      selectedCameraIndex = (selectedCameraIndex + 1) % _cameras.length;
+      
+      _cameraController = CameraController(
+        _cameras[selectedCameraIndex],
+        ResolutionPreset.veryHigh,
+        enableAudio: false,
+      );
 
-    await _cameraController.initialize();
+      await _cameraController.initialize();
 
-    if (mounted) {
-      setState(() {
-        isCameraReady = true;
-      });
+      if (_isDisposed) {
+        await _disposeCamera();
+        return;
+      }
+
+      if (mounted) {
+        setState(() {
+          _isCameraInitialized = true;
+          isCameraReady = true;
+        });
+      }
+    } catch (e) {
+      debugPrint('Error switching camera: $e');
+      if (mounted) {
+        setState(() {
+          isCameraReady = false;
+          qualityStatus = 'error';
+          guidanceMessage = 'Error switching camera';
+          borderColor = Colors.red;
+        });
+      }
     }
   }
 
@@ -110,18 +174,41 @@ class _CameraCaptureState extends State<CameraCapture> {
   }
 
   Future<void> _captureImage() async {
-    if (!isCameraReady || isCapturing) return;
+    if (!isCameraReady || isCapturing || !_isCameraInitialized) return;
 
     setState(() => isCapturing = true);
     HapticFeedback.mediumImpact();
 
-    final XFile image = await _cameraController.takePicture();
+    try {
+      final XFile image = await _cameraController.takePicture();
+      
+      if (_isDisposed) return;
 
-    setState(() => isCapturing = false);
-
-    if (mounted) {
-      print("Captured image path: ${image.path}");
-      Navigator.pushNamed(context, '/analysis-results', arguments: image.path);
+      if (mounted) {
+        print("Captured image path: ${image.path}");
+        Navigator.pushNamed(
+          context,
+          '/analysis-results',
+          arguments: {
+            'imagePath': image.path,
+            'captureType': selectedCaptureType,
+          },
+        );
+      }
+    } catch (e) {
+      debugPrint('Error capturing image: $e');
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Failed to capture image. Please try again.'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    } finally {
+      if (mounted) {
+        setState(() => isCapturing = false);
+      }
     }
   }
 
@@ -130,7 +217,14 @@ class _CameraCaptureState extends State<CameraCapture> {
     final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
     if (image != null) {
       print("Gallery image path: ${image.path}");
-      Navigator.pushNamed(context, '/analysis-results', arguments: image.path);
+      Navigator.pushNamed(
+        context,
+        '/analysis-results',
+        arguments: {
+          'imagePath': image.path,
+          'captureType': selectedCaptureType,
+        },
+      );
     }
   }
 

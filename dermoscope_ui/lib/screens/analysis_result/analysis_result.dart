@@ -1,9 +1,14 @@
+import 'dart:async';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../../core/utils/text_utils.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../core/app_export.dart';
-import '../../services/api_service.dart';
+import '../../services/api_service.dart' as api_service;
+import '../../services/exceptions/api_exception.dart';
 import './widgets/action_buttons_widget.dart';
 import './widgets/analysis_image_widget.dart';
 import './widgets/condition_card_widget.dart';
@@ -23,38 +28,62 @@ class _AnalysisResultsState extends State<AnalysisResults> {
   bool _isDescriptionLoading = false;
   String? _descriptionError;
 
+  // Metin temizleme fonksiyonu
   String _cleanDescription(String? description) {
-    if (description == null) return '';
-    return description
-        .replaceAll(RegExp(r'\*\*'), '') // çift yıldızları kaldır
-        .replaceAll(RegExp(r'\*'), '') // tek yıldızları kaldır
-        .replaceAll(RegExp(r'•|_|\-|\n'), ' ') // diğer karakterleri kaldır
-        .replaceAll(RegExp(r'Elbette', caseSensitive: false), '')
-        .replaceAll(RegExp(r'\s+'), ' ')
-        .trim();
+    return TextUtils.cleanText(description, fallback: 'Açıklama bulunamadı');
   }
 
   Future<void> _fetchLLMDescription(String conditionName) async {
+    print('Fetching LLM description for: $conditionName');
+
+    if (!mounted) return;
+    
     setState(() {
       _isDescriptionLoading = true;
       _descriptionError = null;
     });
+    
     try {
-      final desc = await ApiService.getAdvice(
+      final desc = await api_service.ApiService.getAdvice(
         '$conditionName nedir? kısa 1 cümle ile açıkla, sadece açıklama ver. Ayrıca mesela iki ayrı terim varsa onları tek paragrafda açıkla.',
       );
-      setState(() {
-        (analysisData['detectedConditions'] as List)[0]['description'] =
-            _cleanDescription(desc);
-        _isDescriptionLoading = false;
-      });
+      
+      if (!mounted) return;
+
+      // Create a deep copy of the current state
+      final updatedAnalysisData = Map<String, dynamic>.from(analysisData);
+
+      // Update the description in the detected conditions
+      if (updatedAnalysisData['detectedConditions'] != null &&
+          (updatedAnalysisData['detectedConditions'] as List).isNotEmpty) {
+        final updatedConditions = List<Map<String, dynamic>>.from(
+          updatedAnalysisData['detectedConditions'],
+        );
+
+        if (updatedConditions.isNotEmpty) {
+          updatedConditions[0] = Map<String, dynamic>.from(updatedConditions[0])
+            ..['description'] = _cleanDescription(desc);
+          updatedAnalysisData['detectedConditions'] = updatedConditions;
+
+          // Update the state with the new data
+          setState(() {
+            analysisData.clear();
+            analysisData.addAll(updatedAnalysisData);
+            _isDescriptionLoading = false;
+            print('Updated analysisData with description');
+          });
+        }
+      }
     } catch (e) {
-      setState(() {
-        _descriptionError =
-            'Açıklama alınamadı: ' +
-            (e is Exception ? e.toString() : 'Bilinmeyen hata');
-        _isDescriptionLoading = false;
-      });
+      print('Error fetching LLM description: $e');
+      if (mounted) {
+        setState(() {
+          _descriptionError =
+              'Açıklama alınamadı: ' +
+              (e is Exception ? e.toString() : 'Bilinmeyen hata');
+          _isDescriptionLoading = false;
+        });
+      }
     }
   }
 
@@ -134,32 +163,225 @@ class _AnalysisResultsState extends State<AnalysisResults> {
   }
 
   Future<void> _fetchDiagnosisIfNeeded() async {
-    final String? imagePath = ModalRoute.of(context)?.settings.arguments as String?;
-    if (imagePath != null && imagePath.isNotEmpty) {
+    String? imagePath;
+    String? captureType;
+
+    try {
+      final args = ModalRoute.of(context)?.settings.arguments;
+      
+      if (args is Map) {
+        imagePath = args['imagePath'] as String?;
+        captureType = args['captureType'] as String?;
+      } else if (args is String) {
+        imagePath = args;
+      }
+
+      if (imagePath == null || imagePath.isEmpty) {
+        throw Exception('Analiz için bir resim bulunamadı');
+      }
+
       setState(() => _isLoading = true);
-      final result = await ApiService.sendImageForDiagnosis(imagePath);
-      setState(() {
-        _isLoading = false;
-        if (result != null) {
-          // Sadece hastalık bilgisini güncelle
-          analysisData['detectedConditions'] = [
-            {
-              'id': result['class_code'] ?? '',
-              'name': result['class_name_tr'] ?? '',
-              'type': result['class_code'] ?? '',
-              "confidence": 92.3,
-              "severity": "Orta Şiddetli",
-              "affectedArea": 15.2,
-              "description":
-                  null, // LLM'den gelecek açıklama için başlangıçta null bırakıyoruz.
-              "medicalTerms": ["Komedonal akne", "İnflamatuar papüller"],
-              "isExpanded": false,
-            }
-          ];
-          _fetchLLMDescription(result['class_name_tr'] ?? '');
+      
+      String modelName = 'skin_canser_model.h5';
+      if (captureType == 'hair') {
+        modelName = 'hair_model.h5';
+      } else if (captureType == 'scalp' || captureType == 'other') {
+        modelName = 'other_model.h5';
+      }
+
+      print('Analiz için model seçildi: $modelName');
+
+      Map<String, dynamic>? result;
+      String conditionName = 'Bilinmeyen Durum';
+      double confidence = 92.3;
+
+      try {
+        // API'den sonuç al
+        result = await api_service.ApiService.sendImageForDiagnosis(
+          imagePath,
+          modelName: modelName,
+        );
+
+        if (!mounted) return;
+        print('API Yanıtı: $result');
+        
+        if (result == null) {
+          throw Exception('API yanıtı boş döndü');
         }
-      });
+
+        // Hata kontrolü
+        if (result['error'] != null) {
+          throw Exception(result['error']);
+        }
+
+        // Handle Gemini API response or regular result
+        if (result['llm_result'] is Map) {
+          // If llm_result is an object, extract and clean the diagnosis
+          final llmResult = result['llm_result'] as Map;
+          
+          // Try to get diagnosis from different possible fields
+          conditionName = TextUtils.cleanText(
+            llmResult['diagnosis']?.toString() ?? 
+            llmResult['name']?.toString() ??
+            result['class_name_tr']?.toString(),
+            fallback: 'Bilinmeyen Durum'
+          );
+          
+          // Clean up any remaining JSON-like structures
+          conditionName = conditionName.replaceAll(RegExp(r'"|\[\]'), '').trim();
+        } else if (result['llm_result'] is String) {
+          // If llm_result is a string, clean it up
+          conditionName = TextUtils.cleanLlmResponse(
+            result['llm_result']?.toString()
+          );
+        } else {
+          // Fallback to class_name_tr if available
+          conditionName = TextUtils.cleanText(
+            result['class_name_tr']?.toString(),
+            fallback: 'Bilinmeyen Durum'
+          );
+        }
+
+        // Güven skorunu hesapla
+        if (result['confidence'] != null) {
+          confidence = (result['confidence'] is double)
+              ? (result['confidence'] * 100).clamp(0, 100)
+              : (double.tryParse(result['confidence'].toString()) ?? 0).clamp(0, 100);
+        }
+
+        print('Durum adı: $conditionName, Güven: $confidence%');
+
+        // Create a deep copy of analysisData to ensure state updates work correctly
+        final updatedAnalysisData = Map<String, dynamic>.from(analysisData);
+
+        // Create the condition data with all required fields
+        final conditionData = {
+          'id': result['class_code']?.toString() ?? 'unknown',
+          'name': conditionName,
+          'type': result['class_code']?.toString() ?? 'unknown',
+          'confidence': confidence,
+          'severity': result['llm_result']?['severity']?.toString() ?? 'Orta',
+          'affectedArea': 15.2,
+          'description': TextUtils.cleanLlmResponse(
+                          result['llm_result']?['description']?.toString() ??
+                          result['llm_result']?.toString()
+                        ) ?? 'Analiz tamamlandı. Detaylar yükleniyor...',
+          'medicalTerms': [],
+          'isExpanded': true,
+        };
+        
+        // Eğer llm_result bir string ise, onu description olarak kullan
+        if (result['llm_result'] is String) {
+          conditionData['description'] = TextUtils.cleanLlmResponse(
+            result['llm_result']?.toString()
+          );
+        }
+
+        // Update the analysis data
+        updatedAnalysisData['detectedConditions'] = [conditionData];
+        updatedAnalysisData['confidenceScore'] = confidence;
+        updatedAnalysisData['analyzedImage'] = imagePath;
+
+        // Add missing fields if they don't exist
+        updatedAnalysisData['overallRiskLevel'] = updatedAnalysisData['overallRiskLevel'] ?? 'moderate';
+        updatedAnalysisData['timestamp'] = updatedAnalysisData['timestamp'] ?? DateTime.now().toIso8601String();
+
+        // Update the state with the new data
+        if (mounted) {
+          setState(() {
+            analysisData.clear();
+            analysisData.addAll(updatedAnalysisData);
+            _isLoading = false;
+          });
+
+          // Debug prints
+          print('Updated analysisData: $analysisData');
+          print('Condition data: ${analysisData['detectedConditions']}');
+
+          // Fetch the LLM description after the UI has updated
+          _fetchLLMDescription(conditionName);
+        }
+      } on ApiException catch (e) {
+        print('API Hatası: ${e.statusCode} - ${e.message}');
+        String errorMessage;
+        bool isWarning = false;
+        
+        // Map backend errors to user-friendly messages
+        switch (e.statusCode) {
+          case 429:
+            errorMessage = 'Çok fazla istek gönderdiniz. Lütfen 1 saat sonra tekrar deneyin.';
+            isWarning = true;
+            break;
+          case 500:
+            errorMessage = 'Sistem şu anda meşgul. Lütfen daha sonra tekrar deneyin.';
+            break;
+          case 0:
+            errorMessage = 'İnternet bağlantınızı kontrol edip tekrar deneyin.';
+            isWarning = true;
+            break;
+          case 400:
+            errorMessage = 'Geçersiz istek. Lütfen uygulamayı güncelleyin.';
+            break;
+          case 401:
+          case 403:
+            errorMessage = 'Yetkilendirme hatası. Lütfen uygulamayı yeniden başlatın.';
+            break;
+          case 404:
+            errorMessage = 'İstenen kaynak bulunamadı. Lütfen uygulamayı güncelleyin.';
+            break;
+          case 503:
+            errorMessage = 'Sistem bakımda. Lütfen daha sonra tekrar deneyin.';
+            isWarning = true;
+            break;
+          default:
+            errorMessage = 'Beklenmeyen bir hata oluştu. Lütfen daha sonra tekrar deneyin.';
+        }
+        
+        _showError(errorMessage, isWarning: isWarning);
+      } on FormatException catch (e) {
+        print('Veri formatı hatası: $e');
+        _showError('Geçersiz veri alındı. Lütfen farklı bir resim ile tekrar deneyin.');
+      } on TimeoutException catch (e) {
+        print('Zaman aşımı hatası: $e');
+        _showError('İşlem çok uzun sürdü. Lütfen internet bağlantınızı kontrol edip tekrar deneyin.', isWarning: true);
+      } catch (e) {
+        print('Beklenmeyen hata: $e');
+        _showError('Beklenmeyen bir hata oluştu. Lütfen uygulamayı kapatıp tekrar açın.');
+      }
+    } on SocketException catch (e) {
+      print('Ağ hatası: $e');
+      _showError('İnternet bağlantınız yok. Lütfen bağlantınızı kontrol edip tekrar deneyin.', isWarning: true);
+    } catch (e) {
+      print('Beklenmeyen hata: $e');
+      _showError('Beklenmeyen bir hata oluştu. Lütfen uygulamayı kapatıp tekrar açın.');
+    } finally {
+      if (mounted) {
+        setState(() => _isLoading = false);
+      }
     }
+  }
+  
+  void _showError(String message, {bool isWarning = false}) {
+    if (!mounted) return;
+    
+    // Remove any technical details that might be after a colon
+    final cleanMessage = message.split(':').first.trim();
+    
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          cleanMessage,
+          style: TextStyle(color: isWarning ? Colors.orange : Colors.white),
+        ),
+        backgroundColor: isWarning ? Colors.orange.withOpacity(0.1) : Colors.red[800],
+        behavior: SnackBarBehavior.floating,
+        margin: EdgeInsets.all(16),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+        duration: Duration(seconds: 4),
+      ),
+    );
   }
 
   void _triggerHapticFeedback() {
@@ -220,15 +442,24 @@ class _AnalysisResultsState extends State<AnalysisResults> {
     Navigator.pushNamed(context, '/chat-consultation');
   }
 
-  void _retryAnalysis() {
-    Navigator.pushReplacementNamed(context, '/camera-capture');
-  }
-
   @override
   Widget build(BuildContext context) {
-    final String? imagePath =
-        ModalRoute.of(context)?.settings.arguments as String?;
+    final args = ModalRoute.of(context)?.settings.arguments;
+    String? imagePath;
+    if (args is String) {
+      imagePath = args;
+    } else if (args is Map<String, String>) {
+      imagePath = args['imagePath'];
+    } else {
+      imagePath = null;
+    }
+
+    // Debug prints
     print('AnalysisResults build method called');
+    print('Current analysisData: $analysisData');
+    if (analysisData['detectedConditions'] != null) {
+      print('Detected conditions: ${analysisData['detectedConditions']}');
+    }
     return Scaffold(
       backgroundColor: AppTheme.lightTheme.scaffoldBackgroundColor,
       appBar: AppBar(
@@ -271,8 +502,10 @@ class _AnalysisResultsState extends State<AnalysisResults> {
           SizedBox(width: 2.w),
         ],
       ),
-      body: analysisData.isEmpty
-          ? _buildErrorState()
+      body:
+          analysisData.isEmpty ||
+              !analysisData.containsKey('detectedConditions')
+          ? _buildLoadingState()
           : SingleChildScrollView(
               controller: _scrollController,
               physics: const BouncingScrollPhysics(),
@@ -398,66 +631,23 @@ class _AnalysisResultsState extends State<AnalysisResults> {
     );
   }
 
-  Widget _buildErrorState() {
+  Widget _buildLoadingState() {
+    print('_buildLoadingState called');
     return Center(
-      child: Padding(
-        padding: EdgeInsets.all(6.w),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CustomIconWidget(
-              iconName: 'error_outline',
-              color: AppTheme.lightTheme.colorScheme.error,
-              size: 64,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          CircularProgressIndicator(
+            valueColor: AlwaysStoppedAnimation<Color>(
+              AppTheme.lightTheme.colorScheme.primary,
             ),
-            SizedBox(height: 3.h),
-            Text(
-              'Analiz Başarısız',
-              style: AppTheme.lightTheme.textTheme.headlineSmall?.copyWith(
-                fontWeight: FontWeight.w600,
-                color: AppTheme.lightTheme.colorScheme.error,
-              ),
-            ),
-            SizedBox(height: 2.h),
-            Text(
-              'Görüntü analizi sırasında bir hata oluştu. Lütfen tekrar deneyin veya daha net bir görüntü çekin.',
-              style: AppTheme.lightTheme.textTheme.bodyMedium,
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(height: 4.h),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: _retryAnalysis,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppTheme.lightTheme.colorScheme.primary,
-                  foregroundColor: AppTheme.lightTheme.colorScheme.onPrimary,
-                  padding: EdgeInsets.symmetric(vertical: 2.h),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-                child: Text(
-                  'Tekrar Dene',
-                  style: AppTheme.lightTheme.textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.w600,
-                    color: AppTheme.lightTheme.colorScheme.onPrimary,
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(height: 2.h),
-            TextButton(
-              onPressed: () => Navigator.pushNamed(context, '/dashboard'),
-              child: Text(
-                'Ana Sayfaya Dön',
-                style: AppTheme.lightTheme.textTheme.titleMedium?.copyWith(
-                  color: AppTheme.lightTheme.colorScheme.primary,
-                ),
-              ),
-            ),
-          ],
-        ),
+          ),
+          SizedBox(height: 16),
+          Text(
+            'Analiz yapılıyor...',
+            style: AppTheme.lightTheme.textTheme.titleMedium,
+          ),
+        ],
       ),
     );
   }
