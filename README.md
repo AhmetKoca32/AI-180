@@ -298,7 +298,7 @@ Proje boyunca tamamlanması gereken görevlerin toplam puanı 100 olarak belirle
 * Sprint Board planları ve ilerlemeleri - 1p
 * Makine öğrenmesi gelişimi - 2p
 * Geliştirilen Dataset ile uygulamanın entegrasyonu - 2,5p
-* Uygulama Tasarımı BackEnd sürecinin tamamlanması - 3p
+* Uygulama Tasarımı Backend sürecinin tamamlanması - 3p
 * Uygulama problemlerinin çözüme ulaştırılması - 3p
 * Datasetinde elde edilen sonuçların geliştirilmesi - 2p
 * Uygulama ile yapay zeka entegrasyonu - 2,5p
