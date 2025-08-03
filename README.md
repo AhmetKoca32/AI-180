@@ -4,8 +4,8 @@ Grup AI-180
 
 ## Takım Elemanları
 
-| Ekip Üyeleri | Roller | LinkedIn |
-|--------------|----------|----------|
+| Ekip Üyeleri | Roller |
+|--------------|----------|
 | Arda Tezbaşaran  | Developer / Data Scientist  |
 | Ahmet Koca   | Backend Developer / UI-UX Designer  |
 | İrem Fındık   | Scrum Master / Product Owner  |
