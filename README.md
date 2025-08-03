@@ -6,7 +6,7 @@ Grup AI-180
 
 | Ekip Üyeleri | Roller |  LinkedIn  |
 |--------------|----------|--------|
-| Arda Tezbaşaran  | Developer / Data Scientist  |
+| Arda Tezbaşaran  | Developer / Data Scientist  |  [<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" width="30"/>](https://www.linkedin.com/in/ardatezbasaran/)  |
 | Ahmet Koca   | Backend Developer / UI-UX Designer  |  [<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" width="30"/>](https://www.linkedin.com/in/ahmetkocaa)  |
 | İrem Fındık   | Scrum Master / Product Owner  |  [<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" width="30"/>](https://www.linkedin.com/in/iremfindik/)  |
 | Edanur Özkan  | UI-UX Designer / Developer  |  [<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" width="30"/>](https://www.linkedin.com/in/edanurozkann/)  |
