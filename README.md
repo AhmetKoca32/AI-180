@@ -9,6 +9,11 @@ Grup AI-180
 * **Edanur Özkan:** Data Scientist / Developer
 * **Murat Köktopçu:** Back-End Developer / Data Scientist
 
+| Ekip Üyeleri | Roller |
+|--------------|----------|
+| Arda Tezbaşaran  | Developer / Data Scientist  |
+| Hücre 3  | Hücre 4  |
+
 ## Ürün İsmi
 DermaScope
 ## Product Backlog URL
