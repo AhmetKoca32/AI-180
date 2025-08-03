@@ -10,7 +10,7 @@ Grup AI-180
 | Ahmet Koca   | Backend Developer / UI-UX Designer  |  [<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" width="30"/>](https://www.linkedin.com/in/ahmetkocaa)  |
 | İrem Fındık   | Scrum Master / Product Owner  |  [<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" width="30"/>](https://www.linkedin.com/in/iremfindik/)  |
 | Edanur Özkan  | UI-UX Designer / Developer  |  [<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" width="30"/>](https://www.linkedin.com/in/edanurozkann/)  |
-| Murat Köktopçu  | Backend Developer / Data Scientist  |  [<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" width="30"/>](https://www.linkedin.com/in/muratk%C3%B6ktop%C3%A7u)  |
+| Murat Köktopçu  | Backend Developer / Data Scientist  |  [<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" width="30"/>](https://www.linkedin.com/in/muratk%C3%B6ktop%C3%A7u/)  |
 
 ## Ürün İsmi
 
