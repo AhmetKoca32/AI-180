@@ -21,6 +21,9 @@ https://www.notion.so/228abfb93c01809ab738cc1950596ba4?v=228abfb93c018143bfaf000
 
 [![Project Backlog](https://img.shields.io/badge/Project%20Backlog-%23007ACC?style=for-the-badge&logo=notion&logoColor=white)](https://www.notion.so/228abfb93c01809ab738cc1950596ba4?v=228abfb93c018143bfaf000c7bb2560c)
 
+[**Project Backlog**](https://www.notion.so/228abfb93c01809ab738cc1950596ba4?v=228abfb93c018143bfaf000c7bb2560c)
+
+
 ## Ürün Açıklaması
   DermaScope, kullanıcıların cilt, saç ve deri görsellerini analiz ederek erken teşhis ve sağlık farkındalığı oluşturmayı amaçlayan yapay zekâ destekli mobil bir sağlık teknolojisi çözümüdür.
 
