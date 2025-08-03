@@ -272,11 +272,7 @@ https://github.com/user-attachments/assets/c4b93454-b443-4161-9e69-ea10db5fa27c
 
 <img width="893" height="834" alt="image (3)" src="https://github.com/user-attachments/assets/0ca9ae36-ecbc-41bb-8b60-f7c911533189" />
 
-<img width="884" height="790" alt="image (4)" src="https://github.com/user-attachments/assets/cee6508d-56c2-42b9-812a-ec069ec42745" />
-
-<img width="899" height="790" alt="image (3)" src="https://github.com/user-attachments/assets/ef2e5b44-f42a-48a2-a84f-1985d350a316" />
-
-<img width="920" height="790" alt="image (2)" src="https://github.com/user-attachments/assets/0c1bff00-2a21-4aec-a0f5-044d27b1b1ab" />
+<img width="884" height="790" alt="image (5)" src="https://github.com/user-attachments/assets/786fe4cd-d23e-41d3-a546-296b13bcb66f" />
 
 ### Sprint 3 Review:
 Sprint sonuna doğru her gün olmak üzere, Sprint boyunca planlanan haftada en az üç günlük toplantılar gerçekleştirilmiştir. Proje eksikleri belirlenmiş ve çözüme ulaştırılmıştır. Sprint 2 sürecinde eklenmesi planlanan özellikler uygulamaya eklenmiştir. Gruplanan ekibimiz kendi zamanlarında ayrıca görüşmüş, projedeki görevlerini yerine getirmiştir. Proje ilerlemesinin raporlanması adına belirlenen üç gün toplantılar başarıyla gerçekleştirilmiştir. Uygulama tasarımının değiştirilmesi üzerine konuşulmuş ve olumlu olarak karara varılmıştır. Veri seti ve uygulama entegrasyonun yapılacağı tarih konuşulmuş, o zamana kadar her iki tarafın da kendi görevlerini yerine getirmesi gerektiği kararı verilmiştir. Veri ekibi data setiyle ilgili çalışmalarını; tasarım ekibi ise uygulamanın Frontend ve Backend çalışmalarını tamamlamıştır. Veri süreci ve tasarım süreci ile ilgili ortaya çıkan tüm hatalar belirlenmiş ve giderilmiştir. Ekipler üstlerine düşen görevlerle ilgili her türlü güncelleme ve gelişmeleri WhatsApp ve Meet platformlarında paylaşmış, tüm ekibi haberdar etmiştir. Bu süreçte tüm ekip Sprint 3 raporu için yaptıklarını paylaşmış ve Proje Yöneticisi'ne sunmuştur. Proje Yöneticisi bu verileri toplamış, düzenlemiş ve Sprint 3 Raporu'na eklemiştir.
