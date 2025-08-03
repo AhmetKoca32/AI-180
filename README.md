@@ -270,7 +270,7 @@ https://github.com/user-attachments/assets/c4b93454-b443-4161-9e69-ea10db5fa27c
 ### Sprint 3 Review:
 Sprint sonuna doğru her gün olmak üzere, Sprint boyunca planlanan haftada en az üç günlük toplantılar gerçekleştirilmiştir. Proje eksikleri belirlenmiş ve çözüme ulaştırılmıştır. Sprint 2 sürecinde eklenmesi planlanan özellikler uygulamaya eklenmiştir. Gruplanan ekibimiz kendi zamanlarında ayrıca görüşmüş, projedeki görevlerini yerine getirmiştir. Proje ilerlemesinin raporlanması adına belirlenen üç gün toplantılar başarıyla gerçekleştirilmiştir. Uygulama tasarımının değiştirilmesi üzerine konuşulmuş ve olumlu olarak karara varılmıştır. Veri seti ve uygulama entegrasyonun yapılacağı tarşh konuşulmuş, o zamana kadar her iki tarafın da kendi görevlerini yerine getirmesi gerektiği kafrarı verilmiştir. Veri ekibi data setiyle ilgili çalışmalarını; tasarım ekibi ise uygulamanın frontend ve backend çalışmalarını tamamlamıştır. Veri süreci ve tasarım süreci ile ilgili ortaya çıkan tüm hatalar belirlenmiş ve giderilmiştir. Ekipler üstlerine düşen görevlerle ilgili her türlü günceelleme ve gelişmeleri WhatsApp ve Meet platformlarında paylaşmış, tüm ekibi haberdar etmiştir. Bu süreçte tüm ekip Sprint 3 raporu için yaptıklarını paylaşmış ve Proje Yöneticisi'ne sunmuştur. Proje Yöneticisi bu verileri toplamış, düzenlemiş ve Sprint 3 Raporu'na eklemiştir.
 
-<img width="875" height="911" alt="image (2)" src="https://github.com/user-attachments/assets/ebf3ed66-ea74-41a3-b441-9a74d3bfbf55" />
+<img width="880" height="879" alt="image (2)" src="https://github.com/user-attachments/assets/40ab59f1-a5a5-4ef5-b6c6-2b4e3bbd9c53" />
 
 *Sprint 3 Board Updates* 
 
