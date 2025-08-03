@@ -268,6 +268,12 @@ https://github.com/user-attachments/assets/51d99742-a09e-49f5-8c14-fd77ffba3174
 
 https://github.com/user-attachments/assets/c4b93454-b443-4161-9e69-ea10db5fa27c
 
+### Uygulama Backend Detayları
+
+<img width="893" height="834" alt="image (3)" src="https://github.com/user-attachments/assets/0ca9ae36-ecbc-41bb-8b60-f7c911533189" />
+
+<img width="861" height="767" alt="image (4)" src="https://github.com/user-attachments/assets/d46a3201-597c-4bd9-9221-06c1d537d369" />
+
 ### Sprint 3 Review:
 Sprint sonuna doğru her gün olmak üzere, Sprint boyunca planlanan haftada en az üç günlük toplantılar gerçekleştirilmiştir. Proje eksikleri belirlenmiş ve çözüme ulaştırılmıştır. Sprint 2 sürecinde eklenmesi planlanan özellikler uygulamaya eklenmiştir. Gruplanan ekibimiz kendi zamanlarında ayrıca görüşmüş, projedeki görevlerini yerine getirmiştir. Proje ilerlemesinin raporlanması adına belirlenen üç gün toplantılar başarıyla gerçekleştirilmiştir. Uygulama tasarımının değiştirilmesi üzerine konuşulmuş ve olumlu olarak karara varılmıştır. Veri seti ve uygulama entegrasyonun yapılacağı tarih konuşulmuş, o zamana kadar her iki tarafın da kendi görevlerini yerine getirmesi gerektiği kararı verilmiştir. Veri ekibi data setiyle ilgili çalışmalarını; tasarım ekibi ise uygulamanın Frontend ve Backend çalışmalarını tamamlamıştır. Veri süreci ve tasarım süreci ile ilgili ortaya çıkan tüm hatalar belirlenmiş ve giderilmiştir. Ekipler üstlerine düşen görevlerle ilgili her türlü güncelleme ve gelişmeleri WhatsApp ve Meet platformlarında paylaşmış, tüm ekibi haberdar etmiştir. Bu süreçte tüm ekip Sprint 3 raporu için yaptıklarını paylaşmış ve Proje Yöneticisi'ne sunmuştur. Proje Yöneticisi bu verileri toplamış, düzenlemiş ve Sprint 3 Raporu'na eklemiştir.
 
