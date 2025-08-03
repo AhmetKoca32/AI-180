@@ -17,15 +17,6 @@ Grup AI-180
 <img width="507" height="123" alt="image (4)" src="https://github.com/user-attachments/assets/ae6e83c3-04a9-4f50-ac33-53b73c52cc71" />
 
 ## Product Backlog URL
-https://www.notion.so/228abfb93c01809ab738cc1950596ba4?v=228abfb93c018143bfaf000c7bb2560c
-
-[![Project Backlog](https://img.shields.io/badge/Project%20Backlog-%23007ACC?style=for-the-badge&logo=notion&logoColor=white)](https://www.notion.so/228abfb93c01809ab738cc1950596ba4?v=228abfb93c018143bfaf000c7bb2560c)
-
-[**Project Backlog**](https://www.notion.so/228abfb93c01809ab738cc1950596ba4?v=228abfb93c018143bfaf000c7bb2560c)
-
-[Project Backlog](https://www.notion.so/228abfb93c01809ab738cc1950596ba4?v=228abfb93c018143bfaf000c7bb2560c)
-
-[Project Backlog](https://www.notion.so/228abfb93c01809ab738cc1950596ba4?v=228abfb93c018143bfaf000c7bb2560c)
 
 ### [Project Backlog](https://www.notion.so/228abfb93c01809ab738cc1950596ba4?v=228abfb93c018143bfaf000c7bb2560c)
 
