@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../providers/auth_provider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -14,6 +17,7 @@ class _LoginScreenState extends State<LoginScreen>
   final _loginPasswordController = TextEditingController();
   final _registerEmailController = TextEditingController();
   bool _showPasswordField = false;
+  bool _isLoading = false;
   final Duration _animDuration = const Duration(milliseconds: 400);
 
   @override
@@ -38,8 +42,57 @@ class _LoginScreenState extends State<LoginScreen>
   }
 
   void _onRegisterContinue() {
+    if (_registerEmailController.text.isEmpty) {
+      _showSnackBar('Lütfen email adresinizi girin');
+      return;
+    }
     Navigator.of(context).push(
-      MaterialPageRoute(builder: (context) => const RegisterDetailsScreen()),
+      MaterialPageRoute(
+        builder: (context) =>
+            RegisterDetailsScreen(email: _registerEmailController.text.trim()),
+      ),
+    );
+  }
+
+  Future<void> _handleLogin() async {
+    if (_loginEmailController.text.isEmpty ||
+        _loginPasswordController.text.isEmpty) {
+      _showSnackBar('Lütfen tüm alanları doldurun');
+      return;
+    }
+
+    setState(() {
+      _isLoading = true;
+    });
+
+    try {
+      final authProvider = Provider.of<AuthProvider>(context, listen: false);
+      final success = await authProvider.login(
+        _loginEmailController.text.trim(),
+        _loginPasswordController.text,
+      );
+
+      if (success) {
+        Navigator.of(context).pushReplacementNamed('/home');
+        _showSnackBar('Giriş başarılı!', success: true);
+      } else {
+        _showSnackBar('Geçersiz email veya şifre');
+      }
+    } catch (e) {
+      _showSnackBar('Bir hata oluştu: $e');
+    } finally {
+      setState(() {
+        _isLoading = false;
+      });
+    }
+  }
+
+  void _showSnackBar(String message, {bool success = false}) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        backgroundColor: success ? Colors.green : Colors.red,
+      ),
     );
   }
 
@@ -122,6 +175,8 @@ class _LoginScreenState extends State<LoginScreen>
                                     children: [
                                       TextField(
                                         controller: _loginEmailController,
+                                        keyboardType:
+                                            TextInputType.emailAddress,
                                         decoration: InputDecoration(
                                           hintText: 'email@domain.com',
                                           hintStyle: TextStyle(
@@ -253,18 +308,28 @@ class _LoginScreenState extends State<LoginScreen>
                                                   BorderRadius.circular(8),
                                             ),
                                           ),
-                                          onPressed: () {
-                                            Navigator.of(
-                                              context,
-                                            ).pushReplacementNamed('/home');
-                                          },
-                                          child: const Text(
-                                            'Giriş Yap',
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 16,
-                                            ),
-                                          ),
+                                          onPressed: _isLoading
+                                              ? null
+                                              : _handleLogin,
+                                          child: _isLoading
+                                              ? const SizedBox(
+                                                  width: 20,
+                                                  height: 20,
+                                                  child: CircularProgressIndicator(
+                                                    strokeWidth: 2,
+                                                    valueColor:
+                                                        AlwaysStoppedAnimation<
+                                                          Color
+                                                        >(Colors.white),
+                                                  ),
+                                                )
+                                              : const Text(
+                                                  'Giriş Yap',
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 16,
+                                                  ),
+                                                ),
                                         ),
                                       ),
                                     ],
@@ -279,6 +344,7 @@ class _LoginScreenState extends State<LoginScreen>
                               children: [
                                 TextField(
                                   controller: _registerEmailController,
+                                  keyboardType: TextInputType.emailAddress,
                                   decoration: InputDecoration(
                                     hintText: 'email@domain.com',
                                     hintStyle: TextStyle(
@@ -430,18 +496,85 @@ class _LoginScreenState extends State<LoginScreen>
 }
 
 // Kayıt detay ekranı
-class RegisterDetailsScreen extends StatelessWidget {
-  const RegisterDetailsScreen({Key? key}) : super(key: key);
+class RegisterDetailsScreen extends StatefulWidget {
+  const RegisterDetailsScreen({Key? key, this.email}) : super(key: key);
+  final String? email;
+
+  @override
+  State<RegisterDetailsScreen> createState() => _RegisterDetailsScreenState();
+}
+
+class _RegisterDetailsScreenState extends State<RegisterDetailsScreen> {
+  final _nameController = TextEditingController();
+  final _surnameController = TextEditingController();
+  final _phoneController = TextEditingController();
+  final _ageController = TextEditingController();
+  final _passwordController = TextEditingController();
+  String? _selectedGender;
+  bool _isLoading = false;
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _surnameController.dispose();
+    _phoneController.dispose();
+    _ageController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  void _showSnackBar(String message, {bool success = false}) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        backgroundColor: success ? Colors.green : Colors.red,
+      ),
+    );
+  }
+
+  Future<void> _handleRegister() async {
+    if (_passwordController.text.isEmpty ||
+        _nameController.text.isEmpty ||
+        _surnameController.text.isEmpty ||
+        widget.email == null) {
+      _showSnackBar('Lütfen gerekli alanları doldurun');
+      return;
+    }
+
+    setState(() {
+      _isLoading = true;
+    });
+
+    try {
+      final authProvider = Provider.of<AuthProvider>(context, listen: false);
+      final success = await authProvider.register(
+        username: widget.email!, // Email'i kullanıcı adı olarak kullan
+        email: widget.email!, // Email'i constructor'dan al
+        password: _passwordController.text,
+        firstName: _nameController.text.trim(),
+        lastName: _surnameController.text.trim(),
+        phone: _phoneController.text.trim(),
+        age: int.tryParse(_ageController.text),
+        gender: _selectedGender,
+      );
+
+      if (success) {
+        Navigator.of(context).pushReplacementNamed('/home');
+        _showSnackBar('Kayıt başarılı!', success: true);
+      } else {
+        _showSnackBar('Kayıt başarısız. Lütfen bilgilerinizi kontrol edin.');
+      }
+    } catch (e) {
+      _showSnackBar('Bir hata oluştu: $e');
+    } finally {
+      setState(() {
+        _isLoading = false;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    final _nameController = TextEditingController();
-    final _surnameController = TextEditingController();
-    final _phoneController = TextEditingController();
-    final _ageController = TextEditingController();
-    final _passwordController = TextEditingController();
-    String? _selectedGender;
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Kayıt Ol'),
@@ -665,7 +798,11 @@ class RegisterDetailsScreen extends StatelessWidget {
                     DropdownMenuItem(value: 'Erkek', child: Text('Erkek')),
                     DropdownMenuItem(value: 'Diğer', child: Text('Diğer')),
                   ],
-                  onChanged: (value) {},
+                  onChanged: (value) {
+                    setState(() {
+                      _selectedGender = value;
+                    });
+                  },
                 ),
                 const SizedBox(height: 14),
                 // Şifre
@@ -711,11 +848,22 @@ class RegisterDetailsScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(12),
                       ),
                     ),
-                    onPressed: () {},
-                    child: const Text(
-                      'Kayıt Ol',
-                      style: TextStyle(color: Colors.white, fontSize: 16),
-                    ),
+                    onPressed: _isLoading ? null : _handleRegister,
+                    child: _isLoading
+                        ? const SizedBox(
+                            width: 20,
+                            height: 20,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 2,
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                Colors.white,
+                              ),
+                            ),
+                          )
+                        : const Text(
+                            'Kayıt Ol',
+                            style: TextStyle(color: Colors.white, fontSize: 16),
+                          ),
                   ),
                 ),
               ],
