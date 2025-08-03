@@ -52,6 +52,7 @@ Yüksek risk taşıyan cilt durumlarında kullanıcıya dermatoloğa başvurma �
 
 <details>
   <summary>Sprint 1</summary>
+
 - **Sprint içinde tamamlanması tahmin edilen puan:** 30 Puan  
 - **Daily Scrum:** Daily Scrum toplantıları Google Meet üzerinden sözlü, WhatsApp üzerinden yazılı şekilde yapılmıştır. Toplantı görselleri paylaşılmıştır.  
 
@@ -124,6 +125,7 @@ Proje boyunca tamamlanması gereken görevlerin toplma puanı 100 olarak belirle
 
 <details>
   <summary>Sprint 2</summary>   
+
 - **Sprint içinde tamamlanması tahmin edilen puan:** 40 Puan  
 - **Daily Scrum:** Daily Scrum toplantıları Google Meet üzerinden sözlü, WhatsApp üzerinden yazılı şekilde yapılmıştır. Toplantı görselleri paylaşılmıştır. 
 
@@ -213,6 +215,7 @@ Proje boyunca tamamlanması gereken görevlerin toplam puanı 100 olarak belirle
 
 <details>
   <summary>Sprint 3</summary>   
+
 - **Sprint içinde tamamlanması tahmin edilen puan:** 30 Puan  
 - **Daily Scrum:** Daily Scrum toplantıları Google Meet üzerinden sözlü, WhatsApp üzerinden yazılı şekilde yapılmıştır. Toplantı görselleri paylaşılmıştır.
 
