@@ -4,15 +4,18 @@ Grup AI-180
 
 ## Takım Elemanları
 * **Arda Tezbaşaran:** Developer / Data Scientist
-* **Ahmet Koca:** Back-End Developer / UI-UX Designer
+* **Ahmet Koca:** Backend Developer / UI-UX Designer
 * **İrem Fındık:** Scrum Master / Product Owner
 * **Edanur Özkan:** Data Scientist / Developer
-* **Murat Köktopçu:** Back-End Developer / Data Scientist
+* **Murat Köktopçu:** Backend Developer / Data Scientist
 
 | Ekip Üyeleri | Roller |
 |--------------|----------|
 | Arda Tezbaşaran  | Developer / Data Scientist  |
-| Hücre 3  | Hücre 4  |
+| Ahmet Koca   | Backend Developer / UI-UX Designer  |
+| İrem Fındık   | Scrum Master / Product Owner  |
+| Edanur Özkan  | UI-UX Designer / Developer  |
+| Murat Köktopçu  | Backend Developer / Data Scientist  |
 
 ## Ürün İsmi
 DermaScope
