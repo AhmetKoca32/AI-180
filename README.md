@@ -119,7 +119,8 @@ Proje boyunca tamamlanması gereken görevlerin toplma puanı 100 olarak belirle
                                                   
 </details>                                             
 
-# Sprint 2   
+<details>
+  <summary># Sprint 2</summary>   
 - **Sprint içinde tamamlanması tahmin edilen puan:** 40 Puan  
 - **Daily Scrum:** Daily Scrum toplantıları Google Meet üzerinden sözlü, WhatsApp üzerinden yazılı şekilde yapılmıştır. Toplantı görselleri paylaşılmıştır. 
 
@@ -205,9 +206,10 @@ Proje boyunca tamamlanması gereken görevlerin toplam puanı 100 olarak belirle
 * Uygulama Tasarımı BackEnd süreci - 5p
 * Gelecek hedeflerin konuşulması - 2p
 * Veri görsellerinin makine öğrenmesine uyarlanması - 5p
+</details>
 
-
-# Sprint 3   
+<details>
+  <summary># Sprint 3</summary>   
 - **Sprint içinde tamamlanması tahmin edilen puan:** 30 Puan  
 - **Daily Scrum:** Daily Scrum toplantıları Google Meet üzerinden sözlü, WhatsApp üzerinden yazılı şekilde yapılmıştır. Toplantı görselleri paylaşılmıştır.
 
@@ -292,3 +294,4 @@ Proje boyunca tamamlanması gereken görevlerin toplam puanı 100 olarak belirle
 * Uygulama ile yapay zeka entegrasyonu - 2,5p
 * Yeni arayüzün geliştirilmesi ve bitirilmesi - 3p
 * Uygulama ve Dataset ile ilgili planların gerçekleştirilmesi - 4p
+</details>
