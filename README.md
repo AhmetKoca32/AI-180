@@ -291,7 +291,7 @@ Proje boyunca tamamlanması gereken görevlerin toplam puanı 100 olarak belirle
 ***Sprint 3 için hedeflenen 30 puana ulaşılmıştır:***
 * Ekip toplantılarına düzenli katılım olması - 0,5p
 * Daily Scrum toplantılarına düzenli katılım olması - 0,5p
-* Sprint Board'da gerçekleştirilmiş hedeflerin gerçekleştirilecek hedeflerden fazla olması - 1p
+* Sprint Board'da belirlenen tüm hedeflerin tamamlanması - 1p
 * Uygulama arayüzünün değiştirilmesi - 2p
 * DataSet geliştirilmesi - 2p
 * Sprint Retrospective ve Review düzenlemeleri - 1p
