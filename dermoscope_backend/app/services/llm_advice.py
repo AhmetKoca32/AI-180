@@ -30,12 +30,13 @@ except Exception as e:
     logger.error(error_msg, exc_info=True)
     raise ValueError(f"Gemini API yapılandırılamadı: {str(e)}")
 
-async def get_gemini_vision_analysis(base64_image: str) -> Dict[str, Any]:
+async def get_gemini_vision_analysis(base64_image: str, prompt: str = None) -> Dict[str, Any]:
     """
     Gemini API'sini kullanarak görsel analizi yapar.
     
     Args:
         base64_image: Base64 kodlanmış görsel verisi
+        prompt: İsteğe bağlı özel prompt metni
         
     Returns:
         Dict: Analiz sonuçları ve tanı bilgisi
@@ -113,18 +114,23 @@ async def get_gemini_vision_analysis(base64_image: str) -> Dict[str, Any]:
             logger.error(f"Model yüklenirken hata: {str(e)}")
             raise ValueError(f"Model yüklenemedi: {str(e)}")
         
-        # Görsel analizi için prompt
-        prompt = """
+        # Varsayılan prompt (cilt lezyonları için)
+        default_prompt = """
         Bu bir cilt lezyonu görüntüsüdür. Lütfen aşağıdaki formatta yanıt verin:
         
         {
             "diagnosis": "olası tanı (Türkçe olarak)",
             "confidence": "yüksek/orta/düşük",
-            "description": "kısa açıklama (Türkçe olarak)"
+            "description": "kısa açıklama (Türkçe olarak)",
+            "recommendations": ["öneri 1", "öneri 2", "öneri 3"]
         }
         
         Sadece yukarıdaki JSON formatında yanıt verin, başka hiçbir açıklama veya metin eklemeyin.
         """
+        
+        # Eğer özel bir prompt verilmediyse, varsayılanı kullan
+        if prompt is None:
+            prompt = default_prompt
         
         # İstek verilerini hazırla - Google'ın beklediği formata uygun hale getiriyoruz
         request_data = {

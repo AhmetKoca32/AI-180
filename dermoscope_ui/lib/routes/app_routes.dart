@@ -33,7 +33,15 @@ class AppRoutes {
     chatConsultation: (context) => ChatConsultation(),
     skinAnalysisHistory: (context) => SkinAnalysisHistory(),
     dashboard: (context) => HomeScreen(),
-    analysisResults: (context) => const AnalysisResults(),
+    analysisResults: (context) {
+      final args = ModalRoute.of(context)?.settings.arguments;
+      if (args is Map<String, dynamic>) {
+        return AnalysisResults(
+          captureType: args['captureType']?.toString() ?? 'skin',
+        );
+      }
+      return const AnalysisResults(captureType: 'skin');
+    },
     profileSettings: (context) => ProfileScreen(),
     '/home': (context) => HomeScreen(),
     '/skin-analysis-history': (context) => SkinAnalysisHistory(),

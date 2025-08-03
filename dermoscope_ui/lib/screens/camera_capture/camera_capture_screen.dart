@@ -3,6 +3,7 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
+import '../../routes/app_routes.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../core/app_export.dart';
@@ -188,7 +189,7 @@ class _CameraCaptureState extends State<CameraCapture> {
         print("Captured image path: ${image.path}");
         Navigator.pushNamed(
           context,
-          '/analysis-results',
+          AppRoutes.analysisResults,
           arguments: {
             'imagePath': image.path,
             'captureType': selectedCaptureType,
@@ -219,7 +220,7 @@ class _CameraCaptureState extends State<CameraCapture> {
       print("Gallery image path: ${image.path}");
       Navigator.pushNamed(
         context,
-        '/analysis-results',
+        AppRoutes.analysisResults,
         arguments: {
           'imagePath': image.path,
           'captureType': selectedCaptureType,

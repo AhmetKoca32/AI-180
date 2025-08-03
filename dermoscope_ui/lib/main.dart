@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
+import 'providers/auth_provider.dart';
 import 'routes/app_routes.dart';
 
 void main() async {
@@ -15,18 +17,21 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Sizer(
-      builder: (context, orientation, deviceType) {
-        return MaterialApp(
-          title: 'Flutter Demo',
-          theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          ),
-          debugShowCheckedModeBanner: false,
-          initialRoute: '/',
-          routes: AppRoutes.routes,
-        );
-      },
+    return MultiProvider(
+      providers: [ChangeNotifierProvider(create: (_) => AuthProvider())],
+      child: Sizer(
+        builder: (context, orientation, deviceType) {
+          return MaterialApp(
+            title: 'Dermoscope',
+            theme: ThemeData(
+              colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+            ),
+            debugShowCheckedModeBanner: false,
+            initialRoute: '/',
+            routes: AppRoutes.routes,
+          );
+        },
+      ),
     );
   }
 }

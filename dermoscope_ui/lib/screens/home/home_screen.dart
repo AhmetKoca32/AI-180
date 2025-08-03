@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../core/theme/app_theme.dart';
+import '../profile/profile_screen.dart';
+import '../skin_analysis_history/skin_analysis_history.dart';
 // import 'package:sizer/sizer.dart';
 
 // TODO: Gerekli app export ve widget importlarını ekleyin
@@ -132,6 +134,454 @@ class _HomeScreenState extends State<HomeScreen>
 
   int _currentTipIndex = 0;
 
+  // Sayfa widget'larını burada tanımlıyoruz
+  List<Widget> get _pages => [
+    // Ana Sayfa (mevcut body içeriği)
+    SingleChildScrollView(
+      controller: _scrollController,
+      child: Padding(
+        padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.04),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Header
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Merhaba,  ${_userData["name"]}',
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+                    Text(
+                      'Bugün cildin nasıl?',
+                      style: TextStyle(fontSize: 15, color: Colors.grey[700]),
+                    ),
+                  ],
+                ),
+                IconButton(
+                  icon: const Icon(Icons.settings),
+                  onPressed: () {
+                    showModalBottomSheet(
+                      context: context,
+                      isScrollControlled: true,
+                      backgroundColor: Colors.transparent,
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(24),
+                        ),
+                      ),
+                      builder: (context) {
+                        List<Map<String, dynamic>> tempRoutines = List.from(
+                          _dailyRoutine,
+                        );
+                        TextEditingController taskController =
+                            TextEditingController();
+                        TimeOfDay? selectedTime;
+                        return StatefulBuilder(
+                          builder: (context, setModalState) {
+                            void addRoutine() {
+                              if (taskController.text.isNotEmpty &&
+                                  selectedTime != null) {
+                                tempRoutines.add({
+                                  "id": DateTime.now().millisecondsSinceEpoch,
+                                  "task": taskController.text,
+                                  "completed": false,
+                                  "time": selectedTime!.format(context),
+                                });
+                                taskController.clear();
+                                selectedTime = null;
+                                setModalState(() {});
+                              }
+                            }
+
+                            void removeRoutine(int index) {
+                              tempRoutines.removeAt(index);
+                              setModalState(() {});
+                            }
+
+                            void editRoutineTime(int index) async {
+                              TimeOfDay? picked = await showTimePicker(
+                                context: context,
+                                initialTime: TimeOfDay(
+                                  hour: int.parse(
+                                    tempRoutines[index]["time"].split(":")[0],
+                                  ),
+                                  minute: int.parse(
+                                    tempRoutines[index]["time"].split(":")[1],
+                                  ),
+                                ),
+                              );
+                              if (picked != null) {
+                                tempRoutines[index]["time"] = picked.format(
+                                  context,
+                                );
+                                setModalState(() {});
+                              }
+                            }
+
+                            return Container(
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: [
+                                    AppTheme
+                                        .lightTheme
+                                        .colorScheme
+                                        .primaryContainer,
+                                    Colors.white,
+                                  ],
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                ),
+                                borderRadius: const BorderRadius.vertical(
+                                  top: Radius.circular(24),
+                                ),
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.only(
+                                  left: 16,
+                                  right: 16,
+                                  top: 16,
+                                  bottom:
+                                      MediaQuery.of(context).viewInsets.bottom +
+                                      16,
+                                ),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Center(
+                                      child: Container(
+                                        width: 40,
+                                        height: 4,
+                                        margin: const EdgeInsets.only(
+                                          bottom: 16,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          color: AppTheme
+                                              .lightTheme
+                                              .colorScheme
+                                              .outline,
+                                          borderRadius: BorderRadius.circular(
+                                            2,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Row(
+                                      children: [
+                                        Icon(
+                                          Icons.tune,
+                                          color: AppTheme
+                                              .lightTheme
+                                              .colorScheme
+                                              .primary,
+                                          size: 28,
+                                        ),
+                                        const SizedBox(width: 8),
+                                        const Text(
+                                          "Rutini Özelleştir",
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    const SizedBox(height: 16),
+                                    ...List.generate(tempRoutines.length, (
+                                      index,
+                                    ) {
+                                      final routine = tempRoutines[index];
+                                      return Card(
+                                        elevation: 3,
+                                        shadowColor: AppTheme.shadowLight,
+                                        margin: const EdgeInsets.symmetric(
+                                          vertical: 6,
+                                        ),
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            14,
+                                          ),
+                                        ),
+                                        child: ListTile(
+                                          leading: CircleAvatar(
+                                            backgroundColor: AppTheme
+                                                .lightTheme
+                                                .colorScheme
+                                                .primaryContainer,
+                                            child: Icon(
+                                              Icons.check,
+                                              color: AppTheme.successLight,
+                                            ),
+                                          ),
+                                          title: Text(
+                                            routine["task"],
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                          ),
+                                          subtitle: Text(
+                                            routine["time"],
+                                            style: TextStyle(
+                                              color: AppTheme
+                                                  .lightTheme
+                                                  .colorScheme
+                                                  .primary,
+                                            ),
+                                          ),
+                                          trailing: Row(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              IconButton(
+                                                icon: Icon(
+                                                  Icons.access_time,
+                                                  color: AppTheme
+                                                      .lightTheme
+                                                      .colorScheme
+                                                      .primary,
+                                                ),
+                                                onPressed: () =>
+                                                    editRoutineTime(index),
+                                              ),
+                                              IconButton(
+                                                icon: const Icon(
+                                                  Icons.delete,
+                                                  color: AppTheme.errorLight,
+                                                ),
+                                                onPressed: () =>
+                                                    removeRoutine(index),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      );
+                                    }),
+                                    const Divider(height: 32),
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        color: AppTheme
+                                            .lightTheme
+                                            .colorScheme
+                                            .primaryContainer,
+                                        borderRadius: BorderRadius.circular(12),
+                                      ),
+                                      padding: const EdgeInsets.all(12),
+                                      child: Row(
+                                        children: [
+                                          Expanded(
+                                            child: TextField(
+                                              controller: taskController,
+                                              decoration: const InputDecoration(
+                                                labelText: "Yeni rutin adı",
+                                                border: InputBorder.none,
+                                              ),
+                                            ),
+                                          ),
+                                          const SizedBox(width: 8),
+                                          ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                              backgroundColor:
+                                                  AppTheme.successLight,
+                                              foregroundColor: Colors.white,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
+                                              ),
+                                            ),
+                                            onPressed: () async {
+                                              selectedTime =
+                                                  await showTimePicker(
+                                                    context: context,
+                                                    initialTime:
+                                                        TimeOfDay.now(),
+                                                  );
+                                              setModalState(() {});
+                                            },
+                                            child: Text(
+                                              selectedTime == null
+                                                  ? "Saat"
+                                                  : selectedTime!.format(
+                                                      context,
+                                                    ),
+                                            ),
+                                          ),
+                                          const SizedBox(width: 8),
+                                          ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                              backgroundColor: AppTheme
+                                                  .lightTheme
+                                                  .colorScheme
+                                                  .primary,
+                                              foregroundColor: Colors.white,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
+                                              ),
+                                            ),
+                                            onPressed: addRoutine,
+                                            child: const Text("Ekle"),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    const SizedBox(height: 16),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(context),
+                                          child: const Text("Kapat"),
+                                        ),
+                                        const SizedBox(width: 8),
+                                        ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor:
+                                                AppTheme.successLight,
+                                            foregroundColor: Colors.white,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                          ),
+                                          onPressed: () {
+                                            setState(() {
+                                              _dailyRoutine
+                                                ..clear()
+                                                ..addAll(tempRoutines);
+                                            });
+                                            Navigator.pop(context);
+                                          },
+                                          child: const Text("Kaydet"),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                      },
+                    );
+                  },
+                ),
+              ],
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+            // Health Score Indicator
+            Center(
+              child: Container(
+                width: MediaQuery.of(context).size.width * 0.35,
+                height: MediaQuery.of(context).size.width * 0.35,
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.35,
+                      height: MediaQuery.of(context).size.width * 0.35,
+                      child: CircularProgressIndicator(
+                        value: (_userData["skinHealthScore"] as int) / 100,
+                        strokeWidth: 8,
+                        backgroundColor: Colors.grey.withOpacity(0.2),
+                        valueColor: AlwaysStoppedAnimation<Color>(
+                          _getScoreColor(_userData["skinHealthScore"] as int),
+                        ),
+                      ),
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          '${_userData["skinHealthScore"]}',
+                          style: TextStyle(
+                            fontSize: 28,
+                            fontWeight: FontWeight.bold,
+                            color: _getScoreColor(
+                              _userData["skinHealthScore"] as int,
+                            ),
+                          ),
+                        ),
+                        const Text(
+                          'Cilt Skoru',
+                          style: TextStyle(fontSize: 14),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+            // 1. Analysis Summary
+            AnalysisSummaryCardWidget(
+              analyses: _recentAnalyses,
+              onTap: (analysis) {},
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+            // 2. Progress Chart
+            ProgressChartWidget(progressData: _progressData),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+            // 3. Quick Stats
+            QuickStatsWidget(
+              weeklyCount: _userData["weeklyAnalysisCount"] as int,
+              improvementPercentage: _userData["improvementPercentage"] as int,
+              streakCounter: _userData["streakCounter"] as int,
+              hasAchievement: _userData["hasAchievementBadge"] as bool,
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+            // 4. Daily Routine
+            DailyRoutineWidget(
+              routines: _dailyRoutine,
+              onToggle: (index, value) {
+                setState(() {
+                  _dailyRoutine[index]["completed"] = value;
+                });
+              },
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+            // 5. Today's Tip
+            TodaysTipWidget(
+              tips: _skincareTips,
+              currentIndex: _currentTipIndex,
+              onSwipe: () {
+                setState(() {
+                  _currentTipIndex =
+                      (_currentTipIndex + 1) % _skincareTips.length;
+                });
+              },
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+            // 6. Upcoming Reminders
+            UpcomingRemindersWidget(
+              reminders: _upcomingReminders,
+              onComplete: (index) {
+                setState(() {
+                  _upcomingReminders.removeAt(index);
+                });
+              },
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.04),
+          ],
+        ),
+      ),
+    ),
+    // Geçmiş
+    SkinAnalysisHistory(),
+    // Analiz ve Danışman burada boş bırakılacak çünkü pushNamed ile açılacak
+    SizedBox.shrink(),
+    SizedBox.shrink(),
+    // Profil
+    ProfileScreen(),
+  ];
+
   @override
   void initState() {
     super.initState();
@@ -143,6 +593,457 @@ class _HomeScreenState extends State<HomeScreen>
       CurvedAnimation(parent: _fabAnimationController, curve: Curves.easeInOut),
     );
     _fabAnimationController.forward();
+    // Sayfa listesini burada oluştur
+    // _pages = [
+    //   // Ana Sayfa (mevcut body içeriği)
+    //   SingleChildScrollView(
+    //     controller: _scrollController,
+    //     child: Padding(
+    //       padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.04),
+    //       child: Column(
+    //         crossAxisAlignment: CrossAxisAlignment.start,
+    //         children: [
+    //           // Header
+    //           Row(
+    //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    //             children: [
+    //               Column(
+    //                 crossAxisAlignment: CrossAxisAlignment.start,
+    //                 children: [
+    //                   Text(
+    //                     'Merhaba,  ${_userData["name"]}',
+    //                     style: TextStyle(
+    //                       fontSize: 22,
+    //                       fontWeight: FontWeight.bold,
+    //                     ),
+    //                   ),
+    //                   SizedBox(
+    //                     height: MediaQuery.of(context).size.height * 0.01,
+    //                   ),
+    //                   Text(
+    //                     'Bugün cildin nasıl?',
+    //                     style: TextStyle(fontSize: 15, color: Colors.grey[700]),
+    //                   ),
+    //                 ],
+    //               ),
+    //               IconButton(
+    //                 icon: const Icon(Icons.settings),
+    //                 onPressed: () {
+    //                   showModalBottomSheet(
+    //                     context: context,
+    //                     isScrollControlled: true,
+    //                     backgroundColor: Colors.transparent,
+    //                     shape: const RoundedRectangleBorder(
+    //                       borderRadius: BorderRadius.vertical(
+    //                         top: Radius.circular(24),
+    //                       ),
+    //                     ),
+    //                     builder: (context) {
+    //                       List<Map<String, dynamic>> tempRoutines = List.from(
+    //                         _dailyRoutine,
+    //                       );
+    //                       TextEditingController taskController =
+    //                           TextEditingController();
+    //                       TimeOfDay? selectedTime;
+    //                       return StatefulBuilder(
+    //                         builder: (context, setModalState) {
+    //                           void addRoutine() {
+    //                             if (taskController.text.isNotEmpty &&
+    //                                 selectedTime != null) {
+    //                               tempRoutines.add({
+    //                                 "id": DateTime.now().millisecondsSinceEpoch,
+    //                                 "task": taskController.text,
+    //                                 "completed": false,
+    //                                 "time": selectedTime!.format(context),
+    //                               });
+    //                               taskController.clear();
+    //                               selectedTime = null;
+    //                               setModalState(() {});
+    //                             }
+    //                           }
+    //                           void editRoutineTime(int index) async {
+    //                             TimeOfDay? picked = await showTimePicker(
+    //                               context: context,
+    //                               initialTime: TimeOfDay(
+    //                                 hour: int.parse(
+    //                                   tempRoutines[index]["time"].split(":")[0],
+    //                                 ),
+    //                                 minute: int.parse(
+    //                                   tempRoutines[index]["time"].split(":")[1],
+    //                                 ),
+    //                               ),
+    //                             );
+    //                             if (picked != null) {
+    //                               tempRoutines[index]["time"] = picked.format(
+    //                                 context,
+    //                               );
+    //                               setModalState(() {});
+    //                             }
+    //                           }
+    //                           void removeRoutine(int index) {
+    //                             tempRoutines.removeAt(index);
+    //                             setModalState(() {});
+    //                           }
+    //                           return Container(
+    //                             decoration: BoxDecoration(
+    //                               gradient: LinearGradient(
+    //                                 colors: [
+    //                                   AppTheme
+    //                                       .lightTheme
+    //                                       .colorScheme
+    //                                       .primaryContainer,
+    //                                   Colors.white,
+    //                                 ],
+    //                                 begin: Alignment.topCenter,
+    //                                 end: Alignment.bottomCenter,
+    //                               ),
+    //                               borderRadius: const BorderRadius.vertical(
+    //                                 top: Radius.circular(24),
+    //                               ),
+    //                             ),
+    //                             child: Padding(
+    //                               padding: EdgeInsets.only(
+    //                                 left: 16,
+    //                                 right: 16,
+    //                                 top: 16,
+    //                                 bottom:
+    //                                     MediaQuery.of(
+    //                                       context,
+    //                                     ).viewInsets.bottom +
+    //                                     16,
+    //                               ),
+    //                               child: Column(
+    //                                 mainAxisSize: MainAxisSize.min,
+    //                                 crossAxisAlignment:
+    //                                     CrossAxisAlignment.start,
+    //                                 children: [
+    //                                   Center(
+    //                                     child: Container(
+    //                                       width: 40,
+    //                                       height: 4,
+    //                                       margin: const EdgeInsets.only(
+    //                                         bottom: 16,
+    //                                       ),
+    //                                       decoration: BoxDecoration(
+    //                                         color: AppTheme
+    //                                             .lightTheme
+    //                                             .colorScheme
+    //                                             .outline,
+    //                                         borderRadius:
+    //                                             BorderRadius.circular(2),
+    //                                       ),
+    //                                     ),
+    //                                   ),
+    //                                   Row(
+    //                                     children: [
+    //                                       Icon(
+    //                                         Icons.tune,
+    //                                         color: AppTheme
+    //                                             .lightTheme
+    //                                             .colorScheme
+    //                                             .primary,
+    //                                         size: 28,
+    //                                       ),
+    //                                       const SizedBox(width: 8),
+    //                                       const Text(
+    //                                         "Rutini Özelleştir",
+    //                                         style: TextStyle(
+    //                                           fontSize: 20,
+    //                                           fontWeight: FontWeight.bold,
+    //                                         ),
+    //                                       ),
+    //                                     ],
+    //                                   ),
+    //                                   const SizedBox(height: 16),
+    //                                   ...List.generate(tempRoutines.length, (
+    //                                     index,
+    //                                   ) {
+    //                                     final routine = tempRoutines[index];
+    //                                     return Card(
+    //                                       elevation: 3,
+    //                                       shadowColor: AppTheme.shadowLight,
+    //                                       margin: const EdgeInsets.symmetric(
+    //                                         vertical: 6,
+    //                                       ),
+    //                                       shape: RoundedRectangleBorder(
+    //                                         borderRadius: BorderRadius.circular(
+    //                                           14,
+    //                                         ),
+    //                                       ),
+    //                                       child: ListTile(
+    //                                         leading: CircleAvatar(
+    //                                           backgroundColor: AppTheme
+    //                                               .lightTheme
+    //                                               .colorScheme
+    //                                               .primaryContainer,
+    //                                           child: Icon(
+    //                                             Icons.check,
+    //                                             color: AppTheme.successLight,
+    //                                           ),
+    //                                         ),
+    //                                         title: Text(
+    //                                           routine["task"],
+    //                                           style: TextStyle(
+    //                                             fontWeight: FontWeight.w600,
+    //                                           ),
+    //                                         ),
+    //                                         subtitle: Text(
+    //                                           routine["time"],
+    //                                           style: TextStyle(
+    //                                             color: AppTheme
+    //                                                 .lightTheme
+    //                                                 .colorScheme
+    //                                                 .primary,
+    //                                           ),
+    //                                         ),
+    //                                         trailing: Row(
+    //                                           mainAxisSize: MainAxisSize.min,
+    //                                           children: [
+    //                                             IconButton(
+    //                                               icon: Icon(
+    //                                                 Icons.access_time,
+    //                                                 color: AppTheme
+    //                                                     .lightTheme
+    //                                                     .colorScheme
+    //                                                     .primary,
+    //                                               ),
+    //                                               onPressed: () =>
+    //                                                   editRoutineTime(index),
+    //                                             ),
+    //                                             IconButton(
+    //                                               icon: const Icon(
+    //                                                 Icons.delete,
+    //                                                 color: AppTheme.errorLight,
+    //                                               ),
+    //                                               onPressed: () =>
+    //                                                   removeRoutine(index),
+    //                                             ),
+    //                                           ],
+    //                                         ),
+    //                                       ),
+    //                                     );
+    //                                   }),
+    //                                   const Divider(height: 32),
+    //                                   Container(
+    //                                     decoration: BoxDecoration(
+    //                                       color: AppTheme
+    //                                           .lightTheme
+    //                                           .colorScheme
+    //                                           .primaryContainer,
+    //                                       borderRadius: BorderRadius.circular(
+    //                                         12,
+    //                                       ),
+    //                                     ),
+    //                                     padding: const EdgeInsets.all(12),
+    //                                     child: Row(
+    //                                       children: [
+    //                                         Expanded(
+    //                                           child: TextField(
+    //                                             controller: taskController,
+    //                                             decoration:
+    //                                                 const InputDecoration(
+    //                                                   labelText:
+    //                                                       "Yeni rutin adı",
+    //                                                   border: InputBorder.none,
+    //                                                 ),
+    //                                           ),
+    //                                         ),
+    //                                         const SizedBox(width: 8),
+    //                                         ElevatedButton(
+    //                                           style: ElevatedButton.styleFrom(
+    //                                             backgroundColor:
+    //                                                 AppTheme.successLight,
+    //                                             foregroundColor: Colors.white,
+    //                                             shape: RoundedRectangleBorder(
+    //                                               borderRadius:
+    //                                                   BorderRadius.circular(8),
+    //                                             ),
+    //                                           ),
+    //                                           onPressed: () async {
+    //                                             selectedTime =
+    //                                                 await showTimePicker(
+    //                                                   context: context,
+    //                                                   initialTime:
+    //                                                       TimeOfDay.now(),
+    //                                                 );
+    //                                             setModalState(() {});
+    //                                           },
+    //                                           child: Text(
+    //                                             selectedTime == null
+    //                                                 ? "Saat"
+    //                                                 : selectedTime!.format(
+    //                                                     context,
+    //                                                   ),
+    //                                           ),
+    //                                         ),
+    //                                         const SizedBox(width: 8),
+    //                                         ElevatedButton(
+    //                                           style: ElevatedButton.styleFrom(
+    //                                             backgroundColor: AppTheme
+    //                                                 .lightTheme
+    //                                                 .colorScheme
+    //                                                 .primary,
+    //                                             foregroundColor: Colors.white,
+    //                                             shape: RoundedRectangleBorder(
+    //                                               borderRadius:
+    //                                                   BorderRadius.circular(8),
+    //                                             ),
+    //                                           ),
+    //                                           onPressed: addRoutine,
+    //                                           child: const Text("Ekle"),
+    //                                         ),
+    //                                       ],
+    //                                     ),
+    //                                   ),
+    //                                   const SizedBox(height: 16),
+    //                                   Row(
+    //                                     mainAxisAlignment:
+    //                                         MainAxisAlignment.end,
+    //                                     children: [
+    //                                       TextButton(
+    //                                         onPressed: () =>
+    //                                             Navigator.pop(context),
+    //                                         child: const Text("Kapat"),
+    //                                       ),
+    //                                       const SizedBox(width: 8),
+    //                                       ElevatedButton(
+    //                                         style: ElevatedButton.styleFrom(
+    //                                           backgroundColor:
+    //                                               AppTheme.successLight,
+    //                                           foregroundColor: Colors.white,
+    //                                           shape: RoundedRectangleBorder(
+    //                                             borderRadius:
+    //                                                 BorderRadius.circular(8),
+    //                                           ),
+    //                                         ),
+    //                                         onPressed: () {
+    //                                           setState(() {
+    //                                             _dailyRoutine
+    //                                               ..clear()
+    //                                               ..addAll(tempRoutines);
+    //                                           });
+    //                                           Navigator.pop(context);
+    //                                         },
+    //                                         child: const Text("Kaydet"),
+    //                                       ),
+    //                                     ],
+    //                                   ),
+    //                                 ],
+    //                               ),
+    //                             ),
+    //                           );
+    //                         },
+    //                       );
+    //                     },
+    //                   );
+    //                 },
+    //               ),
+    //             ],
+    //           ),
+    //           SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+    //           // Health Score Indicator
+    //           Center(
+    //             child: Container(
+    //               width: MediaQuery.of(context).size.width * 0.35,
+    //               height: MediaQuery.of(context).size.width * 0.35,
+    //               child: Stack(
+    //                 alignment: Alignment.center,
+    //                 children: [
+    //                   SizedBox(
+    //                     width: MediaQuery.of(context).size.width * 0.35,
+    //                     height: MediaQuery.of(context).size.width * 0.35,
+    //                     child: CircularProgressIndicator(
+    //                       value: (_userData["skinHealthScore"] as int) / 100,
+    //                       strokeWidth: 8,
+    //                       backgroundColor: Colors.grey.withOpacity(0.2),
+    //                       valueColor: AlwaysStoppedAnimation<Color>(
+    //                         _getScoreColor(_userData["skinHealthScore"] as int),
+    //                       ),
+    //                     ),
+    //                   ),
+    //                   Column(
+    //                     mainAxisAlignment: MainAxisAlignment.center,
+    //                     children: [
+    //                       Text(
+    //                         '${_userData["skinHealthScore"]}',
+    //                         style: TextStyle(
+    //                           fontSize: 28,
+    //                           fontWeight: FontWeight.bold,
+    //                           color: _getScoreColor(
+    //                             _userData["skinHealthScore"] as int,
+    //                           ),
+    //                         ),
+    //                       ),
+    //                       const Text(
+    //                         'Cilt Skoru',
+    //                         style: TextStyle(fontSize: 14),
+    //                       ),
+    //                     ],
+    //                   ),
+    //                 ],
+    //               ),
+    //             ),
+    //           ),
+    //           SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+    //           // 1. Analysis Summary
+    //           AnalysisSummaryCardWidget(
+    //             analyses: _recentAnalyses,
+    //             onTap: (analysis) {},
+    //           ),
+    //           SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+    //           // 2. Progress Chart
+    //           ProgressChartWidget(progressData: _progressData),
+    //           SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+    //           // 3. Quick Stats
+    //           QuickStatsWidget(
+    //             weeklyCount: _userData["weeklyAnalysisCount"] as int,
+    //             improvementPercentage:
+    //                 _userData["improvementPercentage"] as int,
+    //             streakCounter: _userData["streakCounter"] as int,
+    //             hasAchievement: _userData["hasAchievementBadge"] as bool,
+    //           ),
+    //           SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+    //           // 4. Daily Routine
+    //           DailyRoutineWidget(
+    //             routines: _dailyRoutine,
+    //             onToggle: (index, value) {
+    //               setState(() {
+    //                 _dailyRoutine[index]["completed"] = value;
+    //               });
+    //             },
+    //           ),
+    //           SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+    //           // 5. Today's Tip
+    //           TodaysTipWidget(
+    //             tips: _skincareTips,
+    //             currentIndex: _currentTipIndex,
+    //             onSwipe: () {
+    //               setState(() {
+    //                 _currentTipIndex =
+    //                     (_currentTipIndex + 1) % _skincareTips.length;
+    //               });
+    //             },
+    //           ),
+    //           SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+    //           // 6. Upcoming Reminders
+    //           UpcomingRemindersWidget(
+    //             reminders: _upcomingReminders,
+    //             onComplete: (index) {
+    //               setState(() {
+    //                 _upcomingReminders.removeAt(index);
+    //               });
+    //             },
+    //           ),
+    //           SizedBox(height: MediaQuery.of(context).size.height * 0.04),
+    //         ],
+    //       ),
+    //     ),
+    //   ),
+    //   SkinAnalysisHistory(),
+    //   SizedBox.shrink(),
+    //   SizedBox.shrink(),
+    //   ProfileScreen(),
+    // ];
   }
 
   @override
@@ -153,19 +1054,15 @@ class _HomeScreenState extends State<HomeScreen>
   }
 
   void _onBottomNavTap(int index) {
-    setState(() {
-      _currentBottomNavIndex = index;
-    });
-    if (index == 1) {
-      Navigator.pushNamed(context, '/skin-analysis-history');
-    } else if (index == 2) {
+    if (index == 2) {
       Navigator.pushNamed(context, '/camera-capture');
     } else if (index == 3) {
       Navigator.pushNamed(context, '/chat-consultation');
-    } else if (index == 4) {
-      Navigator.pushNamed(context, '/profile-settings');
+    } else {
+      setState(() {
+        _currentBottomNavIndex = index;
+      });
     }
-    // Diğer sekmeler için navigation eklenebilir
   }
 
   Color _getScoreColor(int score) {
@@ -176,470 +1073,10 @@ class _HomeScreenState extends State<HomeScreen>
 
   @override
   Widget build(BuildContext context) {
-    final mediaQuery = MediaQuery.of(context);
-    final width = mediaQuery.size.width;
-    final height = mediaQuery.size.height;
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: SingleChildScrollView(
-          controller: _scrollController,
-          child: Padding(
-            padding: EdgeInsets.all(width * 0.04),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Header
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Merhaba,  ${_userData["name"]}',
-                          style: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(height: height * 0.01),
-                        Text(
-                          'Bugün cildin nasıl?',
-                          style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.grey[700],
-                          ),
-                        ),
-                      ],
-                    ),
-                    IconButton(
-                      icon: const Icon(Icons.settings),
-                      onPressed: () {
-                        showModalBottomSheet(
-                          context: context,
-                          isScrollControlled: true,
-                          backgroundColor: Colors.transparent,
-                          shape: const RoundedRectangleBorder(
-                            borderRadius: BorderRadius.vertical(
-                              top: Radius.circular(24),
-                            ),
-                          ),
-                          builder: (context) {
-                            List<Map<String, dynamic>> tempRoutines = List.from(
-                              _dailyRoutine,
-                            );
-                            TextEditingController taskController =
-                                TextEditingController();
-                            TimeOfDay? selectedTime;
-                            return StatefulBuilder(
-                              builder: (context, setModalState) {
-                                void addRoutine() {
-                                  if (taskController.text.isNotEmpty &&
-                                      selectedTime != null) {
-                                    tempRoutines.add({
-                                      "id":
-                                          DateTime.now().millisecondsSinceEpoch,
-                                      "task": taskController.text,
-                                      "completed": false,
-                                      "time": selectedTime!.format(context),
-                                    });
-                                    taskController.clear();
-                                    selectedTime = null;
-                                    setModalState(() {});
-                                  }
-                                }
-
-                                void removeRoutine(int index) {
-                                  tempRoutines.removeAt(index);
-                                  setModalState(() {});
-                                }
-
-                                void editRoutineTime(int index) async {
-                                  TimeOfDay? picked = await showTimePicker(
-                                    context: context,
-                                    initialTime: TimeOfDay(
-                                      hour: int.parse(
-                                        tempRoutines[index]["time"].split(
-                                          ":",
-                                        )[0],
-                                      ),
-                                      minute: int.parse(
-                                        tempRoutines[index]["time"].split(
-                                          ":",
-                                        )[1],
-                                      ),
-                                    ),
-                                  );
-                                  if (picked != null) {
-                                    tempRoutines[index]["time"] = picked.format(
-                                      context,
-                                    );
-                                    setModalState(() {});
-                                  }
-                                }
-
-                                return Container(
-                                  decoration: BoxDecoration(
-                                    gradient: LinearGradient(
-                                      colors: [
-                                        AppTheme
-                                            .lightTheme
-                                            .colorScheme
-                                            .primaryContainer,
-                                        Colors.white,
-                                      ],
-                                      begin: Alignment.topCenter,
-                                      end: Alignment.bottomCenter,
-                                    ),
-                                    borderRadius: const BorderRadius.vertical(
-                                      top: Radius.circular(24),
-                                    ),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsets.only(
-                                      left: 16,
-                                      right: 16,
-                                      top: 16,
-                                      bottom:
-                                          MediaQuery.of(
-                                            context,
-                                          ).viewInsets.bottom +
-                                          16,
-                                    ),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Center(
-                                          child: Container(
-                                            width: 40,
-                                            height: 4,
-                                            margin: const EdgeInsets.only(
-                                              bottom: 16,
-                                            ),
-                                            decoration: BoxDecoration(
-                                              color: AppTheme
-                                                  .lightTheme
-                                                  .colorScheme
-                                                  .outline,
-                                              borderRadius:
-                                                  BorderRadius.circular(2),
-                                            ),
-                                          ),
-                                        ),
-                                        Row(
-                                          children: [
-                                            Icon(
-                                              Icons.tune,
-                                              color: AppTheme
-                                                  .lightTheme
-                                                  .colorScheme
-                                                  .primary,
-                                              size: 28,
-                                            ),
-                                            const SizedBox(width: 8),
-                                            const Text(
-                                              "Rutini Özelleştir",
-                                              style: TextStyle(
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        const SizedBox(height: 16),
-                                        ...List.generate(tempRoutines.length, (
-                                          index,
-                                        ) {
-                                          final routine = tempRoutines[index];
-                                          return Card(
-                                            elevation: 3,
-                                            shadowColor: AppTheme.shadowLight,
-                                            margin: const EdgeInsets.symmetric(
-                                              vertical: 6,
-                                            ),
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(14),
-                                            ),
-                                            child: ListTile(
-                                              leading: CircleAvatar(
-                                                backgroundColor: AppTheme
-                                                    .lightTheme
-                                                    .colorScheme
-                                                    .primaryContainer,
-                                                child: Icon(
-                                                  Icons.check,
-                                                  color: AppTheme.successLight,
-                                                ),
-                                              ),
-                                              title: Text(
-                                                routine["task"],
-                                                style: TextStyle(
-                                                  fontWeight: FontWeight.w600,
-                                                ),
-                                              ),
-                                              subtitle: Text(
-                                                routine["time"],
-                                                style: TextStyle(
-                                                  color: AppTheme
-                                                      .lightTheme
-                                                      .colorScheme
-                                                      .primary,
-                                                ),
-                                              ),
-                                              trailing: Row(
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: [
-                                                  IconButton(
-                                                    icon: Icon(
-                                                      Icons.access_time,
-                                                      color: AppTheme
-                                                          .lightTheme
-                                                          .colorScheme
-                                                          .primary,
-                                                    ),
-                                                    onPressed: () =>
-                                                        editRoutineTime(index),
-                                                  ),
-                                                  IconButton(
-                                                    icon: const Icon(
-                                                      Icons.delete,
-                                                      color:
-                                                          AppTheme.errorLight,
-                                                    ),
-                                                    onPressed: () =>
-                                                        removeRoutine(index),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          );
-                                        }),
-                                        const Divider(height: 32),
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            color: AppTheme
-                                                .lightTheme
-                                                .colorScheme
-                                                .primaryContainer,
-                                            borderRadius: BorderRadius.circular(
-                                              12,
-                                            ),
-                                          ),
-                                          padding: const EdgeInsets.all(12),
-                                          child: Row(
-                                            children: [
-                                              Expanded(
-                                                child: TextField(
-                                                  controller: taskController,
-                                                  decoration:
-                                                      const InputDecoration(
-                                                        labelText:
-                                                            "Yeni rutin adı",
-                                                        border:
-                                                            InputBorder.none,
-                                                      ),
-                                                ),
-                                              ),
-                                              const SizedBox(width: 8),
-                                              ElevatedButton(
-                                                style: ElevatedButton.styleFrom(
-                                                  backgroundColor:
-                                                      AppTheme.successLight,
-                                                  foregroundColor: Colors.white,
-                                                  shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                          8,
-                                                        ),
-                                                  ),
-                                                ),
-                                                onPressed: () async {
-                                                  selectedTime =
-                                                      await showTimePicker(
-                                                        context: context,
-                                                        initialTime:
-                                                            TimeOfDay.now(),
-                                                      );
-                                                  setModalState(() {});
-                                                },
-                                                child: Text(
-                                                  selectedTime == null
-                                                      ? "Saat"
-                                                      : selectedTime!.format(
-                                                          context,
-                                                        ),
-                                                ),
-                                              ),
-                                              const SizedBox(width: 8),
-                                              ElevatedButton(
-                                                style: ElevatedButton.styleFrom(
-                                                  backgroundColor: AppTheme
-                                                      .lightTheme
-                                                      .colorScheme
-                                                      .primary,
-                                                  foregroundColor: Colors.white,
-                                                  shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                          8,
-                                                        ),
-                                                  ),
-                                                ),
-                                                onPressed: addRoutine,
-                                                child: const Text("Ekle"),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        const SizedBox(height: 16),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.end,
-                                          children: [
-                                            TextButton(
-                                              onPressed: () =>
-                                                  Navigator.pop(context),
-                                              child: const Text("Kapat"),
-                                            ),
-                                            const SizedBox(width: 8),
-                                            ElevatedButton(
-                                              style: ElevatedButton.styleFrom(
-                                                backgroundColor:
-                                                    AppTheme.successLight,
-                                                foregroundColor: Colors.white,
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(8),
-                                                ),
-                                              ),
-                                              onPressed: () {
-                                                setState(() {
-                                                  _dailyRoutine
-                                                    ..clear()
-                                                    ..addAll(tempRoutines);
-                                                });
-                                                Navigator.pop(context);
-                                              },
-                                              child: const Text("Kaydet"),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                );
-                              },
-                            );
-                          },
-                        );
-                      },
-                    ),
-                  ],
-                ),
-                SizedBox(height: height * 0.03),
-                // Health Score Indicator
-                Center(
-                  child: Container(
-                    width: width * 0.35,
-                    height: width * 0.35,
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        SizedBox(
-                          width: width * 0.35,
-                          height: width * 0.35,
-                          child: CircularProgressIndicator(
-                            value: (_userData["skinHealthScore"] as int) / 100,
-                            strokeWidth: 8,
-                            backgroundColor: Colors.grey.withOpacity(0.2),
-                            valueColor: AlwaysStoppedAnimation<Color>(
-                              _getScoreColor(
-                                _userData["skinHealthScore"] as int,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              '${_userData["skinHealthScore"]}',
-                              style: TextStyle(
-                                fontSize: 28,
-                                fontWeight: FontWeight.bold,
-                                color: _getScoreColor(
-                                  _userData["skinHealthScore"] as int,
-                                ),
-                              ),
-                            ),
-                            const Text(
-                              'Cilt Skoru',
-                              style: TextStyle(fontSize: 14),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                SizedBox(height: height * 0.03),
-                // 1. Analysis Summary
-                AnalysisSummaryCardWidget(
-                  analyses: _recentAnalyses,
-                  onTap: (analysis) {},
-                ),
-                SizedBox(height: height * 0.02),
-                // 2. Progress Chart
-                ProgressChartWidget(progressData: _progressData),
-                SizedBox(height: height * 0.02),
-                // 3. Quick Stats
-                QuickStatsWidget(
-                  weeklyCount: _userData["weeklyAnalysisCount"] as int,
-                  improvementPercentage:
-                      _userData["improvementPercentage"] as int,
-                  streakCounter: _userData["streakCounter"] as int,
-                  hasAchievement: _userData["hasAchievementBadge"] as bool,
-                ),
-                SizedBox(height: height * 0.02),
-                // 4. Daily Routine
-                DailyRoutineWidget(
-                  routines: _dailyRoutine,
-                  onToggle: (index, value) {
-                    setState(() {
-                      _dailyRoutine[index]["completed"] = value;
-                    });
-                  },
-                ),
-                SizedBox(height: height * 0.02),
-                // 5. Today's Tip
-                TodaysTipWidget(
-                  tips: _skincareTips,
-                  currentIndex: _currentTipIndex,
-                  onSwipe: () {
-                    setState(() {
-                      _currentTipIndex =
-                          (_currentTipIndex + 1) % _skincareTips.length;
-                    });
-                  },
-                ),
-                SizedBox(height: height * 0.02),
-                // 6. Upcoming Reminders
-                UpcomingRemindersWidget(
-                  reminders: _upcomingReminders,
-                  onComplete: (index) {
-                    setState(() {
-                      _upcomingReminders.removeAt(index);
-                    });
-                  },
-                ),
-                SizedBox(height: height * 0.04),
-              ],
-            ),
-          ),
+        child: IndexedStack(index: _currentBottomNavIndex, children: _pages,
         ),
       ),
       floatingActionButton: ScaleTransition(

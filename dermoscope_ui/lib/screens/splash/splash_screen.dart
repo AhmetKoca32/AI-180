@@ -2,6 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
+import '../../providers/auth_provider.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -20,6 +23,14 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   void initState() {
     super.initState();
+    _initializeApp();
+  }
+
+  Future<void> _initializeApp() async {
+    // Auth provider'ı başlat
+    final authProvider = Provider.of<AuthProvider>(context, listen: false);
+    await authProvider.initialize();
+
     // Healthy Skin animasyonu
     Timer(const Duration(milliseconds: 400), () {
       setState(() {
@@ -36,15 +47,24 @@ class _SplashScreenState extends State<SplashScreen>
             _logoOpacity = 1.0;
             _logoScale = 1.0;
           });
-          // 2 saniye sonra login ekranına geç
+          // 2 saniye sonra uygun ekrana geç
           Timer(const Duration(seconds: 2), () {
             if (mounted) {
-              Navigator.of(context).pushReplacementNamed('/login');
+              _navigateToNextScreen();
             }
           });
         });
       });
     });
+  }
+
+  void _navigateToNextScreen() {
+    final authProvider = Provider.of<AuthProvider>(context, listen: false);
+    if (authProvider.isLoggedIn) {
+      Navigator.of(context).pushReplacementNamed('/home');
+    } else {
+      Navigator.of(context).pushReplacementNamed('/login');
+    }
   }
 
   @override

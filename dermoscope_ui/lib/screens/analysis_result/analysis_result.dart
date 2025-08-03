@@ -3,22 +3,26 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../../core/utils/text_utils.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../core/app_export.dart';
+import '../../core/utils/text_utils.dart';
 import '../../services/api_service.dart' as api_service;
 import '../../services/exceptions/api_exception.dart';
 import './widgets/action_buttons_widget.dart';
 import './widgets/analysis_image_widget.dart';
 import './widgets/condition_card_widget.dart';
 import './widgets/confidence_score_widget.dart';
+import './widgets/hair_analysis_form_widget.dart';
 import './widgets/progress_comparison_widget.dart';
 import './widgets/recommendations_widget.dart';
 import './widgets/risk_assessment_widget.dart';
 
 class AnalysisResults extends StatefulWidget {
-  const AnalysisResults({Key? key}) : super(key: key);
+  final String captureType;
+
+  const AnalysisResults({Key? key, this.captureType = 'skin'})
+    : super(key: key);
 
   @override
   State<AnalysisResults> createState() => _AnalysisResultsState();
@@ -444,15 +448,21 @@ class _AnalysisResultsState extends State<AnalysisResults> {
 
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)?.settings.arguments;
-    String? imagePath;
-    if (args is String) {
-      imagePath = args;
-    } else if (args is Map<String, String>) {
-      imagePath = args['imagePath'];
-    } else {
-      imagePath = null;
-    }
+    // Safely extract route arguments
+    final routeArgs = ModalRoute.of(context)?.settings.arguments;
+    final Map<String, dynamic> args = routeArgs is Map<String, dynamic>
+        ? Map<String, dynamic>.from(routeArgs)
+        : <String, dynamic>{};
+
+    // Safely extract imagePath and captureType with null checks
+    final String? imagePath = args['imagePath']?.toString();
+
+    // Get captureType from widget or args, default to 'skin'
+    final String captureType =
+        args['captureType']?.toString() ?? widget.captureType;
+
+    // Debug print to verify captureType
+    print('AnalysisResults - captureType: $captureType');
 
     // Debug prints
     print('AnalysisResults build method called');
@@ -543,6 +553,21 @@ class _AnalysisResultsState extends State<AnalysisResults> {
                               as List<Map<String, dynamic>>,
                     ),
                   ),
+
+                  // Show Hair Analysis Form right after Risk Assessment if capture type is 'hair'
+                  if (captureType == 'hair') ...[
+                    SizedBox(height: 2.h),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 4.w),
+                      child: HairAnalysisForm(
+                        onAnalysisComplete: (results) {
+                          // Handle the analysis completion
+                          print('Hair analysis completed: $results');
+                          // You can update the UI or send the data to an API here
+                        },
+                      ),
+                    ),
+                  ],
 
                   SizedBox(height: 3.h),
 

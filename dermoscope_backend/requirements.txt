@@ -1,8 +1,12 @@
-fastapi
-sqlalchemy
-pydantic
-passlib[bcrypt]
-python-jose
-pillow
-numpy
-tensorflow
+fastapi            # Web framework
+sqlalchemy         # ORM
+pydantic           # Data validation
+pydantic-settings  # Settings management
+pydantic[email]    # Email validation
+passlib[bcrypt]    # Password hashing
+python-jose[cryptography]  # JWT handling
+python-multipart   # File uploads
+pillow             # Image processing
+numpy              # Numerical computing
+tensorflow         # ML model inference
+uvicorn            # ASGI server

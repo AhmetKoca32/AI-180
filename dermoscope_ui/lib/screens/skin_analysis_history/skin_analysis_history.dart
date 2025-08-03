@@ -257,14 +257,6 @@ class _SkinAnalysisHistoryState extends State<SkinAnalysisHistory>
       appBar: AppBar(
         backgroundColor: AppTheme.lightTheme.appBarTheme.backgroundColor,
         elevation: 0,
-        leading: IconButton(
-          onPressed: () => Navigator.pop(context),
-          icon: CustomIconWidget(
-            iconName: 'arrow_back',
-            color: AppTheme.lightTheme.colorScheme.onSurface,
-            size: 24,
-          ),
-        ),
         title: _isMultiSelectMode
             ? Text(
                 '${_selectedAnalyses.length} seçildi',
